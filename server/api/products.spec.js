@@ -32,9 +32,9 @@ describe('Product routes', () => {
         .get('/api/products')
         .expect(200)
         .then(res => {
-          expect(res.body).to.be.an('array')
-          expect(res.body[0].name).to.be.equal('New Wine')
-          expect(res.body[1].category).to.be.equal('white wine')
+          expect(res.body).to.be.an('object')
+          expect(res.body[1].name).to.be.equal('New Wine')
+          expect(res.body[2].category).to.be.equal('white wine')
         })
     })
   }) // end describe('/api/Products')
