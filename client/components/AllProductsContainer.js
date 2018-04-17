@@ -5,7 +5,7 @@ import { fetchProducts, getProducts } from '../store/allproducts';
 
 const mapState = function(state) {
   return {
-    products: 'hello'
+    products: state.products
   };
 };
 
