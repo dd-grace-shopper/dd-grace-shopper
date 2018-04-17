@@ -4,7 +4,7 @@ import axios from 'axios';
 const GET_PRODUCTS = 'GET_PRODUCTS';
 
 //action creators
-const getProducts = products => ({ type: GET_PRODUCTS }, products);
+export const getProducts = allproducts => ({ type: GET_PRODUCTS }, allproducts);
 
 //thunk creators
 export const fetchProducts = () => dispatch =>
@@ -20,7 +20,7 @@ export const fetchProducts = () => dispatch =>
 export default function(state = [], action) {
   switch (action.type) {
     case GET_PRODUCTS:
-      return action.products;
+      return action.allproducts;
     default:
       return state;
   }
