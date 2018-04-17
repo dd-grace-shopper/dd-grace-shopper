@@ -8,14 +8,14 @@ export const getProducts = products => ({ type: GET_PRODUCTS, products });
 
 //thunk creators
 export const fetchProducts = () => dispatch => {
-  axios
+  return axios
     .get('/api/products')
     .then(res => res.data)
     .then(products => {
       dispatch(getProducts(products));
     })
     .catch(err => console.log(err));
-}
+};
 
 //reducer
 export default function products(state = {}, action) {
