@@ -11,12 +11,24 @@ export default class AllProducts extends Component {
 
   render() {
 
-    // const { products } = this.props
+    const { products } = this.props;
 
     return (
       <div>
         <h1>All Products</h1>
-        <p>this.props.getAllProducts Here</p>
+        {
+          Object.keys(products).map(index => {
+            return (
+              <div key={index}>
+                <h1>{products[index].name}</h1>
+                <h4>{products[index].price}</h4>
+                <h4>{products[index].description}</h4>
+                <h4>{products[index].country}</h4>
+                <h4>{products[index].size}</h4>
+              </div>
+            )
+          })
+        }
       </div>
     );
   }

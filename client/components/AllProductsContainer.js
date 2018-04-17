@@ -4,6 +4,7 @@ import AllProducts from './AllProducts';
 import { fetchProducts, getProducts } from '../store/allproducts';
 
 const mapState = function(state) {
+
   return {
     products: state.products
   };

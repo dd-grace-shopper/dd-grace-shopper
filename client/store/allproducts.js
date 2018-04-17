@@ -4,10 +4,10 @@ import axios from 'axios';
 const GET_PRODUCTS = 'GET_PRODUCTS';
 
 //action creators
-export const getProducts = products => ({ type: GET_PRODUCTS }, products);
+export const getProducts = products => ({ type: GET_PRODUCTS, products });
 
 //thunk creators
-export const fetchProducts = () => dispatch =>
+export const fetchProducts = () => dispatch => {
   axios
     .get('/api/products')
     .then(res => res.data)
@@ -15,9 +15,10 @@ export const fetchProducts = () => dispatch =>
       dispatch(getProducts(products));
     })
     .catch(err => console.log(err));
+}
 
 //reducer
-export default function(state = {}, action) {
+export default function products(state = {}, action) {
   switch (action.type) {
     case GET_PRODUCTS:
       return action.products;
