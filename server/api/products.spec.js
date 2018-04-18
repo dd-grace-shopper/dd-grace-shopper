@@ -11,7 +11,7 @@ describe('Product routes', () => {
     return db.sync({force: true})
   })
 
-  describe('/api/products/', () => {
+  describe('GET /api/products/', () => {
 
     beforeEach(() => {
       return Product.bulkCreate([{
@@ -27,14 +27,25 @@ describe('Product routes', () => {
         size: '750'}])
     })
 
-    it('GET /api/products', () => {
+    it('should return an object with the following shape: { cookieId: String or null, productsById: {obj of products, keyed by id}, products: [array of product ids] }', () => {
       return request(app)
         .get('/api/products')
         .expect(200)
         .then(res => {
-          expect(res.body).to.be.an('object')
-          expect(res.body[1].name).to.be.equal('New Wine')
-          expect(res.body[2].category).to.be.equal('white wine')
+          expect(res.body).to.be.an('object');
+
+          expect(res.body.hasOwnProperty('cookieId')).to.equal(true);
+
+          expect(res.body.hasOwnProperty('productsById')).to.equal(true);
+          expect(res.body.productsById).to.be.an('object');
+          expect(res.body.productsById[1].name).to.equal('New Wine');
+          expect(res.body.productsById[2].category).to.equal('white wine');
+
+          expect(res.body.hasOwnProperty('products')).to.equal(true);
+          expect(res.body.products).to.be.an('array');
+          expect(res.body.products).to.have.lengthOf(2);
+          expect(res.body.products[0]).to.equal(1);
+          expect(res.body.products[1]).to.equal(2);
         })
     })
   }) // end describe('/api/Products')

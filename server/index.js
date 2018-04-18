@@ -53,7 +53,7 @@ const createApp = () => {
   // (why can't we access `req.user`? b/c user is not logged in? I thought req.user is *always* available via passport? -- Ben)
   app.use(function (req, res, next) {
     console.log('session', req.session.id);
-    res.cookieId = req.session.id;
+    res.cookieId = req.session.id || null;
     next();
   });
 
