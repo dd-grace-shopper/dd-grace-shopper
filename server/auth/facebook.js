@@ -44,7 +44,7 @@ if (!process.env.FACEBOOK_CLIENT_ID || !process.env.FACEBOOK_CLIENT_SECRET) {
   router.get('/', passport.authenticate('facebook', {/*scope: 'email'*/}));
 
   router.get('/callback', passport.authenticate('facebook', {
-    successRedirect: '/home',
+    successRedirect: '/',
     failureRedirect: '/login'
   }));
 
