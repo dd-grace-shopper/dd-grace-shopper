@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AllProducts from './AllProducts';
+import SingleProduct from './SingleProduct';
 import { fetchProducts, getProducts } from '../store/allproducts';
 
-const mapState = function(state) {
+const mapState = function(state, ownProps) {
   return {
-    products: state.products
+    product: state.products[ownProps.match.params.id]
   };
 };
 
@@ -14,7 +14,7 @@ const mapDispatch = function(dispatch) {
     getAllProducts: function() {
       dispatch(fetchProducts());
     }
-  }
-}
+  };
+};
 
-export default connect(mapState, mapDispatch)(AllProducts);
+export default connect(mapState, mapDispatch)(SingleProduct);
