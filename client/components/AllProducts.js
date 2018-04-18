@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AddToCart } from './AddToCart';
+import { Link } from 'react-router-dom';
 
 export default class AllProducts extends Component {
   constructor(props) {
@@ -20,11 +21,10 @@ export default class AllProducts extends Component {
           return (
             <div key={index}>
               <AddToCart product={products[index]} />
-              <h2>{products[index].name}</h2>
-              <h4>{products[index].price}</h4>
-              <h4>{products[index].description}</h4>
-              <h4>{products[index].country}</h4>
-              <h4>{products[index].size}</h4>
+              <Link to={`products/${index}`}>
+                <h2>{products[index].name}</h2>
+              </Link>
+              <img src="https://d14vtdp4hn1qux.cloudfront.net/assets/revamp/wine-placeholder-560512e07fc89ac005242a6ab3065c07.jpg" />
             </div>
           );
         })}
