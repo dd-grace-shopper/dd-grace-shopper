@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AddToCart } from './AddToCart';
 
 export default class AllProducts extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ export default class AllProducts extends Component {
         {Object.keys(products).map(index => {
           return (
             <div key={index}>
+              <AddToCart product={products[index]} />
               <h2>{products[index].name}</h2>
               <h4>{products[index].price}</h4>
               <h4>{products[index].description}</h4>
