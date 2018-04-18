@@ -11,6 +11,7 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+const User = require('./db/models')
 module.exports = app
 
 /**
@@ -48,8 +49,17 @@ const createApp = () => {
     resave: false,
     saveUninitialized: false
   }))
+  // cookie-adding middleware
+  // (why can't we access `req.user`? b/c user is not logged in? I thought req.user is *always* available via passport? -- Ben)
+  app.use(function (req, res, next) {
+    console.log('session', req.session.id);
+    res.cookieId = req.session.id;
+    next();
+  });
+
   app.use(passport.initialize())
   app.use(passport.session())
+
 
   // auth and api routes
   app.use('/auth', require('./auth'))
