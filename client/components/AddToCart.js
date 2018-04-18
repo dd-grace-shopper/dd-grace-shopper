@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCart } from '../store/cart';
+import { postToCart } from '../store/cart';
 
 export function AddToCart(props) {
-  // console.log('handle click!!!!', props.handleClick());
-  const { product } = props;
-  console.log('props for cart', props);
+
+  const { handleClick } = props;
+
+  console.log('handle click', handleClick);
   return (
     <div>
-      <button type="click" onClick={props.handleClick}>
+      <button type="click" onClick={handleClick}>
         Add to cart
       </button>
     </div>
@@ -21,12 +22,11 @@ const mapState = function(state) {
   };
 };
 
-const mapDispatch = function(dispatch) {
+const mapDispatch = function(dispatch, ownProps) {
   return {
-    handleClick: function(product) {
-      console.log('click handled!!!');
-
-      // dispatch(addToCart(product));
+    handleClick: function(evt) {
+      evt.preventDefault();
+      dispatch(postToCart(ownProps.productId));
     }
   };
 };

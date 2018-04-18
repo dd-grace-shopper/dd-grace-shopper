@@ -10,18 +10,18 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+  console.log('session!!!!!!!', req.session.id)
   ActiveOrder.findOrCreate({
     where: {
       productId: req.body.productId,
-      cookieId: req.body.cookieId
+      sessionId: req.session.id
     }
   })
     .spread((order, created) => {
       if (!created) {
         order.increment('quantity');
-      } else {
-        res.json(order);
       }
+      res.json(order);
     })
     .catch(next);
 });

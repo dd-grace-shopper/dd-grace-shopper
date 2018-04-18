@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AddToCart } from './AddToCart';
+import AddToCart from './AddToCart';
 import { Link } from 'react-router-dom';
 
 export default class AllProducts extends Component {
@@ -22,7 +22,7 @@ export default class AllProducts extends Component {
             const product = productsById[id];
             return (
               <div key={id}>
-                <AddToCart product={product} cookieId={cookieId} />
+                <AddToCart productId={id} />
                 <Link to={`products/${id}`}>
                   <h2>{product.name}</h2>
                 </Link>
