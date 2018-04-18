@@ -5,7 +5,8 @@ import { fetchProducts, getProducts } from '../store/allproducts';
 
 const mapState = function(state) {
   return {
-    products: state.products
+    products: state.products.products,
+    productsById: state.products.productsById
   };
 };
 
@@ -14,7 +15,7 @@ const mapDispatch = function(dispatch) {
     getAllProducts: function() {
       dispatch(fetchProducts());
     }
-  }
-}
+  };
+};
 
 export default connect(mapState, mapDispatch)(AllProducts);
