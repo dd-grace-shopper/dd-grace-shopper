@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const ActiveOrder = db.define('activeOrder', {
-  sessionId: {
+const PastOrder = db.define('pastOrder', {
+  orderId: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: false,
   },
   quantity: {
     type: Sequelize.INTEGER,
@@ -14,4 +14,4 @@ const ActiveOrder = db.define('activeOrder', {
 })
 
 
-module.exports = ActiveOrder;
+module.exports = PastOrder;
