@@ -16,10 +16,11 @@ const ActiveOrder = require('./activeOrder');
  * instead of: const User = require('../db/models/user')
  */
 
-Product.hasOne(ActiveOrder);
+Product.hasMany(ActiveOrder);
+ActiveOrder.belongsTo(Product);
 
 module.exports = {
   User,
   Product,
   ActiveOrder
-}
+};

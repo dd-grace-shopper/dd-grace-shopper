@@ -12,22 +12,24 @@ export default class AllProducts extends Component {
   }
 
   render() {
-    const { products } = this.props;
+    const { products, productsById, cookieId } = this.props;
 
     return (
       <div>
         <h1>All Products</h1>
-        {Object.keys(products).map(index => {
-          return (
-            <div key={index}>
-              <AddToCart product={products[index]} />
-              <Link to={`products/${index}`}>
-                <h2>{products[index].name}</h2>
-              </Link>
-              <img src="https://d14vtdp4hn1qux.cloudfront.net/assets/revamp/wine-placeholder-560512e07fc89ac005242a6ab3065c07.jpg" />
-            </div>
-          );
-        })}
+        {products &&
+          products.map(id => {
+            const product = productsById[id];
+            return (
+              <div key={id}>
+                <AddToCart product={product} cookieId={cookieId} />
+                <Link to={`products/${id}`}>
+                  <h2>{product.name}</h2>
+                </Link>
+                <img src="https://d14vtdp4hn1qux.cloudfront.net/assets/revamp/wine-placeholder-560512e07fc89ac005242a6ab3065c07.jpg" />
+              </div>
+            );
+          })}
       </div>
     );
   }

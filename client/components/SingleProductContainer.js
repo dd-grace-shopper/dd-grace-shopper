@@ -5,7 +5,9 @@ import { fetchProducts, getProducts } from '../store/allproducts';
 
 const mapState = function(state, ownProps) {
   return {
-    product: state.products[ownProps.match.params.id]
+    product: state.products.productsById
+      ? state.products.productsById[ownProps.match.params.id]
+      : {}
   };
 };
 
