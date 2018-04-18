@@ -3,14 +3,34 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
-  name: {
+  firstname: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  lastname: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  fullname: {
+    type: Sequelize.VIRTUAL,
+    get () {
+     return this.getDataValue('firstname') + ' ' + this.getDataValue('lastname');
+    }
   },
   email: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  },
+  isRegistered: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
   },
   password: {
     type: Sequelize.STRING,
