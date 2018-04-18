@@ -10,7 +10,7 @@ export function addToCart (product) {
 export default function cart(state = {}, action) {
   switch (action.type) {
     case ADD_TO_CART:
-      return Object.assign({}, state, action.product);
+      return Object.assign({}, state, {product: action.product});
      default:
       return state;
   }

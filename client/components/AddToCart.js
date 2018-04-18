@@ -4,7 +4,7 @@ import { addToCart } from '../store/cart';
 
 export function AddToCart (props) {
 
-  console.log('PROPS!!!!', props.handleClick)
+  // console.log('handle click!!!!', props.handleClick)
   const { product } = props
 
   return (
@@ -23,7 +23,7 @@ const mapState = function(state) {
 const mapDispatch = function(dispatch) {
   return {
     handleClick: function(product) {
-      console.log('click handled!!!')
+      // console.log('click handled!!!')
 
       // dispatch(addToCart(product));
     }
