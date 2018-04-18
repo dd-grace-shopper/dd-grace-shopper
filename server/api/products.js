@@ -20,7 +20,6 @@ router.get('/', (req, res, next) => {
   Product.findAll()
     .then(products => {
       res.status(200).json({
-        cookieId: res.cookieId,
         productsById: getDataByIdObj(products),
         products: getDataIdArray(products),
       });
