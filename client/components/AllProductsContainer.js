@@ -6,7 +6,8 @@ import { fetchProducts, getProducts } from '../store/allproducts';
 const mapState = function(state) {
   return {
     products: state.products.products,
-    productsById: state.products.productsById
+    productsById: state.products.productsById,
+    cookieId: state.products.cookieId
   };
 };
 

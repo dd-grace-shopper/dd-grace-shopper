@@ -11,7 +11,6 @@ export default class SingleProduct extends Component {
 
   render() {
     const product = this.props.product ? this.props.product : null;
-    console.log(product);
     return (
       <div>
         {product && (

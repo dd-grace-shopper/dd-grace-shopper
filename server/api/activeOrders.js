@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const { ActiveOrder } = require('../db/models');
+const { Product } = require('../db/models');
 module.exports = router;
 
 router.get('/', (req, res, next) => {
-  ActiveOrder.findAll({ include: [{ all: true }] })
+  ActiveOrder.findAll({ include: [{ model: Product }] })
     .then(orders => res.json(orders))
     .catch(next);
 });
@@ -17,7 +18,7 @@ router.post('/', (req, res, next) => {
   })
     .spread((order, created) => {
       if (!created) {
-        order.quantity++;
+        order.increment('quantity');
       } else {
         res.json(order);
       }

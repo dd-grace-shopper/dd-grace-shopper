@@ -12,8 +12,7 @@ export default class AllProducts extends Component {
   }
 
   render() {
-    console.log('new propsss', this.props);
-    const { products, productsById } = this.props;
+    const { products, productsById, cookieId } = this.props;
 
     return (
       <div>
@@ -23,7 +22,7 @@ export default class AllProducts extends Component {
             const product = productsById[id];
             return (
               <div key={id}>
-                <AddToCart product={product} />
+                <AddToCart product={product} cookieId={cookieId} />
                 <Link to={`products/${id}`}>
                   <h2>{product.name}</h2>
                 </Link>
