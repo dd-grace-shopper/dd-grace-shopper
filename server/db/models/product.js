@@ -9,27 +9,18 @@ const Product = db.define('product', {
   price: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    validate: {
+      min: 1
+    },
     get () {
-      const priceStr = this.getDataValue('price').toString();
-      const dollars = priceStr.slice(0, priceStr.length - 2);
-      const cents = priceStr.slice(priceStr.length - 2);
-      return dollars + '.' + cents;
+      return this.getDataValue('price') / 100;
+    },
+    set(){
+      return this.setDataValue('price') * 100;
     }
-  },
-  category: {
-    type: Sequelize.STRING,   // set constants for categories
-    allowNull: false
   },
   description: {
     type: Sequelize.TEXT
-  },
-  size: {
-    type: Sequelize.ENUM('1750', '1000', '750', '375'),
-    allowNull: false
-  },
-  country: {
-    type: Sequelize.STRING,
-    allowNull: false
   }
 });
 
