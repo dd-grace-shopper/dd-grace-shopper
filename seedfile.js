@@ -1,5 +1,6 @@
 const db = require('./server/db');
 const Product = require('./server/db/models/product');
+const ActiveOrder = require('./server/db/models/activeOrder');
 
 
 const products = [
@@ -33,8 +34,29 @@ const products = [
     size: '375'}
 ];
 
+const activeOrders = [
+  {
+  cookieId: 1,
+  quantity: 6,
+  productId: 1
+  },
+  {
+  cookieId: 2,
+  quantity: 3,
+  productId: 2
+  },
+  {
+  cookieId: 2,
+  productId: 3
+  }
+];
 
-const seed = () => Product.bulkCreate(products);
+
+const seed = async () => {
+  await Product.bulkCreate(products);
+  await ActiveOrder.bulkCreate(activeOrders);
+}
+// const seed = () => ActiveOrder.bulkCreate(activeOrders);
 
 const main = () => {
   console.log('Syncing db...');

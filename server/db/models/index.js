@@ -1,6 +1,6 @@
 const User = require('./user');
 const Product = require('./product');
-const activeOrder = require('./activeOrder');
+const ActiveOrder = require('./activeOrder');
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -15,8 +15,11 @@ const activeOrder = require('./activeOrder');
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
  */
+
+Product.hasOne(ActiveOrder);
+
 module.exports = {
   User,
   Product,
-  activeOrder
+  ActiveOrder
 }
