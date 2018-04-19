@@ -20,3 +20,17 @@ router.get('/', requireAdmin, (req, res, next) => {
     .catch(next)
 })
 
+router.put('/:id', (req, res, next) => {
+  const id = req.params.id;
+  User.update(req.body, {
+    where: {
+      id
+    },
+    returning: true
+  })
+  .then(([rowCount, [updatedUser]]) => {
+    res.json(updatedUser);
+  })
+  .catch(next)
+})
+
