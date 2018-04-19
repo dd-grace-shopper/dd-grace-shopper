@@ -29,3 +29,25 @@ footer {
   width: 150px;
   height: 150px;
 }
+
+.product-img {
+  width: 200px;
+  height: 200px;
+}
+
+.all-products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.single-product {
+  display: flex;
+  width: 350px;
+  height: 350px;
+}
+
+.single-product-img {
+  width: 500px;
+  height: 500px;
+}

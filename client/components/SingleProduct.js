@@ -17,11 +17,15 @@ export default class SingleProduct extends Component {
           <div>
             <h1>Name: {product.name}</h1>
             <div>
-              <img src="https://d14vtdp4hn1qux.cloudfront.net/assets/revamp/wine-placeholder-560512e07fc89ac005242a6ab3065c07.jpg" />
-              <h4>Category: {product.category}</h4>
-              <h4>Country: {product.country}</h4>
-              <h4>Size: {product.size}</h4>
+              {product.imageUrl && (
+                <img className="single-product-img" src={product.imageUrl} />
+              )}
               <h4>Description: {product.description}</h4>
+              {product.category && (
+                <h4>Category: {product.category.category}</h4>
+              )}
+              {product.country && <h4>Country: {product.country.name}</h4>}
+              {product.size && <h4>Size: {product.size.mililiter}</h4>}
               <h4>Price: {product.price}</h4>
             </div>
           </div>
@@ -29,4 +33,10 @@ export default class SingleProduct extends Component {
       </div>
     );
   }
+}
+
+{
+  /* <h4>Category: {product.category.name}</h4>
+              <h4>Country: {product.country.name}</h4>
+              <h4>Size: {product.size.mililiter}</h4> */
 }

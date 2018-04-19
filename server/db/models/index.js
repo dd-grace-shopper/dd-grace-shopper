@@ -6,7 +6,6 @@ const Size = require('./size');
 const ActiveOrder = require('./activeOrder');
 const PastOrder = require('./pastOrder');
 
-
 /**
  * If we had any associations to make, this would be a great place to put them!
  * ex. if we had another model called BlogPost, we might say:
@@ -21,7 +20,7 @@ const PastOrder = require('./pastOrder');
  * instead of: const User = require('../db/models/user')
  */
 
- //cart stuff
+//cart stuff
 Product.hasMany(ActiveOrder);
 ActiveOrder.belongsTo(Product);
 
@@ -31,14 +30,15 @@ PastOrder.belongsTo(Product);
 User.hasMany(PastOrder);
 PastOrder.belongsTo(User);
 
-
 // non-cart stuff
-Product.belongsToMany(Category, {through: 'Product-Category'});
-Category.belongsToMany(Product, {through: 'Product-Category'});
+// Product.belongsToMany(Category, { through: 'Product-Category' });
+// Category.belongsToMany(Product, { through: 'Product-Category' });
+Product.belongsTo(Category);
+Category.hasMany(Product);
 Product.belongsTo(Country);
 Country.hasMany(Product);
-Size.belongsTo(Product);
-Product.hasMany(Size);
+Product.belongsTo(Size);
+Size.hasMany(Product);
 
 module.exports = {
   User,
@@ -47,5 +47,5 @@ module.exports = {
   PastOrder,
   Size,
   Country,
-  Category,
+  Category
 };
