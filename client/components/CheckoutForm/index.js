@@ -139,6 +139,6 @@ export default () => (
     </div>
   </div>
   */}
-  <div className="ui button" tabindex="0">Submit Order</div>
+  <div className="ui button" tabIndex="0">Submit Order</div>
   </form>
 );
