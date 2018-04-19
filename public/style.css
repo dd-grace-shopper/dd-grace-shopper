@@ -19,3 +19,13 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.small-img {
+  width: 150px;
+  height: 150px;
+}
