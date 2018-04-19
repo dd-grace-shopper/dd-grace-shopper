@@ -10,7 +10,6 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  console.log('session!!!!!!!', req.session.id)
   ActiveOrder.findOrCreate({
     where: {
       productId: req.body.productId,
