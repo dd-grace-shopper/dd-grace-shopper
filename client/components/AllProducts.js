@@ -22,11 +22,13 @@ export default class AllProducts extends Component {
             const product = productsById[id];
             return (
               <div key={id}>
-                <AddToCart productId={id} />
-                <Link to={`products/${id}`}>
-                  <h2>{product.name}</h2>
-                </Link>
-                <img src="https://d14vtdp4hn1qux.cloudfront.net/assets/revamp/wine-placeholder-560512e07fc89ac005242a6ab3065c07.jpg" />
+                <div>
+                  <Link to={`products/${id}`}>
+                    <h2>{product.name}</h2>
+                  </Link>
+                  <img className="product-img" src={product.imageUrl} />
+                  <AddToCart productId={id} />
+                </div>
               </div>
             );
           })}
