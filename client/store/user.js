@@ -27,9 +27,9 @@ export const me = () => dispatch =>
     .then(res => dispatch(getUser(res.data || defaultUser)))
     .catch(err => console.log(err));
 
-export const auth = (email, password, method) => dispatch =>
-  axios
-    .post(`/auth/${method}`, { email, password })
+export const auth = (obj, method) => dispatch => {
+  return axios
+    .post(`/auth/local/${method}`, obj)
     .then(
       res => {
         dispatch(getUser(res.data));
@@ -41,6 +41,7 @@ export const auth = (email, password, method) => dispatch =>
       }
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr));
+};
 
 export const logout = () => dispatch =>
   axios
