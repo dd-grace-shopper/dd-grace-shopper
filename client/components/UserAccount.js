@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { deleteUserThunk } from '../store/user';
 
 export const UserAccount = props => {
+
+  const id = props.id;
 
   return (
     <div>
@@ -12,7 +15,7 @@ export const UserAccount = props => {
       <Link to="/account/edit"><h4>Edit my account details</h4></Link>
       <Link to="/view-cart"><h4>View my cart</h4></Link>
       <Link to="/past-orders"><h4>View my past orders</h4></Link>
-      <Link to="/"><h4>Delete my account</h4></Link>
+      <button onClick={(evt) => props.handleClick(evt, id)} >Delete my account</button>
     </div>
   );
 }
@@ -20,9 +23,22 @@ export const UserAccount = props => {
 const mapState = state => {
   return {
     fullname: state.user.fullname,
-    email: state.user.email
+    email: state.user.email,
+    id: state.user.id
   };
 };
 
-export default connect(mapState)(UserAccount);
+const mapDispatch = dispatch => {
+  return {
+    handleClick (evt, id) {
+      evt.preventDefault();
+      let confirmDelete = confirm("Are you sure you want to delete your account? We'll miss you!");
+      if(confirmDelete) {
+        dispatch(deleteUserThunk(id));
+      }
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(UserAccount);
 
