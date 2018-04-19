@@ -5,8 +5,6 @@ import { postToCart } from '../store/cart';
 export function AddToCart(props) {
 
   const { handleClick } = props;
-
-  console.log('handle click', handleClick);
   return (
     <div>
       <button type="click" onClick={handleClick}>
