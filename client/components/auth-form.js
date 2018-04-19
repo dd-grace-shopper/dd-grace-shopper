@@ -1,23 +1,43 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import PropTypes from 'prop-types'
-import {auth} from '../store'
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { auth } from '../store';
 
 /**
  * COMPONENT
  */
-const AuthForm = (props) => {
-  const {name, displayName, handleSubmit, error} = props
+const AuthForm = props => {
+  const { name, displayName, handleSubmit, error } = props;
 
   return (
     <div>
       <form onSubmit={handleSubmit} name={name}>
+        {name === 'signup' && (
+          <div>
+            <div>
+              <label htmlFor="firstname">
+                <small>First Name</small>
+              </label>
+              <input name="firstname" type="text" />
+            </div>
+            <div>
+              <label htmlFor="lastname">
+                <small>Last Name</small>
+              </label>
+              <input name="lastname" type="text" />
+            </div>
+          </div>
+        )}
         <div>
-          <label htmlFor="email"><small>Email</small></label>
+          <label htmlFor="email">
+            <small>Email</small>
+          </label>
           <input name="email" type="text" />
         </div>
         <div>
-          <label htmlFor="password"><small>Password</small></label>
+          <label htmlFor="password">
+            <small>Password</small>
+          </label>
           <input name="password" type="password" />
         </div>
         <div>
@@ -29,8 +49,8 @@ const AuthForm = (props) => {
       <br />
       <a href="/auth/facebook">{displayName} with Facebook</a>
     </div>
-  )
-}
+  );
+};
 
 /**
  * CONTAINER
@@ -39,36 +59,52 @@ const AuthForm = (props) => {
  *   function, and share the same Component. This is a good example of how we
  *   can stay DRY with interfaces that are very similar to each other!
  */
-const mapLogin = (state) => {
+const mapLogin = state => {
   return {
     name: 'login',
     displayName: 'Login',
     error: state.user.error
-  }
-}
+  };
+};
 
-const mapSignup = (state) => {
+const mapSignup = state => {
   return {
     name: 'signup',
     displayName: 'Sign Up',
     error: state.user.error
-  }
-}
+  };
+};
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = dispatch => {
   return {
-    handleSubmit (evt) {
-      evt.preventDefault()
-      const formName = evt.target.name
-      const email = evt.target.email.value
-      const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+    handleSubmit(evt) {
+      evt.preventDefault();
+      const formName = evt.target.name;
+      const email = evt.target.email.value;
+      const password = evt.target.password.value;
+      let userObj;
+      if (formName === 'signup') {
+        const firstname = evt.target.firstname.value;
+        const lastname = evt.target.lastname.value;
+        userObj = {
+          firstname,
+          lastname,
+          email,
+          password
+        };
+      } else if (formName === 'login') {
+        userObj = {
+          email,
+          password
+        };
+      }
+      dispatch(auth(userObj, formName));
     }
-  }
-}
+  };
+};
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+export const Login = connect(mapLogin, mapDispatch)(AuthForm);
+export const Signup = connect(mapSignup, mapDispatch)(AuthForm);
 
 /**
  * PROP TYPES
@@ -78,4 +114,4 @@ AuthForm.propTypes = {
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.object
-}
+};
