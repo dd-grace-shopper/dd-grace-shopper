@@ -24,17 +24,17 @@ const products = [
 
 const activeOrders = [
   {
-  sessionId: 1,
+  sessionId: '1',
   quantity: 6,
   productId: 1
   },
   {
-  sessionId: 2,
+  sessionId: '2',
   quantity: 3,
   productId: 2
   },
   {
-  sessionId: 2,
+  sessionId: '2',
   productId: 3
   }
 ];

@@ -13,15 +13,14 @@ router.post('/', (req, res, next) => {
   ActiveOrder.findOrCreate({
     where: {
       productId: req.body.productId,
-      cookieId: req.body.cookieId
+      sessionId: req.session.id
     }
   })
     .spread((order, created) => {
       if (!created) {
         order.increment('quantity');
-      } else {
-        res.json(order);
       }
+      res.json(order);
     })
     .catch(next);
 });
