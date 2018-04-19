@@ -30,6 +30,9 @@ PastOrder.belongsTo(Product);
 User.hasMany(PastOrder);
 PastOrder.belongsTo(User);
 
+User.hasMany(ActiveOrder);
+ActiveOrder.belongsTo(User);
+
 // non-cart stuff
 // Product.belongsToMany(Category, { through: 'Product-Category' });
 // Category.belongsToMany(Product, { through: 'Product-Category' });
