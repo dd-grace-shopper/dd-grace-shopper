@@ -3,7 +3,7 @@ const db = require('../db');
 
 const Category = db.define('category', {
   category: {
-    type: Sequelize.STRING,   // set constants for categories
+    type: Sequelize.STRING, // set constants for categories
     allowNull: false
   }
 });
