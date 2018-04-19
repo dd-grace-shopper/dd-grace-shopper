@@ -3,7 +3,7 @@ const db = require('../db');
 
 const ActiveOrder = db.define('activeOrder', {
   sessionId: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false
   },
   quantity: {
