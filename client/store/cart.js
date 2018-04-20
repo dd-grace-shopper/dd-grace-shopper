@@ -75,7 +75,9 @@ export const updateProductQuantity = (productId, newQuantity) => dispatch => {
     .put(`/api/active-orders/${productId}`, { newQuantity })
     .then(res => res.data)
     .then(updatedItem => {
-      const action = updateItemInCart(updatedItem);
+      const updatedItemObj = {};
+      updatedItemObj[updatedItem.productId] = updatedItem;
+      const action = updateItemInCart(updatedItemObj);
       dispatch(action);
     });
 }
