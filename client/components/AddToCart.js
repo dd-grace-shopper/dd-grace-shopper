@@ -15,11 +15,11 @@ export function AddToCart(props) {
   );
 }
 
-const mapState = function(state) {
-  return {
-    product: state.product
-  };
-};
+// const mapState = function(state) {
+//   return {
+//     product: state.product
+//   };
+// };
 
 const mapDispatch = function(dispatch, ownProps) {
   return {
@@ -30,4 +30,4 @@ const mapDispatch = function(dispatch, ownProps) {
   };
 };
 
-export default connect(mapState, mapDispatch)(AddToCart);
+export default connect(null, mapDispatch)(AddToCart);

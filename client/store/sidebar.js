@@ -10,7 +10,7 @@ export default function sidebarReducer (state = false, action) {
   switch (action.type) {
 
     case DISPLAY_SIDEBAR:
-      return true
+      return !state
 
     default:
       return state;

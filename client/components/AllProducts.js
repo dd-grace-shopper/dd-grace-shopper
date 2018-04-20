@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import SidebarLeft from './Sidebar';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux';
+import DisplaySidebar from './DisplaySidebar';
 
 export class AllProducts extends Component {
   constructor(props) {
@@ -12,19 +13,17 @@ export class AllProducts extends Component {
 
   componentDidMount() {
     this.props.getAllProducts ? this.props.getAllProducts() : null;
-    this.props.handleClick;
   }
 
   render() {
     const { products, productsById, cookieId } = this.props;
-    console.log('!!!', this.props.handleClick)
 
     return (
       <div>
         <SidebarLeft />
         <div className="ui container pusher">
           <h1>All Products</h1>
-           <Button onClick={console.log('filter')}>Filter Products</Button>
+          <DisplaySidebar />
           {products &&
             products.map(id => {
               const product = productsById[id];
@@ -45,17 +44,3 @@ export class AllProducts extends Component {
     );
   }
 }
-
-const mapDispatch = function(dispatch, ownProps) {
-  return {
-    handleClick (evt) {
-      evt.preventDefault();
-      console.log('CLICKED BUTTON')
-
-      // dispatch(updateUserThunk(user, id));
-    }
-  };
-};
-
-
-export default connect(mapDispatch)(AllProducts);
