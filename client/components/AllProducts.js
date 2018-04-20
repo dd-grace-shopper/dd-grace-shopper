@@ -29,6 +29,7 @@ const AllProducts = props => {
             </div>
           );
         })}
+      </div>
     </div>
   );
 }
