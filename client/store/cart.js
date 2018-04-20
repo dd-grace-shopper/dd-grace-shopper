@@ -5,6 +5,7 @@ const CREATE_CART = 'CREATE_CART';
 const ADD_TO_CART = 'ADD_TO_CART';
 const UPDATE_ITEM_IN_CART = 'UPDATE_ITEM_IN_CART';
 const DELETE_FROM_CART = 'DELETE_FROM_CART';
+const RESET_CART = 'RESET_CART';
 
 // action creators
 export function createCart(newCart) {
@@ -39,6 +40,12 @@ export function deleteFromCart(productId) {
   return action;
 }
 
+export function resetCart(){
+  const action = {
+    type: RESET_CART
+  };
+  return action;
+}
 
 // thunk creators
 export const fetchCart = () => dispatch => {
@@ -108,6 +115,8 @@ export default function cart(state = {}, action) {
         }
         return newCart;
       }, {});
+    case RESET_CART:
+      return {};
     default:
       return state;
   }
