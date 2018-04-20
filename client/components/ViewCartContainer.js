@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ViewCart from './ViewCart';
-import { deleteProductFromCart } from '../store/cart';
+import { deleteProductFromCart, updateProductQuantity } from '../store/cart';
 
 const mapState = function(state, ownProps) {
   //state.cart
@@ -35,6 +35,10 @@ const mapDispatch = function(dispatch) {
     handleDelete: (evt, id) => {
       evt.preventDefault();
       dispatch(deleteProductFromCart(id));
+    },
+    handleUpdate: (evt, productid, quantity) => {
+      evt.preventDefault();
+      dispatch(updateProductQuantity(productid, quantity));
     }
   }
 };

@@ -5,7 +5,6 @@ const ViewCart = props => {
   const cart = props.productsInCart ? props.productsInCart : null;
   const total = props.total;
   const numItems = props.numItems;
-
   return (
     <div>
       <h1>Currently in Cart</h1>
@@ -29,7 +28,15 @@ const ViewCart = props => {
                 >Delete</button>
               </td>{/*TODO: UI*/}
               <td>{item.price}</td>
-              <td>{item.quantity}</td>{/*DROPDOWN??*/}
+              <td>{item.quantity}</td>
+              <td>
+                <button type="button" value="minus" onClick={evt => props.handleUpdate(evt,  item.productId, (item.quantity - 1))}>
+                  -
+                </button>
+                <button type="button" value="plus" onClick={evt => props.handleUpdate(evt,  item.productId, (item.quantity + 1))}>
+                  +
+                </button>
+              </td>
             </tr>
           );
         })
