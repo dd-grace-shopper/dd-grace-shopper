@@ -57,6 +57,16 @@ footer {
   justify-content: space-evenly;
 }
 
+.all-products-container-with-sidebar {
+  transition: all 0.5s;
+ -webkit-transform: translate3d(300px,0,0);
+ transform: translate3d(300px,0,0) !important;
+}
+
+.all-products-container-no-sidebar {
+ transition: all 0.5s;
+}
+
 .single-product {
   display: flex;
   width: 350px;
