@@ -10,6 +10,9 @@ import ViewCartContainer from './components/ViewCartContainer'
 import UserAccount from './components/UserAccount';
 import EditUserAccountContainer from './components/EditUserAccountContainer';
 import CheckoutForm from './components/CheckoutForm';
+import { fetchCart } from './store/cart';
+import { fetchProducts } from './store/allproducts';
+
 
 /**
  * COMPONENT
@@ -62,6 +65,8 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me());
+      dispatch(fetchProducts());
+      dispatch(fetchCart());
     }
   };
 };

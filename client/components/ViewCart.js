@@ -1,47 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default class ViewCart extends Component {
-  constructor(props) {
-    super(props);
-  }
+const ViewCart = props => {
+  const cart = props.productsInCart ? props.productsInCart : null;
+  const total = props.total;
+  const numItems = props.numItems;
 
-  componentDidMount() {
-  }
+  return (
+    <div>
+      <h1>Currently in Cart</h1>
+      <table >
+      <thead>
+        <tr>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+      {
+        cart.map(item => {
+          return (
+            <tr className="cartItem" key={item.productId}>
+              <td><img src={item.imageUrl} /></td>
+              <td>
+                {item.name}
+                <button
+                  onClick={evt => props.handleDelete(evt, item.productId)}
+                >Delete</button>
+              </td>{/*TODO: UI*/}
+              <td>{item.price}</td>
+              <td>{item.quantity}</td>{/*DROPDOWN??*/}
+            </tr>
+          );
+        })
+      }
+      </tbody>
+      </table>
+      <br />
+      <h4> {`Subtotal: (${numItems}items) : $ ${total}`} </h4>
 
-  render() {
-    const cart = this.props.productsInCart ? this.props.productsInCart : null;
-    const total = this.props.total;
-    const numItems = this.props.numItems;
-
-    return (
-      <div>
-        <h1>Currently in Cart</h1>
-        <table >
-        <thead>
-          <tr>
-            <th>Price</th>
-            <th>Quantity</th>
-          </tr>
-         </thead>
-         <tbody>
-        {
-          cart.map(item => {
-            return (
-              <tr className="cartItem" key={item.productId}>
-               <td>{item.name}</td>
-               <td>{item.price}</td>
-               <td>{item.quantity}</td>
-              </tr>
-            );
-          })
-        }
-        </tbody>
-        </table>
-        <br />
-        <h4> {`Subtotal: (${numItems}items) : $ ${total}`} </h4>
-
+      <Link to={'/checkout'}>
         <button>Checkout!</button>
-      </div>
-    );
-  }
+      </Link>
+    </div>
+  );
 }
+
+export default ViewCart;
