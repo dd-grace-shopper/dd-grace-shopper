@@ -5,19 +5,41 @@ export default class ViewCart extends Component {
     super(props);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
   render() {
-    const products = this.props.products ? this.props.products : null;
+    const cart = this.props.productsInCart ? this.props.productsInCart : null;
+    const total = this.props.total;
+    const numItems = this.props.numItems;
+
     return (
       <div>
         <h1>Currently in Cart</h1>
-        {products && (
-          <div>
-            <h4>{products.name}</h4>
-            <h4>{products.price}</h4>
-          </div>
-        )}
+        <table >
+        <thead>
+          <tr>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+         </thead>
+         <tbody>
+        {
+          cart.map(item => {
+            return (
+              <tr className="cartItem" key={item.productId}>
+               <td>{item.name}</td>
+               <td>{item.price}</td>
+               <td>{item.quantity}</td>
+              </tr>
+            );
+          })
+        }
+        </tbody>
+        </table>
+        <br />
+        <h4> {`Subtotal: (${numItems}items) : $ ${total}`} </h4>
+
         <button>Checkout!</button>
       </div>
     );

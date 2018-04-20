@@ -4,17 +4,18 @@ const { Product } = require('../db/models');
 module.exports = router;
 
 router.get('/', (req, res, next) => {
-  ActiveOrder.findAll({ include: [{ model: Product }] })
+  const searchFilter = req.user ? {userId: req.user.id} : {sessionId: req.session.id };
+    ActiveOrder.findAll({ where:
+      searchFilter
+    })
     .then(orders => res.json(orders))
     .catch(next);
 });
 
 router.post('/', (req, res, next) => {
+  const searchFilter = req.user ? {productId: req.body.productId, userId: req.user.id} : {sessionId: req.session.id, productId: req.body.productId};
   ActiveOrder.findOrCreate({
-    where: {
-      productId: req.body.productId,
-      sessionId: req.session.id
-    }
+    where: searchFilter
   })
     .spread((order, created) => {
       if (!created) {
@@ -24,3 +25,4 @@ router.post('/', (req, res, next) => {
     })
     .catch(next);
 });
+
