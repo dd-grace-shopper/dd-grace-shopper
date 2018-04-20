@@ -1,8 +1,6 @@
 import React from 'react';
 import StatesDropdown from './StatesDropdown';
-import CardSection from './stripeComponents/CardSection';
 import CountriesDropdown from './CountriesDropdown';
-import PaymentRequestForm from './stripeComponents/PaymentRequestForm';
 import {
   CardElement,
   CardNumberElement,
