@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ViewCart from './ViewCart';
+import { deleteProductFromCart } from '../store/cart';
 
 const mapState = function(state, ownProps) {
   //state.cart
@@ -8,7 +9,7 @@ const mapState = function(state, ownProps) {
   let total = 0;
   let numItems = 0;
   const productsInCart = Object.keys(state.cart).map(productId => {
-    const { name, price } = state.products.productsById[productId];
+    const { name, price, imageUrl } = state.products.productsById[productId];
     const { quantity } = state.cart[productId];
     total += quantity * price;
     numItems += quantity;
@@ -16,7 +17,8 @@ const mapState = function(state, ownProps) {
       productId,
       name,
       price,
-      quantity
+      quantity,
+      imageUrl
     }
   });
   return {
@@ -29,14 +31,12 @@ const mapState = function(state, ownProps) {
 
 
 const mapDispatch = function(dispatch) {
-  // return {
-  //   getActiveOrdersForUser: function(){
-
-  //   },
-  //   getActiveOrdersForNonUser: function(){
-
-  //   }
-  // }
+  return {
+    handleDelete: (evt, id) => {
+      evt.preventDefault();
+      dispatch(deleteProductFromCart(id));
+    }
+  }
 };
 
-export default connect(mapState)(ViewCart);
+export default connect(mapState, mapDispatch)(ViewCart);
