@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AllProducts from './AllProducts';
+import {AllProducts} from './AllProducts';
 import { fetchProducts, getProducts } from '../store/allproducts';
 
 const mapState = function(state) {
