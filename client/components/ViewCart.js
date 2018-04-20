@@ -1,25 +1,49 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default class ViewCart extends Component {
-  constructor(props) {
-    super(props);
-  }
+const ViewCart = props => {
+  const cart = props.productsInCart ? props.productsInCart : null;
+  const total = props.total;
+  const numItems = props.numItems;
 
-  componentDidMount() {}
+  return (
+    <div>
+      <h1>Currently in Cart</h1>
+      <table >
+      <thead>
+        <tr>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+      {
+        cart.map(item => {
+          return (
+            <tr className="cartItem" key={item.productId}>
+              <td><img src={item.imageUrl} /></td>
+              <td>
+                {item.name}
+                <button
+                  onClick={evt => props.handleDelete(evt, item.productId)}
+                >Delete</button>
+              </td>{/*TODO: UI*/}
+              <td>{item.price}</td>
+              <td>{item.quantity}</td>{/*DROPDOWN??*/}
+            </tr>
+          );
+        })
+      }
+      </tbody>
+      </table>
+      <br />
+      <h4> {`Subtotal: (${numItems}items) : $ ${total}`} </h4>
 
-  render() {
-    const products = this.props.products ? this.props.products : null;
-    return (
-      <div>
-        <h1>Currently in Cart</h1>
-        {products && (
-          <div>
-            <h4>{products.name}</h4>
-            <h4>{products.price}</h4>
-          </div>
-        )}
+      <Link to={'/checkout'}>
         <button>Checkout!</button>
-      </div>
-    );
-  }
+      </Link>
+    </div>
+  );
 }
+
+export default ViewCart;

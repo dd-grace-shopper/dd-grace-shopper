@@ -7,6 +7,7 @@ import history from '../history';
 const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
 const UPDATE_USER = 'UPDATE_USER';
+const DELETE_USER = 'DELETE_USER';
 
 /**
  * INITIAL STATE
@@ -19,6 +20,7 @@ const defaultUser = {};
 const getUser = user => ({ type: GET_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
 const updateUser = user => ({ type: UPDATE_USER, user });
+const deleteUser = () => ({ type: DELETE_USER });
 
 /**
  * THUNK CREATORS
@@ -65,6 +67,16 @@ export const updateUserThunk = (user, id) => dispatch => {
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr));
 }
 
+export const deleteUserThunk = (id) => dispatch =>
+  axios
+    .delete(`/api/users/${id}`)
+    .then(_ => {
+      dispatch(deleteUser());
+      history.push('/login');
+    })
+    .catch(err => console.log(err));
+
+
 /**
  * REDUCER
  */
@@ -76,6 +88,8 @@ export default function(state = defaultUser, action) {
       return defaultUser;
     case UPDATE_USER:
       return action.user
+    case DELETE_USER:
+      return defaultUser;
     default:
       return state;
   }

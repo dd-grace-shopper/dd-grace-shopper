@@ -34,3 +34,20 @@ router.put('/:id', (req, res, next) => {
   .catch(next)
 })
 
+router.delete('/:id', (req, res, next) => {
+  const id = req.params.id;
+  User.destroy({
+    where: {
+      id
+    }
+  })
+  .then(deletedUser => {
+    if(deletedUser) {
+      res.json(deletedUser);
+      res.status(204);
+    }
+
+  })
+  .catch(next)
+})
+

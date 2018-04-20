@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {AllProducts} from './AllProducts';
 import { fetchProducts, getProducts } from '../store/allproducts';
+import AllProducts from './AllProducts';
 
 const mapState = function(state) {
   return {
     products: state.products.products,
     productsById: state.products.productsById,
-    cookieId: state.products.cookieId
   };
 };
 
-const mapDispatch = function(dispatch) {
-  return {
-    getAllProducts: function() {
-      dispatch(fetchProducts());
-    }
-  };
-};
-
-export default connect(mapState, mapDispatch)(AllProducts);
+export default connect(mapState)(AllProducts);
