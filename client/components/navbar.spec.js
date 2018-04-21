@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const adapter = new Adapter();
 enzyme.configure({ adapter });
 
-describe.only('The Navbar component', () => {
+describe('The Navbar component', () => {
   let navbar, clickSpy, renderedLinkElements, homeLinkProps, productsLinkProps, cartLinkProps, accountLinkProps, loginLinkProps, signupLinkProps;
   const links = {
     home: '/home',
