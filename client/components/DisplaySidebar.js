@@ -8,7 +8,7 @@ export function DisplaySidebar (props) {
   const { handleClick } = props;
 
   return (
-    <Button type="click" onClick={handleClick}>Filter Products!!!!!</Button>
+    <Button type="click" onClick={handleClick}>Filter Products</Button>
   )
 }
 
