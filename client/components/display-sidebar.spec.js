@@ -10,7 +10,7 @@ import { DisplaySidebar } from './DisplaySidebar';
 const adapter = new Adapter();
 enzyme.configure({ adapter });
 
-describe.only('The DisplaySidebar button component', () => {
+describe('The DisplaySidebar button component', () => {
   it('calls an onClick handler', () => {
     const clickSpy = spy();
     const displaySidebarButton = shallow(<DisplaySidebar onClick={clickSpy} />);
