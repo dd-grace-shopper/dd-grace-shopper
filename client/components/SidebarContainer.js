@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {SidebarLeft} from './Sidebar';
-import {selectFilter} from '../store/sidebarFilter';
+import {selectFilter, deselectFilter} from '../store/sidebarFilter';
 
 const mapState = state => {
   return {
@@ -12,8 +12,12 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     onChange: function(evt) {
-      evt.preventDefault();
-      dispatch(selectFilter(evt.target.value))
+      if(evt.target.checked) {
+        dispatch(selectFilter(evt.target.value))
+      }
+      else {
+        dispatch(deselectFilter(evt.target.value))
+      }
     }
   }
 }

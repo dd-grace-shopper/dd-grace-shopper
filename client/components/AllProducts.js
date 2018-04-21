@@ -19,11 +19,9 @@ export const AllProducts = props => {
 
   const filteredProducts = products && filteredIds.length ? filteredIds : products
 
-
-
   // console.log(products && typeof productsById[1])
     // console.log('PRODUCTS', products && productsById[1].category.category)
-    console.log('FILTER!@', filteredProducts)
+    // console.log('FILTER!@', filteredProducts)
 
   return (
     <div>
