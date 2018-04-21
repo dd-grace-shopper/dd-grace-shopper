@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Form, Checkbox } from 'semantic-ui-react'
-import { connect } from 'react-redux';
 
 export function SidebarLeft (props) {
   let visible = props.visible
+
+  console.log('CHANGE!!', props.onChange)
 
   return (
     <div>
       <Sidebar as={Menu} className="ui vertical inverted" animation="push" visible={visible}>
         <Form.Group inline>
           <label>Category</label>
-            <Form.Field label='Red Wine' control='input' type='checkbox' />
-            <Form.Field label='White Wine' control='input' type='checkbox' />
-            <Form.Field label='Whiskey' control='input' type='checkbox' />
+            <Form.Field label='Red Wine' value='Red Wine' control='input' type='checkbox' onChange={props.onChange} />
+            <Form.Field label='White Wine' value='White Wine' control='input' type='checkbox' onChange={props.onChange} />
+            <Form.Field label='Whiskey' value='Whiskey' control='input' type='checkbox' onChange={props.onChange} />
         </Form.Group>
         <Form.Group inline>
           <label>Size</label>
@@ -32,13 +33,4 @@ export function SidebarLeft (props) {
     </div>
   )
 }
-
-const mapState = state => {
-  return {
-    visible: state.sidebarReducer
-  }
-}
-
-export default connect(mapState)(SidebarLeft);
-
 

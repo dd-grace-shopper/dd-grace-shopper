@@ -1,17 +1,29 @@
 import React from 'react';
 import AddToCart from './AddToCart';
 import { Link } from 'react-router-dom';
-import SidebarLeft from './Sidebar';
+import SidebarLeft from './SidebarContainer';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
-import { connect } from 'react-redux';
 import DisplaySidebar from './DisplaySidebar';
 
-const AllProducts = props => {
-  const { products, productsById } = props;
+export const AllProducts = props => {
+  const { products, productsById, filter } = props;
   const allProductsContainerClass = props.sidebarVisible
     ? "all-products-container-with-sidebar"
     : "all-products-container-no-sidebar"
 
+  const filteredIds = products && products.filter(id => {
+    if(filter.length && filter.indexOf(productsById[id].category.category) > -1) {
+      return id;
+    }
+  })
+
+  const filteredProducts = products && filteredIds.length ? filteredIds : products
+
+
+
+  // console.log(products && typeof productsById[1])
+    // console.log('PRODUCTS', products && productsById[1].category.category)
+    console.log('FILTER!@', filteredProducts)
 
   return (
     <div>
@@ -21,21 +33,23 @@ const AllProducts = props => {
           <Segment basic id="all-products-container" className={allProductsContainerClass}>
              <h1>All Products</h1>
              <DisplaySidebar />
-            {products &&
-              products.map(id => {
-                const product = productsById[id];
-                return (
-                  <div key={id}>
-                    <div>
-                      <Link to={`products/${id}`}>
-                        <h2>{product.name}</h2>
-                      </Link>
-                      <img className="product-img" src={product.imageUrl} />
-                      <AddToCart productId={id} />
-                    </div>
-                  </div>
-                );
-              })}
+             <div>
+                {filteredProducts &&
+                  filteredProducts.map(id => {
+                    const product = productsById[id];
+                    return (
+                      <div key={id}>
+                        <div>
+                          <Link to={`products/${id}`}>
+                            <h2>{product.name}</h2>
+                          </Link>
+                          <img className="product-img" src={product.imageUrl} />
+                          <AddToCart productId={id} />
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
           </Segment>
         </Sidebar.Pusher>
       </Sidebar.Pushable>
@@ -43,10 +57,3 @@ const AllProducts = props => {
   );
 }
 
-const mapState = state => {
-  return {
-    sidebarVisible: state.sidebarReducer
-  }
-}
-
-export default connect(mapState)(AllProducts);
