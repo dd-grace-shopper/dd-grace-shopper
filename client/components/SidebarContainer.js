@@ -5,7 +5,9 @@ import {selectFilter, deselectFilter} from '../store/sidebarFilter';
 
 const mapState = state => {
   return {
-    visible: state.sidebarReducer
+    visible: state.sidebarReducer,
+    products: state.products.products,
+    productsById: state.products.productsById,
   }
 }
 

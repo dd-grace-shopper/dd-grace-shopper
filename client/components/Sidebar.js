@@ -2,18 +2,25 @@ import React, { Component } from 'react'
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Form, Checkbox } from 'semantic-ui-react'
 
 export function SidebarLeft (props) {
-  let visible = props.visible
+  let { visible, products, productsById } = props;
 
-  console.log('CHANGE!!', props.onChange)
+  const productsForSidebar = products && products.map(id => {
+    return productsById[id].category.category
+  })
+  const uniqueProductsForSidebar = Array.from(new Set(productsForSidebar));
 
   return (
     <div>
       <Sidebar as={Menu} className="ui vertical inverted" animation="push" visible={visible}>
         <Form.Group inline>
           <label>Category</label>
-            <Form.Field label='Red Wine' value='Red Wine' control='input' type='checkbox' onChange={props.onChange} />
-            <Form.Field label='White Wine' value='White Wine' control='input' type='checkbox' onChange={props.onChange} />
-            <Form.Field label='Whiskey' value='Whiskey' control='input' type='checkbox' onChange={props.onChange} />
+            {
+              products && uniqueProductsForSidebar.map(category => {
+                return <div key={category}>
+                  <Form.Field label={category} value={category} control='input' type='checkbox' onChange={props.onChange} />
+                </div>
+              })
+            }
         </Form.Group>
         <Form.Group inline>
           <label>Size</label>
@@ -34,3 +41,13 @@ export function SidebarLeft (props) {
   )
 }
 
+
+
+// <Form.Field label='Red Wine' value='Red Wine' control='input' type='checkbox' onChange={props.onChange} />
+//             <Form.Field label='White Wine' value='White Wine' control='input' type='checkbox' onChange={props.onChange} />
+//             <Form.Field label='Whiskey' value='Whiskey' control='input' type='checkbox' onChange={props.onChange} />
+//             <Form.Field label='Rum' value='Rum' control='input' type='checkbox' onChange={props.onChange} />
+//             <Form.Field label='Vodka' value='Vodka' control='input' type='checkbox' onChange={props.onChange} />
+//             <Form.Field label='Gin' value='Gin' control='input' type='checkbox' onChange={props.onChange} />
+//             <Form.Field label='Brandy' value='Brandy' control='input' type='checkbox' onChange={props.onChange} />
+//             <Form.Field label='Tequila' value='Tequila' control='input' type='checkbox' onChange={props.onChange} />
