@@ -10,7 +10,7 @@ import { AddToCart } from './AddToCart';
 const adapter = new Adapter();
 enzyme.configure({ adapter });
 
-describe('The "add to cart" button component', () => {
+describe('The AddToCart button component', () => {
   it('calls an onClick handler', () => {
     const clickSpy = spy();
     const addToCartButton = shallow(<AddToCart onClick={clickSpy} />);
