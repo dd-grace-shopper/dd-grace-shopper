@@ -26,10 +26,6 @@ export const AllProducts = props => {
     return filter.indexOf(product) > -1
   })
 
-  console.log('filteredproductCategories', filteredproductCategories)
-  console.log('filteredProductSize', filteredProductSize)
-
-  // console.log('filter', filter)
   const filteredIds = products && products.filter(id => {
     if(!filteredproductCategories.length || !filteredProductSize.length) {
       if(filter.length && filter.indexOf(productsById[id].category.category) > -1) {
@@ -46,16 +42,6 @@ export const AllProducts = props => {
     }
   })
 
-  // const filteredIds = products && products.filter(id => {
-  //   if(filter.length && filter.indexOf(productsById[id].category.category) > -1) {
-  //     return id;
-  //   }
-  //   if(filter.length && filter.indexOf(productsById[id].size.mililiter) > -1) {
-  //     return id;
-  //   }
-  // })
-
-  console.log('???', filteredIds)
   const filteredProducts = products && filteredIds.length ? filteredIds : products
 
   return (

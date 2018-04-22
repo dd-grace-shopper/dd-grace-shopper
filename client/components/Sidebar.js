@@ -4,10 +4,15 @@ import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Form, Checkbox } f
 export function SidebarLeft (props) {
   let { visible, products, productsById } = props;
 
-  const productsForSidebar = products && products.map(id => {
+  const CategoriesForSidebar = products && products.map(id => {
     return productsById[id].category.category
   })
-  const uniqueProductsForSidebar = Array.from(new Set(productsForSidebar));
+  const uniqueCategoriesForSidebar = Array.from(new Set(CategoriesForSidebar));
+
+  const SizesForSidebar = products && products.map(id => {
+    return productsById[id].size.mililiter
+  })
+  const uniqueSizesForSidebar = Array.from(new Set(SizesForSidebar));
 
   return (
     <div>
@@ -15,7 +20,7 @@ export function SidebarLeft (props) {
         <Form.Group inline>
           <label>Category</label>
             {
-              products && uniqueProductsForSidebar.map(category => {
+              products && uniqueCategoriesForSidebar.map(category => {
                 return <div key={category}>
                   <Form.Field label={category} value={category} control='input' type='checkbox' onChange={props.onChange} />
                 </div>
@@ -24,9 +29,13 @@ export function SidebarLeft (props) {
         </Form.Group>
         <Form.Group inline>
           <label>Size</label>
-            <Form.Field label='750ml' value='750ml' control='input' type='checkbox' onChange={props.onChange} />
-            <Form.Field label='medium' control='input' type='checkbox' />
-            <Form.Field label='large' control='input' type='checkbox' />
+            {
+              products && uniqueSizesForSidebar.map(size => {
+                return <div key={size}>
+                  <Form.Field label={size} value={size} control='input' type='checkbox' onChange={props.onChange} />
+                </div>
+              })
+            }
         </Form.Group>
         <Form.Group inline>
           <label>Price</label>
@@ -41,13 +50,3 @@ export function SidebarLeft (props) {
   )
 }
 
-
-
-// <Form.Field label='Red Wine' value='Red Wine' control='input' type='checkbox' onChange={props.onChange} />
-//             <Form.Field label='White Wine' value='White Wine' control='input' type='checkbox' onChange={props.onChange} />
-//             <Form.Field label='Whiskey' value='Whiskey' control='input' type='checkbox' onChange={props.onChange} />
-//             <Form.Field label='Rum' value='Rum' control='input' type='checkbox' onChange={props.onChange} />
-//             <Form.Field label='Vodka' value='Vodka' control='input' type='checkbox' onChange={props.onChange} />
-//             <Form.Field label='Gin' value='Gin' control='input' type='checkbox' onChange={props.onChange} />
-//             <Form.Field label='Brandy' value='Brandy' control='input' type='checkbox' onChange={props.onChange} />
-//             <Form.Field label='Tequila' value='Tequila' control='input' type='checkbox' onChange={props.onChange} />
