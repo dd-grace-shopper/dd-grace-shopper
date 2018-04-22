@@ -73,6 +73,11 @@ export const AllProducts = props => {
     }
   })
 
+  let noMatchingProducts = false;
+  if(filter.length && !filteredIds.length) {
+    noMatchingProducts = true;
+  }
+
   const filteredProducts = products && filteredIds.length ? filteredIds : products
 
   return (
@@ -83,23 +88,34 @@ export const AllProducts = props => {
           <Segment basic id="all-products-container" className={allProductsContainerClass}>
              <h1>All Products</h1>
              <DisplaySidebar />
-             <div>
-                {filteredProducts &&
-                  filteredProducts.map(id => {
-                    const product = productsById[id];
-                    return (
-                      <div key={id}>
-                        <div>
-                          <Link to={`products/${id}`}>
-                            <h2>{product.name}</h2>
-                          </Link>
-                          <img className="product-img" src={product.imageUrl} />
-                          <AddToCart productId={id} />
+             <hr />
+             {
+              noMatchingProducts
+              ?
+                <div>
+                  <br /><br />
+                  <h3>There are currently no products matching you search</h3>
+                  <br /><br /><br /><br />
+                </div>
+              :
+               <div>
+                  {filteredProducts &&
+                    filteredProducts.map(id => {
+                      const product = productsById[id];
+                      return (
+                        <div key={id}>
+                          <div>
+                            <Link to={`products/${id}`}>
+                              <h2>{product.name}</h2>
+                            </Link>
+                            <img className="product-img" src={product.imageUrl} />
+                            <AddToCart productId={id} />
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
-              </div>
+                      );
+                    })}
+                </div>
+             }
           </Segment>
         </Sidebar.Pusher>
       </Sidebar.Pushable>
