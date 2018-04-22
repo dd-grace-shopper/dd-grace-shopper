@@ -11,11 +11,51 @@ export const AllProducts = props => {
     ? "all-products-container-with-sidebar"
     : "all-products-container-no-sidebar"
 
+  const productCategories = products && products.map(id => {
+    return productsById[id].category.category
+  })
+  const uniqueproductCategories = Array.from(new Set(productCategories));
+  const filteredproductCategories = uniqueproductCategories.filter(product => {
+    return filter.indexOf(product) > -1
+  })
+  const productSize = products && products.map(id => {
+    return productsById[id].size.mililiter
+  })
+  const uniqueProductSize = Array.from(new Set(productSize));
+  const filteredProductSize = uniqueProductSize.filter(product => {
+    return filter.indexOf(product) > -1
+  })
+
+  console.log('filteredproductCategories', filteredproductCategories)
+  console.log('filteredProductSize', filteredProductSize)
+
+  // console.log('filter', filter)
   const filteredIds = products && products.filter(id => {
-    if(filter.length && filter.indexOf(productsById[id].category.category) > -1) {
-      return id;
+    if(!filteredproductCategories.length || !filteredProductSize.length) {
+      if(filter.length && filter.indexOf(productsById[id].category.category) > -1) {
+        return id;
+      }
+      else if(filter.length && filter.indexOf(productsById[id].size.mililiter) > -1) {
+        return id;
+      }
+    }
+    else {
+      if(filter.length && filter.length && filter.indexOf(productsById[id].category.category) > -1 && filter.length && filter.indexOf(productsById[id].size.mililiter) > -1) {
+        return id;
+      }
     }
   })
+
+  // const filteredIds = products && products.filter(id => {
+  //   if(filter.length && filter.indexOf(productsById[id].category.category) > -1) {
+  //     return id;
+  //   }
+  //   if(filter.length && filter.indexOf(productsById[id].size.mililiter) > -1) {
+  //     return id;
+  //   }
+  // })
+
+  console.log('???', filteredIds)
   const filteredProducts = products && filteredIds.length ? filteredIds : products
 
   return (

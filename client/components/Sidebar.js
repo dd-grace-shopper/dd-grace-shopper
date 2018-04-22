@@ -24,7 +24,7 @@ export function SidebarLeft (props) {
         </Form.Group>
         <Form.Group inline>
           <label>Size</label>
-            <Form.Field label='small' control='input' type='checkbox' />
+            <Form.Field label='750ml' value='750ml' control='input' type='checkbox' onChange={props.onChange} />
             <Form.Field label='medium' control='input' type='checkbox' />
             <Form.Field label='large' control='input' type='checkbox' />
         </Form.Group>
