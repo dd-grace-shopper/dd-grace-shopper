@@ -87,10 +87,12 @@ class _CardForm extends React.Component {
     };
     this.props.stripe.createToken(tokenObj).then(payload => {
       const card = payload.token.card;
+      card.total = this.props.total;
       this.props.addToDb(card);
     });
   };
   render() {
+    const { total } = this.props;
     return (
       <form className="ui form" onSubmit={this.handleSubmit}>
         <h4 className="ui dividing header">Shipping Information</h4>
@@ -130,7 +132,7 @@ class _CardForm extends React.Component {
             {...createOptions(this.props.fontSize)}
           />
         </label>
-        <button>Pay</button>
+        <button>Pay ${total}</button>
       </form>
     );
   }
@@ -156,12 +158,16 @@ class Checkout extends React.Component {
   }
 
   render() {
-    console.log('checkout props!', this.props);
+    const { total } = this.props;
     const { elementFontSize } = this.state;
     return (
       <div className="Checkout">
         <Elements>
-          <CardForm fontSize={elementFontSize} addToDb={this.props.addToDb} />
+          <CardForm
+            fontSize={elementFontSize}
+            addToDb={this.props.addToDb}
+            total={total}
+          />
         </Elements>
       </div>
     );
