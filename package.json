@@ -49,7 +49,8 @@
     "semantic-ui-redux-form-fields": "^1.0.1",
     "sequelize": "^4.3.1",
     "sinon": "^4.5.0",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "stripe": "^5.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",

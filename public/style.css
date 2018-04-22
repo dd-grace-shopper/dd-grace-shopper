@@ -148,3 +148,8 @@ button:hover {
 .StripeElement.PaymentRequestButton {
   padding: 0;
 }
+
+.filter-form {
+  margin: 0 .2em;
+  display: block;
+}
