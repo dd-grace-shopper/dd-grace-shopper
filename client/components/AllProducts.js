@@ -11,6 +11,7 @@ export const AllProducts = props => {
     ? "all-products-container-with-sidebar"
     : "all-products-container-no-sidebar"
 
+  // Getting only unique filtered products by category, size, and price range
   const productCategories = products && products.map(id => {
     return productsById[id].category.category
   })
@@ -18,6 +19,7 @@ export const AllProducts = props => {
   const filteredproductCategories = uniqueproductCategories.filter(product => {
     return filter.indexOf(product) > -1
   })
+
   const productSize = products && products.map(id => {
     return productsById[id].size.mililiter
   })
@@ -26,17 +28,46 @@ export const AllProducts = props => {
     return filter.indexOf(product) > -1
   })
 
+  const productPrice = products && products.map(id => {
+    return productsById[id].priceRange
+  })
+  const uniqueProductPrice = Array.from(new Set(productPrice));
+  const filteredProductPrice = uniqueProductPrice.filter(product => {
+    return filter.indexOf(product) > -1
+  })
+
+  // Returning matching product IDs depending on which combination of filters is clicked
   const filteredIds = products && products.filter(id => {
-    if(!filteredproductCategories.length || !filteredProductSize.length) {
-      if(filter.length && filter.indexOf(productsById[id].category.category) > -1) {
+    const productsByIdCategory = filter.indexOf(productsById[id].category.category) > -1;
+    const productsByIdSize = filter.indexOf(productsById[id].size.mililiter) > -1;
+    const productsByIdPrice = filter.indexOf(productsById[id].priceRange) > -1;
+
+    if(filteredproductCategories.length && !filteredProductPrice.length && !filteredProductSize.length) {
+      if(filter.length && productsByIdCategory) {
         return id;
       }
-      else if(filter.length && filter.indexOf(productsById[id].size.mililiter) > -1) {
+    }
+    else if(filteredProductSize.length && !filteredProductPrice.length && !filteredproductCategories.length) {
+      if(filter.length && productsByIdSize) {
+        return id;
+      }
+    }
+    else if(filteredProductPrice.length && !filteredProductSize.length && !filteredproductCategories.length) {
+      if(filter.length && productsByIdPrice) {
         return id;
       }
     }
     else {
-      if(filter.length && filter.length && filter.indexOf(productsById[id].category.category) > -1 && filter.length && filter.indexOf(productsById[id].size.mililiter) > -1) {
+      if(filter.length && !filteredProductPrice.length && productsByIdCategory && productsByIdSize) {
+        return id;
+      }
+      else if(filter.length && !filteredProductSize.length && productsByIdCategory && productsByIdPrice) {
+        return id;
+      }
+      else if(filter.length && !filteredproductCategories.length && productsByIdSize && productsByIdPrice) {
+        return id;
+      }
+      else if(filter.length && productsByIdCategory && productsByIdSize && productsByIdPrice) {
         return id;
       }
     }

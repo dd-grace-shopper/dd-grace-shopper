@@ -4,6 +4,7 @@ import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Form, Checkbox } f
 export function SidebarLeft (props) {
   let { visible, products, productsById } = props;
 
+  // Getting unique product categories, sizes, and prices to display in sidebar filter
   const CategoriesForSidebar = products && products.map(id => {
     return productsById[id].category.category
   })
@@ -12,7 +13,12 @@ export function SidebarLeft (props) {
   const SizesForSidebar = products && products.map(id => {
     return productsById[id].size.mililiter
   })
-  const uniqueSizesForSidebar = Array.from(new Set(SizesForSidebar));
+  const uniqueSizesForSidebar = Array.from(new Set(SizesForSidebar)).sort();
+
+  const pricesForSidebar = products && products.map(id => {
+    return productsById[id].priceRange
+  })
+  const uniquePricesForSidebar = Array.from(new Set(pricesForSidebar)).sort();
 
   return (
     <div>
@@ -39,10 +45,13 @@ export function SidebarLeft (props) {
         </Form.Group>
         <Form.Group inline>
           <label>Price</label>
-            <Form.Field label='$' control='input' type='checkbox' />
-            <Form.Field label='$$' control='input' type='checkbox' />
-            <Form.Field label='$$$' control='input' type='checkbox' />
-            <Form.Field label='$$$$' control='input' type='checkbox' />
+            {
+              products && uniquePricesForSidebar.map(price => {
+                return <div key={price}>
+                  <Form.Field label={price} value={price} control='input' type='checkbox' onChange={props.onChange} />
+                </div>
+              })
+            }
         </Form.Group>
       </Sidebar>
 
