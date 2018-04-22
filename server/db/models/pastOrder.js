@@ -40,6 +40,10 @@ const PastOrder = db.define('pastOrder', {
   brand: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  total: {
+    type: Sequelize.DECIMAL,
+    allowNull: false
   }
 });
 
