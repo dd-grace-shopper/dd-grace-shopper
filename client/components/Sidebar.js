@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Form, Checkbox } from 'semantic-ui-react'
 
 export function SidebarLeft (props) {
-  let { visible, products, productsById } = props;
+  let { visible, products, productsById, filter } = props;
 
   // Getting unique product categories, sizes, and prices to display in sidebar filter
   const CategoriesForSidebar = products && products.map(id => {
@@ -28,30 +28,27 @@ export function SidebarLeft (props) {
             {
               products && uniqueCategoriesForSidebar.map(category => {
                 return <div key={category}>
-                  <Form.Field label={category} value={category} control='input' type='checkbox' onChange={props.onChange} />
+                  <Form.Field label={category} value={category} control='input' type='checkbox' onChange={props.handleChange} />
                 </div>
               })
             }
-        </Form.Group>
-        <Form.Group inline>
           <label>Size</label>
             {
               products && uniqueSizesForSidebar.map(size => {
                 return <div key={size}>
-                  <Form.Field label={size} value={size} control='input' type='checkbox' onChange={props.onChange} />
+                  <Form.Field label={size} value={size} control='input' type='checkbox' onChange={props.handleChange} />
                 </div>
               })
             }
-        </Form.Group>
-        <Form.Group inline>
           <label>Price</label>
             {
               products && uniquePricesForSidebar.map(price => {
                 return <div key={price}>
-                  <Form.Field label={price} value={price} control='input' type='checkbox' onChange={props.onChange} />
+                  <Form.Field label={price} value={price} control='input' type='checkbox' onChange={props.handleChange} />
                 </div>
               })
             }
+          <Button type="reset" onClick={props.handleClick} >Reset</Button>
         </Form.Group>
       </Sidebar>
 
