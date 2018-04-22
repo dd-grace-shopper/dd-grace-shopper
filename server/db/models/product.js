@@ -16,6 +16,23 @@ const Product = db.define('product', {
       this.setDataValue('price', price / 100);
     }
   },
+  priceRange: {
+    type: Sequelize.VIRTUAL,
+    get() {
+      if(this.getDataValue('price') < 20) {
+        return '$';
+      }
+      else if(this.getDataValue('price') >= 20 && this.getDataValue('price') < 50) {
+        return '$$';
+      }
+      else if(this.getDataValue('price') >= 50 && this.getDataValue('price') < 100) {
+        return '$$$';
+      }
+      else {
+        return '$$$$';
+      }
+    }
+  },
   description: {
     type: Sequelize.TEXT
   },
