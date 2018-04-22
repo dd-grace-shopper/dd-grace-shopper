@@ -17,7 +17,7 @@ import Adapter from 'enzyme-adapter-react-16';
 const adapter = new Adapter();
 enzyme.configure({ adapter });
 
-describe.only('The React-Redux connected UserAccount component', () => {
+describe('The React-Redux connected UserAccount component', () => {
   const dummyAccountInfo = {
     fullname: 'Georgi Porgi-Gregorgi',
     email: 'porgi@georgi.gregorgi',
