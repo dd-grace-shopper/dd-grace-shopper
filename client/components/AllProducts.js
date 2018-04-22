@@ -6,12 +6,11 @@ import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui
 import { connect } from 'react-redux';
 import DisplaySidebar from './DisplaySidebar';
 
-const AllProducts = props => {
+export const AllProducts = props => {
   const { products, productsById } = props;
   const allProductsContainerClass = props.sidebarVisible
     ? "all-products-container-with-sidebar"
-    : "all-products-container-no-sidebar"
-
+    : "all-products-container-no-sidebar";
 
   return (
     <div>
@@ -28,7 +27,9 @@ const AllProducts = props => {
                   <div key={id}>
                     <div>
                       <Link to={`products/${id}`}>
-                        <h2>{product.name}</h2>
+                        <h2
+                          className="all-products-product-name"
+                        >{product.name}</h2>
                       </Link>
                       <img className="product-img" src={product.imageUrl} />
                       <AddToCart productId={id} />

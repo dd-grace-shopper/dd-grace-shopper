@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import { resetCart} from  '../store/cart';
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+export const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
     <h1>D & D Wine and Liquor</h1>
     <nav>
