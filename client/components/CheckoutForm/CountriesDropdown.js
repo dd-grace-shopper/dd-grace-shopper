@@ -1,10 +1,13 @@
 import React from 'react';
 
-const CountriesDropdown = () => (
+const CountriesDropdown = props => (
   <div className="field countriesDropdownContainer">
     <label>Country</label>
 
-    <select className="ui fluid search selection dropdown">
+    <select
+      className="ui fluid search selection dropdown"
+      onChange={props.handleCountryChange}
+    >
       {/* <input type="hidden" name="country" />
 <i className="dropdown icon"></i>
 <div className="default text">Select Country</div>
