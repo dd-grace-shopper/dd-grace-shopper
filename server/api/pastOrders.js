@@ -1,17 +1,10 @@
 const router = require('express').Router();
 const { PastOrder, Product } = require('../db/models');
+const { isAdminOrSelf, requireLoggedInUser } = require('./utils');
 module.exports = router;
 // Set your secret key: remember to change this to your live secret key in production
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 var stripe = require('stripe')('sk_test_SVZzidxgnkraAFfvVqTCLf78');
-
-function requireLoggedInUser (req, res, next) {
-  if (req.user) {
-    next();
-  } else {
-    res.sendStatus(401);
-  }
-}
 
 router.get('/', requireLoggedInUser, (req, res, next) => {
   PastOrder.findAll({
@@ -38,7 +31,7 @@ router.post('/', (req, res, next) => {
     .catch(next);
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', isAdminOrSelf, (req, res, next) => {
   PastOrder.findById(req.params.id, { include: [{ all: true }] }).then(order =>
     res.json(order)
   );
