@@ -2,9 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ViewCart = props => {
-  const cart = props.productsInCart ? props.productsInCart : null;
-  const total = props.total;
-  const numItems = props.numItems;
+  const cart = props.productsInCart || [];
+  const total = props.total || 0;
+  const numItems = props.numItems || 0;
+
+  if (numItems === 0) {
+    return (
+      <h1 className="empty-cart-message">
+        Your cart is empty. Buy something!
+      </h1>
+    );
+  }
+
   return (
     <div>
       <h1>Currently in Cart</h1>
@@ -58,8 +67,13 @@ const ViewCart = props => {
           })}
         </tbody>
       </table>
+
       <br />
-      <h4> {`Subtotal: (${numItems}items) : $ ${total}`} </h4>
+      <h4
+        className="cart-subtotal"
+      >
+        {`Subtotal: (${numItems}items) : $ ${total}`}
+      </h4>
 
       <Link to={{ pathname: '/checkout', state: { total } }}>
         <button>Checkout!</button>
