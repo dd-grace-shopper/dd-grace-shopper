@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AddToCart from './AddToCart';
 
 export default class SingleProduct extends Component {
   constructor(props) {
@@ -13,10 +14,11 @@ export default class SingleProduct extends Component {
     const product = this.props.product ? this.props.product : null;
     return (
       <div>
+        <AddToCart />
         {product && (
           <div>
             <h1 className="single-product-name">
-              Name: {product.name}
+              {product.name}
             </h1>
             <div>
               {product.imageUrl && (
@@ -31,7 +33,7 @@ export default class SingleProduct extends Component {
                 </h4>
               )}
               {product.country && (
-                <h4 className="single-product-country">
+                <h4 >
                   Country: {product.country.name}
                 </h4>
               )}
