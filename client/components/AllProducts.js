@@ -138,4 +138,5 @@ export default class AllProducts extends Component {
       </Sidebar.Pushable>
     </div>
   );
+  }
 }
