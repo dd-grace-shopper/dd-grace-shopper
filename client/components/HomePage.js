@@ -1,19 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-export function HomePage (props) {
+export default class HomePage extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  const products = props.products;
-  const productsById = props.productsById;
-  const randomProductsToFeature = []
-  products && products.forEach(id => {
-    let randomNum = Math.floor(Math.random() * products.length + 1);
-    if(randomProductsToFeature.length < 6 && randomProductsToFeature.indexOf(randomNum) === -1) {
-      randomProductsToFeature.push(randomNum)
-    }
-  })
+  componentDidMount() {
+    this.props.getAllProducts ? this.props.getAllProducts() : null;
+  }
 
-  // console.log('randomProductsToFeature', randomProductsToFeature)
+  render() {
+    const products = this.props ? this.props.products : null;
+    const productsById = this.props ? this.props.productsById : null;
+    const randomProductsToFeature = []
+    products.length && products.forEach(id => {
+      let randomNum = Math.floor(Math.random() * products.length + 1);
+      if(randomProductsToFeature.length < 6 && randomProductsToFeature.indexOf(randomNum) === -1) {
+        randomProductsToFeature.push(randomNum)
+      }
+    })
 
   return (
     <div>
@@ -23,7 +29,7 @@ export function HomePage (props) {
       </div>
       <br /><br />
        <div className="ui segment three column grid">
-          {products &&
+          {products.length &&
             randomProductsToFeature.map(id => {
               const product = productsById[id];
               return (
@@ -34,11 +40,12 @@ export function HomePage (props) {
                     </Link>
                     <img className="product-img" src={product.imageUrl} />
                   </div>
-                </div>
-              );
-            })}
-        </div>
-      <br /><br />
-    </div>
-  )
+                );
+              })}
+          </div>
+        <br /><br />
+      </div>
+    )
+
+  }
 }

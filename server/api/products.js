@@ -1,7 +1,8 @@
 const router = require('express').Router();
-const { Product } = require('../db/models');
+const { Product, Category, Country, Size } = require('../db/models');
 module.exports = router;
 
+// utils
 const getDataByIdObj = dataArray => {
   return dataArray.reduce((dataByIdObj, item) => {
     dataByIdObj[item.id] = item;
@@ -16,8 +17,9 @@ const getDataIdArray = dataArray => {
   }, []);
 };
 
+
 router.get('/', (req, res, next) => {
-  Product.findAll({ include: [{ all: true }] })
+  Product.findAll({ include: [ Category, Country, Size ]})
     .then(products => {
       res.status(200).json({
         productsById: getDataByIdObj(products),
