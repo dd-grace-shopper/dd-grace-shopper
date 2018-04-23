@@ -9,7 +9,7 @@ import SingleProduct from './SingleProduct';
 const adapter = new Adapter();
 enzyme.configure({ adapter });
 
-describe.only('Single Product', () => {
+describe('Single Product', () => {
   let singleProduct;
   const dummyProductInfo = {
     name: 'Georgi',

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const POST_ORDER = 'POST_ORDER';
+export const POST_ORDER = 'POST_ORDER';
 
 export const postOrders = function(order) {
   return {
