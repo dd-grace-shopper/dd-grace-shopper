@@ -3,14 +3,6 @@ const { Product, Category, Country, Size } = require('../db/models');
 const getDataByIdObj = require('../utils/arrayToObjectById');
 module.exports = router;
 
-// utils
-// const getDataByIdObj = dataArray => {
-//   return dataArray.reduce((dataByIdObj, item) => {
-//     dataByIdObj[item.id] = item;
-//     return dataByIdObj;
-//   }, {});
-// };
-
 const getDataIdArray = dataArray => {
   return dataArray.reduce((dataIdArr, item) => {
     dataIdArr.push(item.id);
