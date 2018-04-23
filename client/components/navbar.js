@@ -8,7 +8,7 @@ import { resetCart} from  '../store/cart';
 export const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
     <h1>D & D Wine and Liquor</h1>
-    <nav>
+    <nav className="navbar">
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
