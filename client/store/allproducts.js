@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //action types
-const GET_PRODUCTS = 'GET_PRODUCTS';
+export const GET_PRODUCTS = 'GET_PRODUCTS';
 
 //action creators
 export const getProducts = products => ({ type: GET_PRODUCTS, products });
@@ -18,7 +18,14 @@ export const fetchProducts = () => dispatch => {
 };
 
 //reducer
-export default function products(state = {}, action) {
+const initialState = {
+  products: {
+    productsById: {},
+    products: []
+  }
+};
+
+export default function products(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS:
       return action.products;
