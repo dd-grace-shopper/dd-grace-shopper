@@ -33,7 +33,7 @@ export const fetchOrder = id => dispatch => {
     .then(res => res.data)
     .then(orderFromDb => {
       dispatch(getOrder(orderFromDb));
-      dispatch(resetCart());
+      //dispatch(resetCart());
     });
 };
 

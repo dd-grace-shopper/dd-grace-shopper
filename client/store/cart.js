@@ -75,21 +75,48 @@ export const postToCart = id => dispatch => {
     });
 };
 
-export const updateProductQuantity = (productId, newQuantity) => dispatch => {
-  return axios
-    .put(`/api/active-orders/${productId}`, { newQuantity })
-    .then(res => res.data)
-    .then(updatedItem => {
-      const updatedItemObj = {[updatedItem.productId]: updatedItem };
-      dispatch(updateItemInCart(updatedItemObj));
-    });
-}
 
 export const deleteProductFromCart = productId => dispatch => {
   return axios
     .delete(`/api/active-orders/${productId}`)
     .then(() => dispatch(deleteFromCart(productId)));
 };
+
+export const updateProductQuantity = (productId, newQuantity) => dispatch => {
+  return axios
+    .put(`/api/active-orders/${productId}`, { newQuantity })
+    .then(res => res.data)
+    .then(updatedItem => {
+      const updatedItemObj = {[updatedItem.productId]: updatedItem };
+      if (!updatedItem.quantity) {
+        dispatch(deleteProductFromCart(updatedItem.productId));
+      } else {
+        dispatch(updateItemInCart(updatedItemObj));
+      }
+    });
+}
+
+export const deleteAssociatedProductsFromActiveOrder = idsArray => dispatch => {
+  return axios.all(idsArray.map(id => dispatch(deleteProductFromCart(id))))
+    .then(() => {})
+    .catch(() => console.error('Could not remove items from active orders table and/or cart.'));
+    // add 'purchasedItems' slice of state
+};
+
+// axios.all([getUserAccount(), getUserPermissions()])
+//   .then(axios.spread(function (acct, perms) {
+//     // Both requests are now complete
+//   }));
+
+// /api/active-orders/:id
+// router.delete('/:id', (req, res, next) => {
+//   const searchFilter = req.user
+//     ? {productId: req.params.id, userId: req.user.id}
+//     : {productId: req.params.id, sessionId: req.session.id};
+//   ActiveOrder.destroy({ where: searchFilter })
+//    .then(() => res.sendStatus(201))
+//    .catch(next);
+// });
 
 
 // reducer

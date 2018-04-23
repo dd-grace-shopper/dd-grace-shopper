@@ -8,7 +8,10 @@ const ActiveOrder = db.define('activeOrder', {
   quantity: {
     type: Sequelize.INTEGER,
     allowNull: false,
-    defaultValue: 1
+    defaultValue: 1,
+    validate: {
+      min: 0  // or 1?
+    }
   }
 })
 

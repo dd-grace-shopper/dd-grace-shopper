@@ -31,11 +31,15 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
+  const searchFilter = req.user
+    ? {productId: +req.params.id, userId: req.user.id}
+    : {productId: +req.params.id, sessionId: req.session.id};
   const { newQuantity } = req.body; // { newQuantity: n }
+  console.log('SEARCH FILTER:', searchFilter);
   ActiveOrder.update({
     quantity: newQuantity
   }, {
-    where: { productId: req.params.id },
+    where: searchFilter,
     returning: true
   })
     .then(([_, [newItem]]) => {
@@ -45,7 +49,10 @@ router.put('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
-  ActiveOrder.destroy({ where: {productId: req.params.id }})
+  const searchFilter = req.user
+    ? {productId: req.params.id, userId: req.user.id}
+    : {productId: req.params.id, sessionId: req.session.id};
+  ActiveOrder.destroy({ where: searchFilter })
    .then(() => res.sendStatus(201))
    .catch(next);
 });
