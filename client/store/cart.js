@@ -7,6 +7,7 @@ export const UPDATE_ITEM_IN_CART = 'UPDATE_ITEM_IN_CART';
 export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const RESET_CART = 'RESET_CART';
 
+
 // action creators
 export function createCart(newCart) {
   const action = {
@@ -47,7 +48,9 @@ export function resetCart(){
   return action;
 }
 
+
 // thunk creators
+
 export const fetchCart = () => dispatch => {
   return axios
   .get('/api/active-orders')
