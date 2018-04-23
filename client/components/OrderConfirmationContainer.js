@@ -4,7 +4,6 @@ import { fetchOrder } from '../store/pastOrders';
 import OrderConfirmation from './OrderConfirmation';
 
 const mapState = function(state, ownProps) {
-  console.log('order confirm state', state);
   return {
     order: state.pastOrders,
     cart: state.cart
