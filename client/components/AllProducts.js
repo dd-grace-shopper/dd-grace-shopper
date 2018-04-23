@@ -90,51 +90,52 @@ export default class AllProducts extends Component {
       noMatchingProducts = true;
     }
 
-    return (
-      <div>
-        <Sidebar.Pushable as={Segment}>
-           <SidebarLeft />
-           <Sidebar.Pusher>
-            <Segment basic id={allProductsContainerId}>
-              <div className="all-products-header">
-                <h1 className="component-title">All Products</h1>
-                <DisplaySidebar />
-              </div>
-               <hr />
-               {
-                noMatchingProducts
-                ?
-                  <div>
-                    <br /><br />
-                    <h3>There are currently no products matching you search</h3>
-                    <br /><br /><br /><br />
-                  </div>
-                :
-                 <div className="all-products-container">
-                    {filteredProducts.length &&
-                      filteredProducts.map(id => {
-                        const product = productsById[id];
-                        return (
-                          <div key={id} className="product-detail">
-                            <Link to={`products/${id}`} className="product-name">
-                              <h2>{product.name}</h2>
-                            </Link>
-                            <div className="product-info">
-                              <img className="product-img" src={product.imageUrl} />
-                              <div className="product-info-right">
-                                <h3>{`$${product.price}`}</h3>
-                                <AddToCart productId={id} />
-                              </div>
+  return (
+    <div>
+      <Sidebar.Pushable as={Segment}>
+         <SidebarLeft />
+         <Sidebar.Pusher>
+          <Segment basic id={allProductsContainerId}>
+            <div className="all-products-header">
+              <h1 className="component-title">All Products</h1>
+              <DisplaySidebar />
+            </div>
+             <hr />
+             {
+              noMatchingProducts
+              ?
+                <div>
+                  <br /><br />
+                  <h3>There are currently no products matching you search</h3>
+                  <br /><br /><br /><br />
+                </div>
+              :
+               <div className=" ui four column grid left aligned segment">
+
+                  {filteredProducts.length &&
+                    filteredProducts.map(id => {
+                      const product = productsById[id];
+                      return (
+                        <div ui fixed table key={id} className="product-detail">
+                          <Link to={`products/${id}`} className="product-name">
+                            <h3 className ="ui black header">{product.name}</h3>
+                          </Link>
+                          <div className="product-info">
+                            <img className="product-img" src={product.imageUrl} />
+                            <div className="product-info-right">
+                              <h4 className = "ui blackheader">{`$${product.price}`}</h4>
+                              <AddToCart productId={id} />
                             </div>
                           </div>
-                        );
-                      })}
-                  </div>
-               }
-            </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </div>
-    );
-  }
+                        </div>
+                      );
+                    })}
+                </div>
+
+             }
+          </Segment>
+        </Sidebar.Pusher>
+      </Sidebar.Pushable>
+    </div>
+  );
 }

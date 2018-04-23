@@ -21,24 +21,24 @@ export default class HomePage extends Component {
       }
     })
 
-    return (
-      <div>
-        <h1>D&D Wine & Liquor</h1>
-        <h2>Welcome to New York City's best online wine & spirits store</h2>
-        <h3>Featured Products</h3>
-        <br /><br />
-         <div className="ui three column grid">
-            {products.length &&
-              randomProductsToFeature.map(id => {
-                const product = productsById[id];
-                return (
-                  <div className="column" key={id}>
-                    <div className="ui segment">
-                      <Link to={`products/${id}`}>
-                        <h2>{product.name}</h2>
-                      </Link>
-                      <img className="product-img" src={product.imageUrl} />
-                    </div>
+  return (
+    <div>
+      <div className="ui segment">
+      <h2>Welcome to New York City's best online wine & spirits store</h2>
+      <h3>Featured Products</h3>
+      </div>
+      <br /><br />
+       <div className="ui segment three column grid">
+          {products.length &&
+            randomProductsToFeature.map(id => {
+              const product = productsById[id];
+              return (
+                <div className="column" key={id}>
+                  <div className="ui segment">
+                    <Link to={`products/${id}`}>
+                      <h4 className = "ui black header">{product.name}</h4>
+                    </Link>
+                    <img className="product-img" src={product.imageUrl} />
                   </div>
                 );
               })}

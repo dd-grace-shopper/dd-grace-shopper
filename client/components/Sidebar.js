@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Form, Checkbox } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Form, Checkbox,Lable } from 'semantic-ui-react'
 
 export default class SidebarLeft extends Component {
   constructor(props) {
