@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 export default class OrderConfirmation extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
-    this.props.confirmationOrder
-      ? this.props.confirmationOrder(this.props.order.id)
-      : null;
+    // this.props.confirmationOrder
+    //   ? this.props.confirmationOrder(this.props.order.id)
+    //   : null;
+    this.props.confirmationOrder(this.props.order.id);
+    this.props.removeOrderedProductsFromCart(this.props.cart);
   }
 
   render() {
