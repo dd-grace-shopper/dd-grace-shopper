@@ -94,14 +94,19 @@ export const deleteProductFromCart = productId => dispatch => {
 
 // reducer
 export default function cart(state = {}, action) {
+  let productId;
   switch (action.type) {
     case CREATE_CART:
       return action.newCart;
     case ADD_TO_CART:
       return Object.assign({}, state, action.order);
     case UPDATE_ITEM_IN_CART:
+      productId = Object.keys(action.item)[0];
       return Object.assign({}, state, {
-        [action.item.productId]: action.item
+        [productId]: {
+          productId,
+          quantity: action.item[productId].quantity
+        }
       });
     case DELETE_FROM_CART:
       return Object.keys(state).reduce((newCart, itemId) => {
