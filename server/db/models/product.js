@@ -7,28 +7,34 @@ const Product = db.define('product', {
     allowNull: false
   },
   price: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       min: 1
     },
     set(price) {
-      this.setDataValue('price', price / 100);
+      this.setDataValue('price', price * 100);
+    },
+    get() {
+      return this.getDataValue('price') / 100;
     }
   },
   priceRange: {
     type: Sequelize.VIRTUAL,
     get() {
-      if(this.getDataValue('price') < 20) {
+      if (this.getDataValue('price') < 20) {
         return '$';
-      }
-      else if(this.getDataValue('price') >= 20 && this.getDataValue('price') < 50) {
+      } else if (
+        this.getDataValue('price') >= 20 &&
+        this.getDataValue('price') < 50
+      ) {
         return '$$';
-      }
-      else if(this.getDataValue('price') >= 50 && this.getDataValue('price') < 100) {
+      } else if (
+        this.getDataValue('price') >= 50 &&
+        this.getDataValue('price') < 100
+      ) {
         return '$$$';
-      }
-      else {
+      } else {
         return '$$$$';
       }
     }
