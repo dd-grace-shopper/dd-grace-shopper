@@ -36,9 +36,18 @@ form div {
   display: inline-block;
 }
 
-footer {
+.footer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+}
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+.footer-info {
+  margin-top: 0px;
 }
 
 .small-img {
@@ -47,7 +56,7 @@ footer {
 }
 
 .product-img {
-  width: 200px;
+  width: 150px;
   height: 200px;
 }
 
@@ -55,6 +64,17 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+#all-products-container-with-sidebar {
+  transition: all 0.5s;
+ -webkit-transform: translate3d(300px,0,0);
+ transform: translate3d(300px,0,0) !important;
+ padding-right: 300px;
+}
+
+#all-products-container-no-sidebar {
+ transition: all 0.5s;
 }
 
 .single-product {
@@ -103,10 +123,10 @@ button {
   margin-top: 10px;
 }
 
-form {
+form, .oauth-options {
   margin-bottom: 40px;
   padding-bottom: 40px;
-  border-bottom: 3px solid #e6ebf1;
+  margin-right: 10px;
 }
 
 button:hover {
@@ -137,4 +157,68 @@ button:hover {
 
 .StripeElement.PaymentRequestButton {
   padding: 0;
+}
+
+.filter-form {
+  margin: 0 .2em;
+  display: block;
+}
+
+/* Flexbox setup */
+.auth-form {
+  display: flex;
+}
+.oauth-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.all-products-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+.product-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  /* box-shadow: 1px 1px 1px 0px #ccc; */
+}
+#all-products-container-no-sidebar .product-detail {
+  width: 33%; /* */
+}
+#all-products-container-with-sidebar .product-detail {
+  width: 50%; /* */
+}
+@media (min-width: 600px) {
+  #all-products-container-no-sidebar .product-detail {
+    width: 25%; /* */
+  }
+  #all-products-container-with-sidebar .product-detail {
+    width: 33%; /* */
+  }
+}
+@media (min-width: 960px) {
+  #all-products-container-no-sidebar .product-detail {
+    width: 20%; /* */
+  }
+  #all-products-container-with-sidebar .product-detail {
+    width: 25%; /* */
+  }
+}
+.product-name {
+  align-self: center;
+  margin-bottom: 10px;
+}
+.product-info {
+  display: flex;
+  justify-content: center;
+}
+.product-info-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 }

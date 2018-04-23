@@ -3,12 +3,20 @@ import { Link } from 'react-router-dom';
 import { Table, Image, Button } from "semantic-ui-react";
 
 const ViewCart = props => {
-  const cart = props.productsInCart ? props.productsInCart : null;
-  const total = props.total;
-  const numItems = props.numItems;
+  const cart = props.productsInCart || [];
+  const total = props.total || 0;
+  const numItems = props.numItems || 0;
   const destination = props.destination;
   const finalDistance = props.finalDistance;
 
+  if (numItems === 0) {
+    return (
+      <h1 className="empty-cart-message">
+        Your cart is empty. Buy something!
+      </h1>
+    );
+  }
+  
   let shippingFee;
   if (!finalDistance){
     shippingFee = 0;
@@ -87,14 +95,13 @@ const ViewCart = props => {
       }
       </div>
       <h4 > {`Total: $ ${total + shippingFee}`} </h4>
-      <Link  to={'/checkout'}>
+      <Link to={{ pathname: '/checkout', state: { total: total + shippingFee }}}>
         <button className = "ui secondary button">Checkout!</button>
       </Link>
-
       </div>
     </div>
   );
-}
+};
 
 export default ViewCart;
 

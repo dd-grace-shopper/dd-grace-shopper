@@ -116,6 +116,16 @@ const products = [
     sizeId: 2,
     imageUrl:
       'https://i5.walmartimages.com/asr/c071a854-245c-44c1-8d93-da3c7f4747b8_1.8c8f636b888e0edebe3c2c187d222bbd.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF'
+  },
+  {
+    price: 11099,
+    name: 'Jameson Irish Whishkey',
+    categoryId: 6,
+    description: 'Irish Whiskey',
+    countryId: 5,
+    sizeId: 4,
+    imageUrl:
+      'https://img.thewhiskyexchange.com/900/irish_jam1.jpg'
   }
 ];
 

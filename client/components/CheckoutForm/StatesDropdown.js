@@ -1,9 +1,9 @@
 import React from 'react';
 
-const StatesDropdown = () => (
+const StatesDropdown = props => (
   <div className="field statesDropdownContainer">
     <label>State</label>
-    <select className="ui fluid dropdown">
+    <select className="ui fluid dropdown" onChange={props.handleStateChange}>
       <option value="">State</option>
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>

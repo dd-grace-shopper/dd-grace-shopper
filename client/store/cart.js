@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 // types
-const CREATE_CART = 'CREATE_CART';
-const ADD_TO_CART = 'ADD_TO_CART';
-const UPDATE_ITEM_IN_CART = 'UPDATE_ITEM_IN_CART';
-const DELETE_FROM_CART = 'DELETE_FROM_CART';
-const RESET_CART = 'RESET_CART';
+export const CREATE_CART = 'CREATE_CART';
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const UPDATE_ITEM_IN_CART = 'UPDATE_ITEM_IN_CART';
+export const DELETE_FROM_CART = 'DELETE_FROM_CART';
+export const RESET_CART = 'RESET_CART';
 
 
 // action creators
@@ -61,22 +61,17 @@ export const fetchCart = () => dispatch => {
       newCartObj[productId] = { productId, quantity };
       return newCartObj;
     }, {});
-    const action = createCart(newCart);
-    dispatch(action);
+    dispatch(createCart(newCart));
   });
 }
 
-export const postToCart = (productId) => dispatch => {
+export const postToCart = id => dispatch => {
   return axios
-    .post('/api/active-orders', { productId })
+    .post('/api/active-orders', { productId: id })
     .then(res => res.data)
-    .then(orderFromDb => {
-      const order = {};
-      order[orderFromDb.productId] = {};
-      order[orderFromDb.productId].id = orderFromDb.productId;
-      order[orderFromDb.productId].quantity = orderFromDb.quantity;
-      const action = addToCart(order);
-      dispatch(action);
+    .then(({ productId, quantity }) => {
+      const order = {[productId]: { productId, quantity }};
+      dispatch(addToCart(order));
     });
 };
 
@@ -85,20 +80,15 @@ export const updateProductQuantity = (productId, newQuantity) => dispatch => {
     .put(`/api/active-orders/${productId}`, { newQuantity })
     .then(res => res.data)
     .then(updatedItem => {
-      const updatedItemObj = {};
-      updatedItemObj[updatedItem.productId] = updatedItem;
-      const action = updateItemInCart(updatedItemObj);
-      dispatch(action);
+      const updatedItemObj = {[updatedItem.productId]: updatedItem };
+      dispatch(updateItemInCart(updatedItemObj));
     });
 }
 
 export const deleteProductFromCart = productId => dispatch => {
   return axios
     .delete(`/api/active-orders/${productId}`)
-    .then(() => {
-      const action = deleteFromCart({ productId });
-      dispatch(action);
-    });
+    .then(() => dispatch(deleteFromCart(productId)));
 };
 
 
@@ -110,10 +100,12 @@ export default function cart(state = {}, action) {
     case ADD_TO_CART:
       return Object.assign({}, state, action.order);
     case UPDATE_ITEM_IN_CART:
-      return Object.assign({}, state, action.item);
+      return Object.assign({}, state, {
+        [action.item.productId]: action.item
+      });
     case DELETE_FROM_CART:
       return Object.keys(state).reduce((newCart, itemId) => {
-        if (+itemId !== +action.productId.productId) {
+        if (+itemId !== +action.productId) {
           newCart[itemId] = state[itemId];
         }
         return newCart;

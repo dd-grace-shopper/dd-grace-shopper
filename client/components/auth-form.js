@@ -6,11 +6,11 @@ import { auth } from '../store';
 /**
  * COMPONENT
  */
-const AuthForm = props => {
+export const AuthForm = props => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
-    <div>
+    <div className="auth-form">
       <form onSubmit={handleSubmit} name={name}>
         {name === 'signup' && (
           <div>
@@ -45,9 +45,10 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
-      <br />
-      <a href="/auth/facebook">{displayName} with Facebook</a>
+      <div className="oauth-options">
+        <a href="/auth/google">{displayName} with Google</a>
+        <a href="/auth/facebook">{displayName} with Facebook</a>
+      </div>
     </div>
   );
 };

@@ -6,8 +6,12 @@ import user from './user';
 import products from './allproducts';
 import cart from './cart';
 import distance from './distance';
+import sidebarReducer from './sidebar'
+import filterReducer from './sidebarFilter'
+import pastOrders from './pastOrders';
 
-export const reducer = combineReducers({ user, products, cart, distance });
+export const reducer = combineReducers({ user, products, cart, distance, sidebarReducer, filterReducer, pastOrders });
+
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );
