@@ -9,7 +9,7 @@ const ViewCart = props => {
   if (numItems === 0) {
     return (
       <h1 className="empty-cart-message">
-        Your cart's empty. Buy something!
+        Your cart is empty. Buy something!
       </h1>
     );
   }
