@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = props => {
   return (
-    <footer className="footer">
+    <footer className="footer ui segment">
       <div className="footer-col">
         <h3>Contact Us!</h3>
         <h4 className="footer-info">Placeholder Email</h4>

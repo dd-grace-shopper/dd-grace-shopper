@@ -16,7 +16,7 @@ const ViewCart = props => {
       </h1>
     );
   }
-  
+
   let shippingFee;
   if (!finalDistance){
     shippingFee = 0;
@@ -30,7 +30,7 @@ const ViewCart = props => {
 
   return (
     <div>
-      <div className="ui left aligned container" >
+      <div className="ui segment" >
         <h1>Your Shopping Cart</h1>
         <table className = "ui fixed table">
         <thead>
@@ -71,10 +71,8 @@ const ViewCart = props => {
         </tbody>
       </table>
     </div>
-    <br />
 
-    <div className="ui right aligned container" >
-
+    <div className="ui right aligned segment very padded" >
       <h4 > {`Subtotal: (${numItems} items) : $ ${total}`} </h4>
 
       <form className="ui form">
@@ -87,7 +85,6 @@ const ViewCart = props => {
           </div>
         </div>
       </form>
-
       <div >{!finalDistance ? 'Distance' : `Distance: ${finalDistance} miles`}</div>
 
       <div >{

@@ -8,7 +8,7 @@ export function AddToCart(props) {
 
   return (
     <div>
-      <button type="click" onClick={handleClick}>
+      <button className = "ui button" onClick={handleClick}>
         Add to cart
       </button>
     </div>

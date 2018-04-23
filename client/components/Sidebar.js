@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Form, Checkbox } from 'semantic-ui-react'
+import { Sidebar, Segment, Button, Menu, Image, Icon, Header, Form, Checkbox,Lable } from 'semantic-ui-react'
 
 export function SidebarLeft (props) {
   let { visible, products, productsById, filter } = props;
@@ -22,9 +22,11 @@ export function SidebarLeft (props) {
 
   return (
     <div>
+      <br />
       <Sidebar as={Menu} className="ui vertical inverted" animation="push" visible={visible}>
         <Form.Group inline>
-          <label>Category</label>
+          <label >Category</label>
+          <br />
             {
               products && uniqueCategoriesForSidebar.map(category => {
                 return <div key={category}>
@@ -32,7 +34,9 @@ export function SidebarLeft (props) {
                 </div>
               })
             }
-          <label>Size</label>
+          <br />
+          <label >Size</label>
+          <br />
             {
               products && uniqueSizesForSidebar.map(size => {
                 return <div key={size}>
@@ -40,7 +44,9 @@ export function SidebarLeft (props) {
                 </div>
               })
             }
-          <label>Price</label>
+          <br />
+          <label >Price</label>
+          <br />
             {
               products && uniquePricesForSidebar.map(price => {
                 return <div key={price}>
@@ -48,6 +54,7 @@ export function SidebarLeft (props) {
                 </div>
               })
             }
+          <br />
           <Button type="reset" onClick={props.handleClick} >Reset</Button>
         </Form.Group>
       </Sidebar>

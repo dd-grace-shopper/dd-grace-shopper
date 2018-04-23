@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import { resetCart} from  '../store/cart';
 import UserHome from './user-home';
+import { Icon } from 'semantic-ui-react'
 
 export const Navbar = ({ handleClick, isLoggedIn }) => (
   <div>
-    <h1>D & D Wine and Liquor</h1>
+    <h1 className="ui top attached header">D & D Wine and Liquor</h1>
     <nav className="navbar">
       {isLoggedIn ? (
         <div>
@@ -30,7 +31,9 @@ export const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
           <Link to="/products">All Products</Link>
-          <Link to="/view-cart">View Cart</Link>
+          <Link to="/view-cart">View Cart
+          <Icon name='shopping cart' size='big' />
+          </Link>
         </div>
       )}
     </nav>

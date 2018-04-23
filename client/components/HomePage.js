@@ -17,11 +17,12 @@ export function HomePage (props) {
 
   return (
     <div>
-      <h1>D&D Wine & Liquor</h1>
+      <div className="ui segment">
       <h2>Welcome to New York City's best online wine & spirits store</h2>
       <h3>Featured Products</h3>
+      </div>
       <br /><br />
-       <div className="ui three column grid">
+       <div className="ui segment three column grid">
           {products &&
             randomProductsToFeature.map(id => {
               const product = productsById[id];
@@ -29,7 +30,7 @@ export function HomePage (props) {
                 <div className="column" key={id}>
                   <div className="ui segment">
                     <Link to={`products/${id}`}>
-                      <h2>{product.name}</h2>
+                      <h4 className = "ui black header">{product.name}</h4>
                     </Link>
                     <img className="product-img" src={product.imageUrl} />
                   </div>

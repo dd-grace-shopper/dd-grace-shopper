@@ -100,19 +100,20 @@ export const AllProducts = props => {
                   <br /><br /><br /><br />
                 </div>
               :
-               <div className="all-products-container">
+               <div className=" ui four column grid left aligned segment">
+
                   {filteredProducts &&
                     filteredProducts.map(id => {
                       const product = productsById[id];
                       return (
-                        <div key={id} className="product-detail">
+                        <div ui fixed table key={id} className="product-detail">
                           <Link to={`products/${id}`} className="product-name">
-                            <h2>{product.name}</h2>
+                            <h3 className ="ui black header">{product.name}</h3>
                           </Link>
                           <div className="product-info">
                             <img className="product-img" src={product.imageUrl} />
                             <div className="product-info-right">
-                              <h3>{`$${product.price}`}</h3>
+                              <h4 className = "ui blackheader">{`$${product.price}`}</h4>
                               <AddToCart productId={id} />
                             </div>
                           </div>
@@ -120,6 +121,7 @@ export const AllProducts = props => {
                       );
                     })}
                 </div>
+
              }
           </Segment>
         </Sidebar.Pusher>
@@ -128,3 +130,4 @@ export const AllProducts = props => {
   );
 }
 
+//all-products-container
