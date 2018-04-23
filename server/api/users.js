@@ -23,9 +23,8 @@ router.get('/', requireAdmin, (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   const id = req.params.id;
   User.update(req.body, {
-    where: {
-      id
-    },
+    where: { id },
+    attributes: { exclude: [ 'password' ]},
     returning: true
   })
   .then(([rowCount, [updatedUser]]) => {
@@ -37,17 +36,9 @@ router.put('/:id', (req, res, next) => {
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id;
   User.destroy({
-    where: {
-      id
-    }
+    where: { id }
   })
-  .then(deletedUser => {
-    if(deletedUser) {
-      res.json(deletedUser);
-      res.status(204);
-    }
-
-  })
+  .then(() => res.sendStatus(204))
   .catch(next)
 })
 
