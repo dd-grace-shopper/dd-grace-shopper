@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProducts, getProducts } from '../store/allproducts';
-import {AllProducts} from './AllProducts';
+import AllProducts from './AllProducts';
 
 const mapState = function(state) {
   return {
@@ -12,4 +12,12 @@ const mapState = function(state) {
   };
 };
 
-export default connect(mapState)(AllProducts);
+const mapDispatch = function(dispatch) {
+  return {
+    getAllProducts: function() {
+      dispatch(fetchProducts());
+    }
+  };
+};
+
+export default connect(mapState, mapDispatch)(AllProducts);

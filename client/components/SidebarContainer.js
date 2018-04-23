@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {SidebarLeft} from './Sidebar';
+import SidebarLeft from './Sidebar';
+import { fetchProducts, getProducts } from '../store/allproducts';
 import {selectFilter, deselectFilter, resetSidebar} from '../store/sidebarFilter';
 
 const mapState = state => {
@@ -26,6 +27,9 @@ const mapDispatch = dispatch => {
       evt.preventDefault();
       console.log(evt)
       dispatch(resetSidebar());
+    },
+    getAllProducts: function() {
+      dispatch(fetchProducts());
     }
   }
 }
