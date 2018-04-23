@@ -15,12 +15,6 @@ export function AddToCart(props) {
   );
 }
 
-// const mapState = function(state) {
-//   return {
-//     product: state.product
-//   };
-// };
-
 const mapDispatch = function(dispatch, ownProps) {
   return {
     handleClick: function(evt) {

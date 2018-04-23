@@ -12,6 +12,7 @@ import EditUserAccountContainer from './components/EditUserAccountContainer';
 import Checkout from './components/CheckoutForm/index';
 import { fetchCart } from './store/cart';
 import { fetchProducts } from './store/allproducts';
+import HomePage from './components/HomePageContainer'
 
 /**
  * COMPONENT
@@ -29,6 +30,7 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/home" component={HomePage} />
         <Route exact path="/products" component={AllProductsContainer} />
         <Route path="/products/:id" component={SingleProductContainer} />
         <Route exact path="/view-cart" component={ViewCartContainer} />
@@ -36,7 +38,7 @@ class Routes extends Component {
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={UserHome} />
+
             <Route exact path="/account" component={UserAccount} />
             <Route
               path="/account/edit"

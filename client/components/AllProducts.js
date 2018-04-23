@@ -73,12 +73,12 @@ export const AllProducts = props => {
     }
   })
 
+  const filteredProducts = products && filteredIds.length ? filteredIds : products
+
   let noMatchingProducts = false;
   if(filter.length && !filteredIds.length) {
     noMatchingProducts = true;
   }
-
-  const filteredProducts = products && filteredIds.length ? filteredIds : products
 
   return (
     <div>
