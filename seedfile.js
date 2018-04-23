@@ -7,7 +7,7 @@ const Country = require('./server/db/models/country');
 
 const products = [
   {
-    price: 9999,
+    price: 99.99,
     name: 'D & D Red Wine',
     categoryId: 1,
     sizeId: 3,
@@ -17,7 +17,7 @@ const products = [
       'https://images.crateandbarrel.com/is/image/Crate/OregonBigRedWine21ozSHF15/?$web_product_hero$&150817110052&wid=625&hei=625'
   },
   {
-    price: 1999,
+    price: 19.99,
     name: 'Kendall Jackson Cabernet Sauvignon',
     categoryId: 1,
     sizeId: 3,
@@ -27,7 +27,7 @@ const products = [
       'http://www.totalwine.com/media/sys_master/twmmedia/hb4/h76/8807386742814.png'
   },
   {
-    price: 4999,
+    price: 49.99,
     name: 'D & D White Wine',
     categoryId: 2,
     description: 'Top shelf white wine from yours truly. ',
@@ -37,7 +37,7 @@ const products = [
       'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/White_Wine_Glas.jpg/220px-White_Wine_Glas.jpg'
   },
   {
-    price: 1499,
+    price: 14.99,
     name: 'Oyster Bay Sauvignon Blanc',
     categoryId: 2,
     description: 'Yummy white wine',
@@ -47,7 +47,7 @@ const products = [
       'http://www.totalwine.com/media/sys_master/twmmedia/h10/hd5/8804752523294.png'
   },
   {
-    price: 2499,
+    price: 24.99,
     name: 'Bacardi Superior',
     categoryId: 3,
     sizeId: 1,
@@ -57,7 +57,7 @@ const products = [
       'https://cdn2.bigcommerce.com/server5500/tpbc2s65/products/882/images/6247/bacardi_superior_15nv_175__56312.1472067072.380.500.jpg?c=2'
   },
   {
-    price: 1999,
+    price: 19.99,
     name: 'Bacardi Limon',
     categoryId: 3,
     sizeId: 2,
@@ -66,8 +66,8 @@ const products = [
     imageUrl: 'https://img.thewhiskyexchange.com/900/rum_bac7.jpg'
   },
   {
-    price: 2499,
-    name: "Tito's",
+    price: 24.99,
+    name: "Tito's 1L",
     description:
       'Vodka may be distilled from any starch- or sugar-rich plant matter; most vodka today is produced from grains such as sorghum, corn, rye or wheat. ',
     categoryId: 4,
@@ -77,8 +77,8 @@ const products = [
       'https://drizly-products1.imgix.net/ci-titos-handmade-vodka-a4336828f809309d.png?auto=format%2Ccompress&fm=jpeg&q=20'
   },
   {
-    price: 1999,
-    name: "Tito's",
+    price: 19.99,
+    name: "Tito's 750mL",
     description:
       'Vodka may be distilled from any starch- or sugar-rich plant matter; most vodka today is produced from grains such as sorghum, corn, rye or wheat. ',
     categoryId: 4,
@@ -88,7 +88,7 @@ const products = [
       'https://drizly-products1.imgix.net/ci-titos-handmade-vodka-a4336828f809309d.png?auto=format%2Ccompress&fm=jpeg&q=20'
   },
   {
-    price: 3499,
+    price: 34.99,
     name: 'New Amsterdam',
     categoryId: 5,
     description: 'Gin gin gin gin gin gin.',
@@ -98,7 +98,7 @@ const products = [
       'http://www.totalwine.com/media/sys_master/twmmedia/h59/h26/9877672951838.png'
   },
   {
-    price: 4499,
+    price: 44.99,
     name: 'Jack Daniels',
     categoryId: 6,
     description: 'Bomb Tennessee whiskey',
@@ -108,7 +108,7 @@ const products = [
       'https://drizly-products1.imgix.net/ci-jack-daniels-old-no-7-eb589ada0c4a8027.jpeg?auto=format%2Ccompress&fm=jpeg&q=20'
   },
   {
-    price: 4499,
+    price: 44.99,
     name: 'Jack Daniels Honey',
     categoryId: 6,
     description: 'Bomb Tennessee honey whiskey',
@@ -118,14 +118,13 @@ const products = [
       'https://i5.walmartimages.com/asr/c071a854-245c-44c1-8d93-da3c7f4747b8_1.8c8f636b888e0edebe3c2c187d222bbd.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF'
   },
   {
-    price: 11099,
+    price: 110.99,
     name: 'Jameson Irish Whishkey',
     categoryId: 6,
     description: 'Irish Whiskey',
     countryId: 5,
     sizeId: 4,
-    imageUrl:
-      'https://img.thewhiskyexchange.com/900/irish_jam1.jpg'
+    imageUrl: 'https://img.thewhiskyexchange.com/900/irish_jam1.jpg'
   }
 ];
 
