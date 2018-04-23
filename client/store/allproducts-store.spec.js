@@ -48,7 +48,7 @@ const mockAllProductsState = {
   products: [1, 2]
 };
 
-describe.only('The `products` slice of state', () => {
+describe('The `products` slice of state', () => {
   describe('action creators', () => {
     describe('getProducts', () => {
       it('Returns an object with a type of GET_PRODUCTS and a value including data structures on the products slice of state', () => {
