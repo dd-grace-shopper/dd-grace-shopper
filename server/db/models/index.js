@@ -24,8 +24,8 @@ const PastOrder = require('./pastOrder');
 Product.hasMany(ActiveOrder);
 ActiveOrder.belongsTo(Product);
 
-Product.hasMany(PastOrder);
-PastOrder.belongsTo(Product);
+Product.belongsToMany(PastOrder, { through: 'products_order' });
+PastOrder.belongsToMany(Product, { through: 'products_order' });
 
 User.hasMany(PastOrder);
 PastOrder.belongsTo(User);
