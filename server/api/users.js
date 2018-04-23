@@ -3,12 +3,16 @@ const {User} = require('../db/models')
 module.exports = router
 
 function requireAdmin (req, res, next) {
+  //req.user does not exist? req.user && req.user.isAdmin
   if (req.user.isAdmin) {
     next();
   } else {
     res.sendStatus(401);
   }
 }
+
+//router.param
+
 router.get('/', requireAdmin, (req, res, next) => {
   User.findAll({
     // explicitly select only the id and email fields - even though
@@ -20,8 +24,10 @@ router.get('/', requireAdmin, (req, res, next) => {
     .catch(next)
 })
 
+//require admin or self middleware
 router.put('/:id', (req, res, next) => {
   const id = req.params.id;
+  //{isAdmin: true}
   User.update(req.body, {
     where: { id },
     attributes: { exclude: [ 'password' ]},
@@ -33,8 +39,10 @@ router.put('/:id', (req, res, next) => {
   .catch(next)
 })
 
+//require admin or self middleware
 router.delete('/:id', (req, res, next) => {
   const id = req.params.id;
+  //req.user.destroy
   User.destroy({
     where: { id }
   })

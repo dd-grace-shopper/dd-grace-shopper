@@ -1,12 +1,14 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-function* idMaker() {
+//what is this..what is happening? que pasa! can remove!
+function *idMaker() {
   var index = 0;
   while (index < index + 1) yield index++;
 }
 var gen = idMaker();
 
+//you want your models to be the final gate between your data & the world
 const PastOrder = db.define('pastOrder', {
   name: {
     type: Sequelize.STRING,
@@ -32,6 +34,7 @@ const PastOrder = db.define('pastOrder', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  //isUnique
   id: {
     primaryKey: true,
     type: Sequelize.STRING,

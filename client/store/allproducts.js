@@ -25,6 +25,7 @@ const initialState = {
   }
 };
 
+//can call the reducer productsById
 export default function products(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS:

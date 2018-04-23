@@ -16,7 +16,7 @@ export function createCart(newCart) {
   }
   return action;
 }
-
+//also an item
 export function addToCart(order) {
   const action = {
     type: ADD_TO_CART,
@@ -50,12 +50,13 @@ export function resetCart(){
 
 
 // thunk creators
-
+//Handle all of the axios request errors!!
 export const fetchCart = () => dispatch => {
   return axios
   .get('/api/active-orders')
   .then(res => res.data)
   .then(cartFromDb => {
+    //refactor this into a method from products
     const newCart = cartFromDb.reduce((newCartObj, item) => {
       const { productId, quantity } = item;
       newCartObj[productId] = { productId, quantity };
@@ -102,6 +103,7 @@ export default function cart(state = {}, action) {
       return Object.assign({}, state, action.order);
     case UPDATE_ITEM_IN_CART:
       productId = Object.keys(action.item)[0];
+      //clone the action.item & delete some keys and add in the object directly
       return Object.assign({}, state, {
         [productId]: {
           productId,

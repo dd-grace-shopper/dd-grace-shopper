@@ -28,6 +28,7 @@ const User = db.define('user', {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   },
+  //OB/SZ: are you still using this?
   isRegistered: {
     type: Sequelize.BOOLEAN,
     defaultValue: false

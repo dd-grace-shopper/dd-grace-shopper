@@ -6,19 +6,21 @@ import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui
 import DisplaySidebar from './DisplaySidebar';
 
 export default class AllProducts extends Component {
+  //not stateful, you can delete this constructor and make this a functional component
   constructor(props) {
     super(props);
   }
-
+  //better use case may be using an `if`
   componentDidMount() {
     this.props.getAllProducts ? this.props.getAllProducts() : null;
   }
 
   render() {
-    const { products, productsById, filter } = this.props ? this.props :null;
+    //you will end up with an error of `cannot get products of null` if `this.props` does not exist but it should always exist
+    const { products, productsById, filter } = this.props ? this.props : null;
     const allProductsContainerId = this.props.sidebarVisible
-      ? "all-products-container-with-sidebar"
-      : "all-products-container-no-sidebar"
+      ? 'all-products-container-with-sidebar'
+      : 'all-products-container-no-sidebar'
 
     // Getting only unique filtered products by category, size, and price range
     console.log('PRODUCTS', products)
@@ -52,23 +54,22 @@ export default class AllProducts extends Component {
       const productsByIdSize = filter.indexOf(productsById[id].size.mililiter) > -1;
       const productsByIdPrice = filter.indexOf(productsById[id].priceRange) > -1;
 
-      if(filteredproductCategories.length && !filteredProductPrice.length && !filteredProductSize.length) {
-        if(filter.length && productsByIdCategory) {
+      if (filteredproductCategories.length && !filteredProductPrice.length && !filteredProductSize.length) {
+        if (filter.length && productsByIdCategory) {
           return id;
         }
       }
-      else if(filteredProductSize.length && !filteredProductPrice.length && !filteredproductCategories.length) {
-        if(filter.length && productsByIdSize) {
+      else if (filteredProductSize.length && !filteredProductPrice.length && !filteredproductCategories.length) {
+        if (filter.length && productsByIdSize) {
           return id;
         }
       }
-      else if(filteredProductPrice.length && !filteredProductSize.length && !filteredproductCategories.length) {
-        if(filter.length && productsByIdPrice) {
+      else if (filteredProductPrice.length && !filteredProductSize.length && !filteredproductCategories.length) {
+        if (filter.length && productsByIdPrice) {
           return id;
         }
       }
-      else {
-        if(filter.length && !filteredProductPrice.length && productsByIdCategory && productsByIdSize) {
+      else if(filter.length && !filteredProductPrice.length && productsByIdCategory && productsByIdSize) {
           return id;
         }
         else if(filter.length && !filteredProductSize.length && productsByIdCategory && productsByIdPrice) {
@@ -80,13 +81,12 @@ export default class AllProducts extends Component {
         else if(filter.length && productsByIdCategory && productsByIdSize && productsByIdPrice) {
           return id;
         }
-      }
     })
 
     const filteredProducts = products.length && filteredIds.length ? filteredIds : products
 
     let noMatchingProducts = false;
-    if(filter.length && !filteredIds.length) {
+    if (filter.length && !filteredIds.length) {
       noMatchingProducts = true;
     }
 

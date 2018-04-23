@@ -24,6 +24,8 @@ const PastOrder = require('./pastOrder');
 Product.hasMany(ActiveOrder);
 ActiveOrder.belongsTo(Product);
 
+//Work out a way to add quantity using this join table
+//use this as a model and define quantities & price
 Product.belongsToMany(PastOrder, { through: 'products_order' });
 PastOrder.belongsToMany(Product, { through: 'products_order' });
 

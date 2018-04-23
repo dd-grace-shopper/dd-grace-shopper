@@ -49,6 +49,7 @@ describe('The `cart` slice of state', () => {
   describe('action creators', () => {
     describe('createCart', () => {
       it('Returns an object with a type of CREATE_CART and a value deep equaling the new cart', () => {
+        //consider calling it 'newCartAction'
         const newCart = createCart(mockCartState);
         expect(newCart.type).to.equal(CREATE_CART);
         expect(newCart.newCart).to.deep.equal(mockCartState);
@@ -161,6 +162,7 @@ describe('The `cart` slice of state', () => {
     });
   });
 
+  //may want to dispatch object literals instead of your actions to isolate the test
 
   describe('cart reducer', () => {
     let newState;

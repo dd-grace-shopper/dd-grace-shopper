@@ -5,6 +5,9 @@ module.exports = router;
 // See your keys here: https://dashboard.stripe.com/account/apikeys
 var stripe = require('stripe')('sk_test_SVZzidxgnkraAFfvVqTCLf78');
 
+// /api/users/:userId/pastOrders
+// /api/myOrders
+
 function requireLoggedInUser (req, res, next) {
   if (req.user) {
     next();
@@ -26,20 +29,23 @@ router.get('/', requireLoggedInUser, (req, res, next) => {
 router.post('/', (req, res, next) => {
   PastOrder.create(req.body)
     .then(order => {
+      //is this async? will this error?
       const charge = stripe.charges.create({
         amount: order.total * 100, //charges in cents???
         currency: 'usd',
         description: 'Example charge',
         source: 'tok_visa' //use req.body if you want to charge the actual card
       });
+      //handle this promise plz :'(
       order.setProducts(req.body.cart);
       res.json(order);
     })
     .catch(next);
 });
-
+//not necessarily 'myOrders'
 router.get('/:id', (req, res, next) => {
   PastOrder.findById(req.params.id, { include: [{ all: true }] }).then(order =>
     res.json(order)
   );
+  //catch this too please
 });

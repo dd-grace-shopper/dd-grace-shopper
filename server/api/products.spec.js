@@ -33,7 +33,7 @@ describe('Product routes', () => {
         .expect(200)
         .then(res => {
           expect(res.body).to.be.an('object');
-
+//delete the cookieId spec
           expect(res.body.hasOwnProperty('cookieId')).to.equal(true);
 
           expect(res.body.hasOwnProperty('productsById')).to.equal(true);

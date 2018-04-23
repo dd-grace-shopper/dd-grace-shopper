@@ -3,6 +3,11 @@ const { ActiveOrder } = require('../db/models');
 const { Product } = require('../db/models');
 module.exports = router;
 
+//you can have a utils function router.use that you can use as middleware prior to entering the rest of the cart req,res, next functions
+
+//should only be able to update my own, possible middleware?
+
+// /api/activeOrders/:id
 router.get('/', (req, res, next) => {
   const searchFilter = req.user ? {userId: req.user.id} : {sessionId: req.session.id };
     ActiveOrder.findAll({ where:
@@ -23,11 +28,24 @@ router.post('/', (req, res, next) => {
       if (!created) {
         order.increment('quantity')
           .then(updatedOrder => res.json(updatedOrder));
+          //catch those errors!
       } else {
         res.json(order);
       }
     })
     .catch(next);
+
+    /*
+        .spread((order, created) => {
+      if (!created) {
+        return order.increment('quantity')
+      } else {
+        return order;
+      }
+    })
+    .then(order => res.json(order))
+    .catch(next);
+    */
 });
 
 router.put('/:id', (req, res, next) => {
@@ -35,6 +53,7 @@ router.put('/:id', (req, res, next) => {
   ActiveOrder.update({
     quantity: newQuantity
   }, {
+    //OB/SZ: would this not update ALL orders/carts with this product Id?
     where: { productId: req.params.id },
     returning: true
   })
@@ -45,7 +64,9 @@ router.put('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
+  //delete ALL THE ORDERS!
   ActiveOrder.destroy({ where: {productId: req.params.id }})
+  //204: no content send status, instead of 201: created
    .then(() => res.sendStatus(201))
    .catch(next);
 });
