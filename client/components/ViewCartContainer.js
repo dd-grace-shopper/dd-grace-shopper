@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ViewCart from './ViewCart';
-import { deleteProductFromCart, updateProductQuantity} from '../store/cart';
-import {getDestinationInput, receiveDistanceFromGoogle} from '../store/distance';
-
+import { deleteProductFromCart, updateProductQuantity } from '../store/cart';
+import {
+  getDestinationInput,
+  receiveDistanceFromGoogle
+} from '../store/distance';
 
 const mapState = function(state, ownProps) {
   let total = 0;
@@ -19,7 +21,7 @@ const mapState = function(state, ownProps) {
       price,
       quantity,
       imageUrl
-    }
+    };
   });
   const destination = state.distance.destinationInput;
   const finalDistance = state.distance.receivedDistance;
@@ -30,9 +32,8 @@ const mapState = function(state, ownProps) {
     productsInCart,
     destination,
     finalDistance
-    };
+  };
 };
-
 
 const mapDispatch = function(dispatch) {
   return {
@@ -44,27 +45,30 @@ const mapDispatch = function(dispatch) {
       evt.preventDefault();
       dispatch(updateProductQuantity(productid, quantity));
     },
-    handleChange: (evt) => {
+    handleChange: evt => {
       evt.preventDefault();
       dispatch(getDestinationInput(evt.target.value));
-
     },
     handleClickDistance: (evt, destination) => {
       evt.preventDefault();
-      const origin = "New York, NY";
+      const origin = 'New York, NY';
       const matrix = new google.maps.DistanceMatrixService();
       let distance;
       const callback = (res, status) => {
         if (status === 'OK') {
-          distance = Math.floor(res.rows[0].elements[0].distance.value * 0.62 / 1000);
+          distance = Math.floor(
+            res.rows[0].elements[0].distance.value * 0.62 / 1000
+          );
           dispatch(receiveDistanceFromGoogle(distance));
         }
       };
-      matrix.getDistanceMatrix({
-        origins: [origin],
-        destinations: [destination],
-        travelMode: google.maps.TravelMode.DRIVING,
-      }, callback
+      matrix.getDistanceMatrix(
+        {
+          origins: [origin],
+          destinations: [destination],
+          travelMode: google.maps.TravelMode.DRIVING
+        },
+        callback
       );
     }
   };

@@ -70,7 +70,6 @@ class _CardForm extends React.Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-    console.log(StatesDropdown);
     const firstName = ev.target.firstName.value || null;
     const lastName = ev.target.lastName.value || null;
     const name = firstName + ' ' + lastName;
@@ -88,7 +87,9 @@ class _CardForm extends React.Component {
     this.props.stripe.createToken(tokenObj).then(payload => {
       const card = payload.token.card;
       card.total = this.props.total;
-      this.props.addToDb(card);
+      card.userId = this.props.user.id ? this.props.user.id : null;
+      card.cart = this.props.cart ? Object.keys(this.props.cart) : null;
+      this.props.addToDb(card, this.props.history);
     });
   };
   render() {
@@ -158,7 +159,7 @@ class Checkout extends React.Component {
   }
 
   render() {
-    const { total } = this.props;
+    const { total, user, cart } = this.props;
     const { elementFontSize } = this.state;
     return (
       <div className="Checkout">
@@ -167,6 +168,8 @@ class Checkout extends React.Component {
             fontSize={elementFontSize}
             addToDb={this.props.addToDb}
             total={total}
+            user={user}
+            cart={cart}
           />
         </Elements>
       </div>
@@ -176,14 +179,16 @@ class Checkout extends React.Component {
 
 const mapState = function(state, ownProps) {
   return {
+    user: state.user,
+    cart: state.cart,
     order: state.order || {}
   };
 };
 
-const mapDispatch = function(dispatch) {
+const mapDispatch = function(dispatch, ownProps) {
   return {
-    addToDb: function(card) {
-      dispatch(createOrder(card));
+    addToDb: function(card, history) {
+      dispatch(createOrder(card, ownProps.history));
     }
   };
 };
