@@ -24,8 +24,8 @@ export default class HomePage extends Component {
   return (
     <div>
       <div className="ui segment">
-      <h2>Welcome to New York City's best online wine & spirits store</h2>
-      <h3>Featured Products</h3>
+        <h2>Welcome to New York City's best online wine & spirits store</h2>
+        <h3>Featured Products</h3>
       </div>
       <br /><br />
        <div className="ui segment three column grid">
@@ -40,6 +40,7 @@ export default class HomePage extends Component {
                     </Link>
                     <img className="product-img" src={product.imageUrl} />
                   </div>
+                </div>
                 );
               })}
           </div>

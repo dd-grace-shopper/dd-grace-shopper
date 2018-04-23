@@ -23,7 +23,7 @@ router.get('/', requireLoggedInUser, (req, res, next) => {
   .catch(next);
 });
 
-router.post('/', requireLoggedInUser, (req, res, next) => {
+router.post('/', (req, res, next) => {
   PastOrder.create(req.body)
     .then(order => {
       const charge = stripe.charges.create({
