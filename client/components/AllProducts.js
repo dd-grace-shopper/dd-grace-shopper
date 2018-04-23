@@ -7,7 +7,7 @@ import DisplaySidebar from './DisplaySidebar';
 
 export const AllProducts = props => {
   const { products, productsById, filter } = props;
-  const allProductsContainerClass = props.sidebarVisible
+  const allProductsContainerId = props.sidebarVisible
     ? "all-products-container-with-sidebar"
     : "all-products-container-no-sidebar"
 
@@ -85,9 +85,11 @@ export const AllProducts = props => {
       <Sidebar.Pushable as={Segment}>
          <SidebarLeft />
          <Sidebar.Pusher>
-          <Segment basic id="all-products-container" className={allProductsContainerClass}>
-             <h1>All Products</h1>
-             <DisplaySidebar />
+          <Segment basic id={allProductsContainerId}>
+            <div className="all-products-header">
+              <h1 className="component-title">All Products</h1>
+              <DisplaySidebar />
+            </div>
              <hr />
              {
               noMatchingProducts
@@ -98,18 +100,21 @@ export const AllProducts = props => {
                   <br /><br /><br /><br />
                 </div>
               :
-               <div>
+               <div className="all-products-container">
                   {filteredProducts &&
                     filteredProducts.map(id => {
                       const product = productsById[id];
                       return (
-                        <div key={id}>
-                          <div>
-                            <Link to={`products/${id}`}>
-                              <h2>{product.name}</h2>
-                            </Link>
+                        <div key={id} className="product-detail">
+                          <Link to={`products/${id}`} className="product-name">
+                            <h2>{product.name}</h2>
+                          </Link>
+                          <div className="product-info">
                             <img className="product-img" src={product.imageUrl} />
-                            <AddToCart productId={id} />
+                            <div className="product-info-right">
+                              <h3>{`$${product.price}`}</h3>
+                              <AddToCart productId={id} />
+                            </div>
                           </div>
                         </div>
                       );
