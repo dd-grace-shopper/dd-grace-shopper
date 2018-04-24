@@ -19,7 +19,7 @@ export const fetchQuantityFromDb = id => dispatch => {
     .catch(err => console.log(err));
 };
 
-export default function itemsPurchased(state = {}, action) {
+export default function itemsPurchased(state = [], action) {
   switch (action.type) {
     case GET_QUANTITY:
       return action.quantity;

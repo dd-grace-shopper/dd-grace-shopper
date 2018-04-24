@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddToCart from './AddToCart';
-import Notifications, {notify} from 'react-notify-toast';
+import Notifications, { notify } from 'react-notify-toast';
+import { Link } from 'react-router-dom';
 
 export default class SingleProduct extends Component {
   constructor(props) {
@@ -14,21 +15,22 @@ export default class SingleProduct extends Component {
   render() {
     const product = this.props.product ? this.props.product : null;
     return (
-      <div className = "ui mini segment">
+      <div className="ui mini segment">
+        <Link to="/products">
+          <button>Go Back To All Products</button>
+        </Link>
         <span>
-        <Notifications />
-        <AddToCart productId={product.id} />
+          <Notifications />
+          <AddToCart productId={product.id} />
         </span>
         {product && (
-          <div className = "ui compact segment">
-            <h1 className="single-product-name">
-              {product.name}
-            </h1>
-            <div className = "ui compact very padded segment ">
-              <div className = "ui very padded segment" id = "singleimage">
-              {product.imageUrl && (
-                <img className="single-product-img" src={product.imageUrl} />
-              )}
+          <div className="ui compact segment">
+            <h1 className="single-product-name">{product.name}</h1>
+            <div className="ui compact very padded segment ">
+              <div className="ui very padded segment" id="singleimage">
+                {product.imageUrl && (
+                  <img className="single-product-img" src={product.imageUrl} />
+                )}
               </div>
               <div className="single-product-description-section">
                 <h4 className="single-product-description">
@@ -49,9 +51,7 @@ export default class SingleProduct extends Component {
                     Size: {product.size.mililiter}
                   </h4>
                 )}
-                <h4 className="single-product-price">
-                  Price: {product.price}
-                </h4>
+                <h4 className="single-product-price">Price: {product.price}</h4>
               </div>
             </div>
           </div>
@@ -60,4 +60,3 @@ export default class SingleProduct extends Component {
     );
   }
 }
-
