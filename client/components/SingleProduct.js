@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddToCart from './AddToCart';
+import Notifications, {notify} from 'react-notify-toast';
 
 export default class SingleProduct extends Component {
   constructor(props) {
@@ -13,17 +14,22 @@ export default class SingleProduct extends Component {
   render() {
     const product = this.props.product ? this.props.product : null;
     return (
-      <div>
-        <AddToCart />
+      <div className = "ui mini segment">
+        <span>
+        <Notifications />
+        <AddToCart productId={product.id} />
+        </span>
         {product && (
-          <div>
+          <div className = "ui compact segment">
             <h1 className="single-product-name">
               {product.name}
             </h1>
-            <div>
+            <div className = "ui compact very padded segment ">
+              <div className = "ui very padded segment" id = "singleimage">
               {product.imageUrl && (
                 <img className="single-product-img" src={product.imageUrl} />
               )}
+              </div>
               <div className="single-product-description-section">
                 <h4 className="single-product-description">
                   Description: {product.description}
@@ -55,8 +61,3 @@ export default class SingleProduct extends Component {
   }
 }
 
-{
-  /* <h4>Category: {product.category.name}</h4>
-              <h4>Country: {product.country.name}</h4>
-              <h4>Size: {product.size.mililiter}</h4> */
-}
