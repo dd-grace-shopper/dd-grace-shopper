@@ -28,12 +28,11 @@ export default class singleOrder extends Component {
             <p>Total Price: $ {order.total}</p>
             <h2>Items Ordered:</h2>
             {products &&
-              itemsPurchased &&
-              console.log(itemsPurchased) &&
+              itemsPurchased.length &&
               products.map(product => {
                 const item = itemsPurchased.find(
                   item => item.productId === product.id
-                );
+                ) || { quantity: 'Loading...' };
                 return (
                   <div key={product.id}>
                     <p>{product.name}</p>
@@ -50,16 +49,3 @@ export default class singleOrder extends Component {
     );
   }
 }
-
-// {products &&
-//   products.map(product => {
-//     console.log(product.name);
-//     return (
-//       <div key={product.id}>
-//         <p>
-//           Name: {product.name}, Price: {product.price} x{' '}
-//           {itemsPurchased[product.id].quantity}
-//         </p>
-//       </div>
-//     );
-//   })}
