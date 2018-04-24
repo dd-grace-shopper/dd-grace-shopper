@@ -19,8 +19,13 @@ export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
           {/* The navbar will show these links after you log in */}
           <Link to="/home">Home</Link>
           <Link to="/products">All Products</Link>
-          <Link to="/view-cart">View Cart</Link>
           <Link to="/account">My Account</Link>
+          <Link to="/view-cart">View Cart
+          <span>
+            <Icon name='add to cart' size='big' /> </span>
+            <span> {`(${numItems} Items)`}
+            </span>
+          </Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>
