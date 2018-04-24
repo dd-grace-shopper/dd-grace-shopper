@@ -112,11 +112,11 @@ export default class AllProducts extends Component {
                       const product = productsById[id];
                       return (
                         <div key={id} className="column ui segmen">
+                          <div className="product-info">
                           <Link to={`products/${id}`} className="product-name">
                             <h3 className ="ui black header">{product.name}</h3>
-                          </Link>
-                          <div className="product-info">
                             <img className="product-img" src={product.imageUrl} />
+                          </Link>
                             <div className="product-info-right">
                               <h4 className = "ui blackheader">{`$${product.price}`}</h4>
                               <AddToCart productId={id} />
