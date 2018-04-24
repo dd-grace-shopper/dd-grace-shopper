@@ -7,11 +7,18 @@ import { resetCart} from  '../store/cart';
 import UserHome from './user-home';
 import { Icon } from 'semantic-ui-react';
 import Notifications, {notify} from 'react-notify-toast';
-
+//className="ui top attached header"
 export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
   <div>
   <div id = "fixedbar">
-    <h1 className="ui top attached header">D & D Wine and Liquor</h1>
+    <div className ="header-welcome">
+      <div className="head">
+        <h1 >D & D Wine and Liquor</h1>
+      </div>
+      <div className="welcome">
+      {isLoggedIn && <UserHome />}
+      </div>
+    </div>
     <Notifications />
     <nav className="navbar">
       {isLoggedIn ? (
@@ -19,6 +26,12 @@ export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
           {/* The navbar will show these links after you log in */}
           <Link to="/home">Home</Link>
           <Link to="/products">All Products</Link>
+          <Link to="/view-cart">View Cart
+            <span>
+            <Icon name='add to cart' size='big' /> </span>
+            <span> {`(${numItems} Items)`}
+            </span>
+          </Link>
           <Link to="/account">My Account</Link>
           <Link to="/view-cart">View Cart
           <span>
@@ -29,7 +42,6 @@ export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
           <a href="#" onClick={handleClick}>
             Logout
           </a>
-          <UserHome />
           <br />
         </div>
       ) : (
