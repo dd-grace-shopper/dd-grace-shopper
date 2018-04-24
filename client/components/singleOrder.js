@@ -29,6 +29,7 @@ export default class singleOrder extends Component {
             <h2>Items Ordered:</h2>
             {products &&
               itemsPurchased &&
+              console.log(itemsPurchased) &&
               products.map(product => {
                 const item = itemsPurchased.find(
                   item => item.productId === product.id
