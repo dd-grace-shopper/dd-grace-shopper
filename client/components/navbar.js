@@ -29,7 +29,11 @@ export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
         <div>
           {/* The navbar will show these links before you log in */}
           <Link to="/home">Home</Link>
-          <Link to="/login">Login</Link>
+          {
+            window.location.pathname !== '/home'
+            &&
+            <Link to="/login">Login</Link>
+          }
           <Link to="/signup">Sign Up</Link>
           <Link to="/products">All Products</Link>
           <Link to="/view-cart">View Cart

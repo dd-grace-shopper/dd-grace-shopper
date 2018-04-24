@@ -1,14 +1,8 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
+const { requireAdmin, isAdminOrSelf } = require('./utils');
 module.exports = router
 
-function requireAdmin (req, res, next) {
-  if (req.user.isAdmin) {
-    next();
-  } else {
-    res.sendStatus(401);
-  }
-}
 router.get('/', requireAdmin, (req, res, next) => {
   User.findAll({
     // explicitly select only the id and email fields - even though
@@ -20,20 +14,24 @@ router.get('/', requireAdmin, (req, res, next) => {
     .catch(next)
 })
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', isAdminOrSelf, (req, res, next) => {
   const id = req.params.id;
+  delete req.body.password;
   User.update(req.body, {
-    where: { id },
-    attributes: { exclude: [ 'password' ]},
-    returning: true
+    where: { id }
   })
-  .then(([rowCount, [updatedUser]]) => {
+  .then(()=> {
+    return User.findById(id, {
+      attributes: { exclude: [ 'password' ]}
+    })
+  })
+  .then((updatedUser) => {
     res.json(updatedUser);
   })
   .catch(next)
 })
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', isAdminOrSelf, (req, res, next) => {
   const id = req.params.id;
   User.destroy({
     where: { id }

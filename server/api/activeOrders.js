@@ -1,24 +1,21 @@
 const router = require('express').Router();
 const { ActiveOrder } = require('../db/models');
 const { Product } = require('../db/models');
+const makeSearchFilter = require('../utils/makeSearchFilter');
 module.exports = router;
 
 router.get('/', (req, res, next) => {
-  const searchFilter = req.user ? {userId: req.user.id} : {sessionId: req.session.id };
-    ActiveOrder.findAll({ where:
-      searchFilter
-    })
-    .then(orders => res.json(orders))
-    .catch(next);
+  ActiveOrder.findAll({ where: makeSearchFilter(
+    req.user, req.session
+  )})
+  .then(orders => res.json(orders))
+  .catch(next);
 });
 
 router.post('/', (req, res, next) => {
-  const searchFilter = req.user
-    ? {productId: req.body.productId, userId: req.user.id}
-    : {sessionId: req.session.id, productId: req.body.productId};
-  ActiveOrder.findOrCreate({
-    where: searchFilter
-  })
+  ActiveOrder.findOrCreate({ where: makeSearchFilter(
+    req.user, req.session, { productId: req.body.productId }
+  )})
     .spread((order, created) => {
       if (!created) {
         order.increment('quantity')
@@ -31,11 +28,13 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
-  const { newQuantity } = req.body; // { newQuantity: n }
+  const { newQuantity } = req.body;
   ActiveOrder.update({
     quantity: newQuantity
   }, {
-    where: { productId: req.params.id },
+    where: makeSearchFilter(
+      req.user, req.session, { productId: req.params.id }
+    ),
     returning: true
   })
     .then(([_, [newItem]]) => {
@@ -45,7 +44,9 @@ router.put('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
-  ActiveOrder.destroy({ where: {productId: req.params.id }})
+  ActiveOrder.destroy({ where: makeSearchFilter(
+    req.user, req.session, { productId: req.params.id }
+  )})
    .then(() => res.sendStatus(201))
    .catch(next);
 });
