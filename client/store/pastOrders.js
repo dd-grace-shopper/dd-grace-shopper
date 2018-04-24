@@ -32,7 +32,8 @@ export const createOrder = (card, history) => dispatch => {
     .then(orderFromDb => {
       dispatch(postOrders(orderFromDb));
       history.push('/confirmation');
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 export const fetchOrder = id => dispatch => {
@@ -41,7 +42,8 @@ export const fetchOrder = id => dispatch => {
     .then(res => res.data)
     .then(orderFromDb => {
       dispatch(getOrder(orderFromDb));
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 export const fetchAllOrders = () => dispatch => {
@@ -50,7 +52,8 @@ export const fetchAllOrders = () => dispatch => {
     .then(res => res.data)
     .then(orderFromDb => {
       dispatch(getAllOrders(orderFromDb));
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 export default function(state = {}, action) {

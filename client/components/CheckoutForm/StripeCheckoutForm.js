@@ -104,7 +104,7 @@ class _CardForm extends React.Component {
       const card = payload.token.card;
       card.total = this.props.total;
       card.userId = this.props.user.id ? this.props.user.id : null;
-      card.cart = this.props.cart ? Object.keys(this.props.cart) : null;
+      card.cart = this.props.cart ? this.props.cart : null;
       this.props.addToDb(card, this.props.history);
     });
   };

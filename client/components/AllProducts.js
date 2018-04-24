@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import SidebarLeft from './SidebarContainer';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 import DisplaySidebar from './DisplaySidebar';
-import Notifications, {notify} from 'react-notify-toast';
+
 
 export default class AllProducts extends Component {
 
@@ -91,7 +91,7 @@ export default class AllProducts extends Component {
          <Sidebar.Pusher>
           <Segment basic id={allProductsContainerId}>
             <div className="all-products-header">
-              <h1 className="component-title">All Products</h1> <Notifications />
+              <h1 className="component-title">All Products</h1>
               <DisplaySidebar />
             </div>
              <hr />
@@ -104,29 +104,29 @@ export default class AllProducts extends Component {
                   <br /><br /><br /><br />
                 </div>
               :
-               <div className="ui segment four column grid">
+               <div className="ui segment four column grid ">
 
                   {filteredProducts.length &&
                     filteredProducts.map(id => {
                       const product = productsById[id];
                       return (
-                        <div key={id} className="column ui segmen">
-                          <div className="product-info">
-                          <Link to={`products/${id}`} className="product-name">
-                            <h3 className ="ui black header">{product.name}</h3>
-                            <img className="product-img" src={product.imageUrl} />
-                          </Link>
-                            <div className="product-info-right">
-                              <h4 className = "ui blackheader">{`$${product.price}`}</h4>
-                              <AddToCart productId={id} />
-
-                            </div>
+                        <div key={id} className = "column">
+                        <div className = "ui segment">
+                        <div >
+                        <Link to={`products/${id}`} className="product-name">
+                          <h3 className="ui small header">{product.name}</h3>
+                          <img className="product-img" src={product.imageUrl} />
+                        </Link>
+                          <div className="product-info-right">
+                            <h4 className = "ui blackheader">{`$${product.price}`}</h4>
+                            <AddToCart productId={id} />
                           </div>
+                        </div>
+                        </div>
                         </div>
                       );
                     })}
                 </div>
-
              }
           </Segment>
         </Sidebar.Pusher>

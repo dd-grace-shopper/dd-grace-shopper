@@ -6,22 +6,42 @@ import { logout } from '../store';
 import { resetCart} from  '../store/cart';
 import UserHome from './user-home';
 import { Icon } from 'semantic-ui-react';
-
+import Notifications, {notify} from 'react-notify-toast';
+//className="ui top attached header"
 export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
   <div>
-    <h1 className="ui top attached header">D & D Wine and Liquor</h1>
+  <div id = "fixedbar">
+    <div className ="header-welcome">
+      <div className="head">
+        <h1 >D & D Wine and Liquor</h1>
+      </div>
+      <div className="welcome">
+      {isLoggedIn && <UserHome />}
+      </div>
+    </div>
+    <Notifications />
     <nav className="navbar">
       {isLoggedIn ? (
         <div>
           {/* The navbar will show these links after you log in */}
           <Link to="/home">Home</Link>
           <Link to="/products">All Products</Link>
-          <Link to="/view-cart">View Cart</Link>
+          <Link to="/view-cart">View Cart
+            <span>
+            <Icon name='add to cart' size='big' /> </span>
+            <span> {`(${numItems} Items)`}
+            </span>
+          </Link>
           <Link to="/account">My Account</Link>
+          <Link to="/view-cart">View Cart
+          <span>
+            <Icon name='add to cart' size='big' /> </span>
+            <span> {`(${numItems} Items)`}
+            </span>
+          </Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>
-          <UserHome />
           <br />
         </div>
       ) : (
@@ -40,6 +60,11 @@ export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
         </div>
       )}
     </nav>
+  </div>
+  <div className="spacer">
+    &nbsp;
+  </div>
+
   </div>
 );
 

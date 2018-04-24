@@ -10,6 +10,7 @@ import {
 const mapState = function(state, ownProps) {
   let total = 0;
   let numItems = 0;
+  if (state.cart === null){return;}
   const productsInCart = Object.keys(state.cart).map(productId => {
     const { name, price, imageUrl } = state.products.productsById[productId];
     const { quantity } = state.cart[productId];

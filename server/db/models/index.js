@@ -5,6 +5,7 @@ const Country = require('./country');
 const Size = require('./size');
 const ActiveOrder = require('./activeOrder');
 const PastOrder = require('./pastOrder');
+const ProductsByOrder = require('./productsByOrder');
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -24,8 +25,8 @@ const PastOrder = require('./pastOrder');
 Product.hasMany(ActiveOrder);
 ActiveOrder.belongsTo(Product);
 
-Product.belongsToMany(PastOrder, { through: 'products_order' });
-PastOrder.belongsToMany(Product, { through: 'products_order' });
+Product.belongsToMany(PastOrder, { through: ProductsByOrder });
+PastOrder.belongsToMany(Product, { through: ProductsByOrder });
 
 User.hasMany(PastOrder);
 PastOrder.belongsTo(User);

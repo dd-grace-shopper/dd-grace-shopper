@@ -56,13 +56,15 @@ export const fetchCart = () => dispatch => {
   .get('/api/active-orders')
   .then(res => res.data)
   .then(cartFromDb => {
+
     const newCart = cartFromDb.reduce((newCartObj, item) => {
       const { productId, quantity } = item;
       newCartObj[productId] = { productId, quantity };
       return newCartObj;
     }, {});
     dispatch(createCart(newCart));
-  });
+  })
+  .catch(err => console.log(err));
 }
 
 export const postToCart = id => dispatch => {
@@ -72,14 +74,16 @@ export const postToCart = id => dispatch => {
     .then(({ productId, quantity }) => {
       const order = {[productId]: { productId, quantity }};
       dispatch(addToCart(order));
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 
 export const deleteProductFromCart = productId => dispatch => {
   return axios
     .delete(`/api/active-orders/${productId}`)
-    .then(() => dispatch(deleteFromCart(productId)));
+    .then(() => dispatch(deleteFromCart(productId)))
+    .catch(err => console.log(err));
 };
 
 export const updateProductQuantity = (productId, newQuantity) => dispatch => {
@@ -93,7 +97,8 @@ export const updateProductQuantity = (productId, newQuantity) => dispatch => {
       } else {
         dispatch(updateItemInCart(updatedItemObj));
       }
-    });
+    })
+    .catch(err => console.log(err));
 }
 
 export const deleteAssociatedProductsFromActiveOrder = idsArray => dispatch => {
@@ -102,21 +107,6 @@ export const deleteAssociatedProductsFromActiveOrder = idsArray => dispatch => {
     .catch(() => console.error('Could not remove items from active orders table and/or cart.'));
     // add 'purchasedItems' slice of state
 };
-
-// axios.all([getUserAccount(), getUserPermissions()])
-//   .then(axios.spread(function (acct, perms) {
-//     // Both requests are now complete
-//   }));
-
-// /api/active-orders/:id
-// router.delete('/:id', (req, res, next) => {
-//   const searchFilter = req.user
-//     ? {productId: req.params.id, userId: req.user.id}
-//     : {productId: req.params.id, sessionId: req.session.id};
-//   ActiveOrder.destroy({ where: searchFilter })
-//    .then(() => res.sendStatus(201))
-//    .catch(next);
-// });
 
 
 // reducer
