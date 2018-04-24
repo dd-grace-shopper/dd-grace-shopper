@@ -9,736 +9,736 @@ const CountriesDropdown = props => (
       onChange={props.handleCountryChange}
     >
       {/* <input type="hidden" name="country" />
-<i className="dropdown icon"></i>
+hidropdown icon"></i>
 <div className="default text">Select Country</div>
       <div className="menu">*/}
       <option value="">Select Country</option>
 
       <option className="item" data-value="af">
-        <i className="af flag" />Afghanistan
+        Afghanistan
       </option>
       <option className="item" data-value="ax">
-        <i className="ax flag" />Aland Islands
+        Aland Islands
       </option>
       <option className="item" data-value="al">
-        <i className="al flag" />Albania
+        Albania
       </option>
       <option className="item" data-value="dz">
-        <i className="dz flag" />Algeria
+        Algeria
       </option>
       <option className="item" data-value="as">
-        <i className="as flag" />American Samoa
+        American Samoa
       </option>
       <option className="item" data-value="ad">
-        <i className="ad flag" />Andorra
+        Andorra
       </option>
       <option className="item" data-value="ao">
-        <i className="ao flag" />Angola
+        Angola
       </option>
       <option className="item" data-value="ai">
-        <i className="ai flag" />Anguilla
+        Anguilla
       </option>
       <option className="item" data-value="ag">
-        <i className="ag flag" />Antigua
+        Antigua
       </option>
       <option className="item" data-value="ar">
-        <i className="ar flag" />Argentina
+        Argentina
       </option>
       <option className="item" data-value="am">
-        <i className="am flag" />Armenia
+        Armenia
       </option>
       <option className="item" data-value="aw">
-        <i className="aw flag" />Aruba
+        Aruba
       </option>
       <option className="item" data-value="au">
-        <i className="au flag" />Australia
+        Australia
       </option>
       <option className="item" data-value="at">
-        <i className="at flag" />Austria
+        Austria
       </option>
       <option className="item" data-value="az">
-        <i className="az flag" />Azerbaijan
+        Azerbaijan
       </option>
       <option className="item" data-value="bs">
-        <i className="bs flag" />Bahamas
+        Bahamas
       </option>
       <option className="item" data-value="bh">
-        <i className="bh flag" />Bahrain
+        Bahrain
       </option>
       <option className="item" data-value="bd">
-        <i className="bd flag" />Bangladesh
+        Bangladesh
       </option>
       <option className="item" data-value="bb">
-        <i className="bb flag" />Barbados
+        Barbados
       </option>
       <option className="item" data-value="by">
-        <i className="by flag" />Belarus
+        Belarus
       </option>
       <option className="item" data-value="be">
-        <i className="be flag" />Belgium
+        Belgium
       </option>
       <option className="item" data-value="bz">
-        <i className="bz flag" />Belize
+        Belize
       </option>
       <option className="item" data-value="bj">
-        <i className="bj flag" />Benin
+        Benin
       </option>
       <option className="item" data-value="bm">
-        <i className="bm flag" />Bermuda
+        Bermuda
       </option>
       <option className="item" data-value="bt">
-        <i className="bt flag" />Bhutan
+        Bhutan
       </option>
       <option className="item" data-value="bo">
-        <i className="bo flag" />Bolivia
+        Bolivia
       </option>
       <option className="item" data-value="ba">
-        <i className="ba flag" />Bosnia
+        Bosnia
       </option>
       <option className="item" data-value="bw">
-        <i className="bw flag" />Botswana
+        Botswana
       </option>
       <option className="item" data-value="bv">
-        <i className="bv flag" />Bouvet Island
+        Bouvet Island
       </option>
       <option className="item" data-value="br">
-        <i className="br flag" />Brazil
+        Brazil
       </option>
       <option className="item" data-value="vg">
-        <i className="vg flag" />British Virgin Islands
+        British Virgin Islands
       </option>
       <option className="item" data-value="bn">
-        <i className="bn flag" />Brunei
+        Brunei
       </option>
       <option className="item" data-value="bg">
-        <i className="bg flag" />Bulgaria
+        Bulgaria
       </option>
       <option className="item" data-value="bf">
-        <i className="bf flag" />Burkina Faso
+        Burkina Faso
       </option>
       <option className="item" data-value="mm">
-        <i className="mm flag" />Burma
+        Burma
       </option>
       <option className="item" data-value="bi">
-        <i className="bi flag" />Burundi
+        Burundi
       </option>
       <option className="item" data-value="tc">
-        <i className="tc flag" />Caicos Islands
+        Caicos Islands
       </option>
       <option className="item" data-value="kh">
-        <i className="kh flag" />Cambodia
+        Cambodia
       </option>
       <option className="item" data-value="cm">
-        <i className="cm flag" />Cameroon
+        Cameroon
       </option>
       <option className="item" data-value="ca">
-        <i className="ca flag" />Canada
+        Canada
       </option>
       <option className="item" data-value="cv">
-        <i className="cv flag" />Cape Verde
+        Cape Verde
       </option>
       <option className="item" data-value="ky">
-        <i className="ky flag" />Cayman Islands
+        Cayman Islands
       </option>
       <option className="item" data-value="cf">
-        <i className="cf flag" />Central African Republic
+        Central African Republic
       </option>
       <option className="item" data-value="td">
-        <i className="td flag" />Chad
+        Chad
       </option>
       <option className="item" data-value="cl">
-        <i className="cl flag" />Chile
+        Chile
       </option>
       <option className="item" data-value="cn">
-        <i className="cn flag" />China
+        China
       </option>
       <option className="item" data-value="cx">
-        <i className="cx flag" />Christmas Island
+        Christmas Island
       </option>
       <option className="item" data-value="cc">
-        <i className="cc flag" />Cocos Islands
+        Cocos Islands
       </option>
       <option className="item" data-value="co">
-        <i className="co flag" />Colombia
+        Colombia
       </option>
       <option className="item" data-value="km">
-        <i className="km flag" />Comoros
+        Comoros
       </option>
       <option className="item" data-value="cg">
-        <i className="cg flag" />Congo Brazzaville
+        Congo Brazzaville
       </option>
       <option className="item" data-value="cd">
-        <i className="cd flag" />Congo
+        Congo
       </option>
       <option className="item" data-value="ck">
-        <i className="ck flag" />Cook Islands
+        Cook Islands
       </option>
       <option className="item" data-value="cr">
-        <i className="cr flag" />Costa Rica
+        Costa Rica
       </option>
       <option className="item" data-value="ci">
-        <i className="ci flag" />Cote optionoire
+        Cote optionoire
       </option>
       <option className="item" data-value="hr">
-        <i className="hr flag" />Croatia
+        Croatia
       </option>
       <option className="item" data-value="cu">
-        <i className="cu flag" />Cuba
+        Cuba
       </option>
       <option className="item" data-value="cy">
-        <i className="cy flag" />Cyprus
+        Cyprus
       </option>
       <option className="item" data-value="cz">
-        <i className="cz flag" />Czech Republic
+        Czech Republic
       </option>
       <option className="item" data-value="dk">
-        <i className="dk flag" />Denmark
+        Denmark
       </option>
       <option className="item" data-value="dj">
-        <i className="dj flag" />Djibouti
+        Djibouti
       </option>
       <option className="item" data-value="dm">
-        <i className="dm flag" />Dominica
+        Dominica
       </option>
       <option className="item" data-value="do">
-        <i className="do flag" />Dominican Republic
+        Dominican Republic
       </option>
       <option className="item" data-value="ec">
-        <i className="ec flag" />Ecuador
+        Ecuador
       </option>
       <option className="item" data-value="eg">
-        <i className="eg flag" />Egypt
+        Egypt
       </option>
       <option className="item" data-value="sv">
-        <i className="sv flag" />El Salvador
+        El Salvador
       </option>
       <option className="item" data-value="gb">
-        <i className="gb flag" />England
+        England
       </option>
       <option className="item" data-value="gq">
-        <i className="gq flag" />Equatorial Guinea
+        Equatorial Guinea
       </option>
       <option className="item" data-value="er">
-        <i className="er flag" />Eritrea
+        Eritrea
       </option>
       <option className="item" data-value="ee">
-        <i className="ee flag" />Estonia
+        Estonia
       </option>
       <option className="item" data-value="et">
-        <i className="et flag" />Ethiopia
+        Ethiopia
       </option>
       <option className="item" data-value="eu">
-        <i className="eu flag" />European Union
+        European Union
       </option>
       <option className="item" data-value="fk">
-        <i className="fk flag" />Falkland Islands
+        Falkland Islands
       </option>
       <option className="item" data-value="fo">
-        <i className="fo flag" />Faroe Islands
+        Faroe Islands
       </option>
       <option className="item" data-value="fj">
-        <i className="fj flag" />Fiji
+        Fiji
       </option>
       <option className="item" data-value="fi">
-        <i className="fi flag" />Finland
+        Finland
       </option>
       <option className="item" data-value="fr">
-        <i className="fr flag" />France
+        France
       </option>
       <option className="item" data-value="gf">
-        <i className="gf flag" />French Guiana
+        French Guiana
       </option>
       <option className="item" data-value="pf">
-        <i className="pf flag" />French Polynesia
+        French Polynesia
       </option>
       <option className="item" data-value="tf">
-        <i className="tf flag" />French Territories
+        French Territories
       </option>
       <option className="item" data-value="ga">
-        <i className="ga flag" />Gabon
+        Gabon
       </option>
       <option className="item" data-value="gm">
-        <i className="gm flag" />Gambia
+        Gambia
       </option>
       <option className="item" data-value="ge">
-        <i className="ge flag" />Georgia
+        Georgia
       </option>
       <option className="item" data-value="de">
-        <i className="de flag" />Germany
+        Germany
       </option>
       <option className="item" data-value="gh">
-        <i className="gh flag" />Ghana
+        Ghana
       </option>
       <option className="item" data-value="gi">
-        <i className="gi flag" />Gibraltar
+        Gibraltar
       </option>
       <option className="item" data-value="gr">
-        <i className="gr flag" />Greece
+        Greece
       </option>
       <option className="item" data-value="gl">
-        <i className="gl flag" />Greenland
+        Greenland
       </option>
       <option className="item" data-value="gd">
-        <i className="gd flag" />Grenada
+        Grenada
       </option>
       <option className="item" data-value="gp">
-        <i className="gp flag" />Guadeloupe
+        Guadeloupe
       </option>
       <option className="item" data-value="gu">
-        <i className="gu flag" />Guam
+        Guam
       </option>
       <option className="item" data-value="gt">
-        <i className="gt flag" />Guatemala
+        Guatemala
       </option>
       <option className="item" data-value="gw">
-        <i className="gw flag" />Guinea-Bissau
+        Guinea-Bissau
       </option>
       <option className="item" data-value="gn">
-        <i className="gn flag" />Guinea
+        Guinea
       </option>
       <option className="item" data-value="gy">
-        <i className="gy flag" />Guyana
+        Guyana
       </option>
       <option className="item" data-value="ht">
-        <i className="ht flag" />Haiti
+        Haiti
       </option>
       <option className="item" data-value="hm">
-        <i className="hm flag" />Heard Island
+        Heard Island
       </option>
       <option className="item" data-value="hn">
-        <i className="hn flag" />Honduras
+        Honduras
       </option>
       <option className="item" data-value="hk">
-        <i className="hk flag" />Hong Kong
+        Hong Kong
       </option>
       <option className="item" data-value="hu">
-        <i className="hu flag" />Hungary
+        Hungary
       </option>
       <option className="item" data-value="is">
-        <i className="is flag" />Iceland
+        Iceland
       </option>
       <option className="item" data-value="in">
-        <i className="in flag" />India
+        India
       </option>
       <option className="item" data-value="io">
-        <i className="io flag" />Indian Ocean Territory
+        Indian Ocean Territory
       </option>
       <option className="item" data-value="id">
-        <i className="id flag" />Indonesia
+        Indonesia
       </option>
       <option className="item" data-value="ir">
-        <i className="ir flag" />Iran
+        Iran
       </option>
       <option className="item" data-value="iq">
-        <i className="iq flag" />Iraq
+        Iraq
       </option>
       <option className="item" data-value="ie">
-        <i className="ie flag" />Ireland
+        Ireland
       </option>
       <option className="item" data-value="il">
-        <i className="il flag" />Israel
+        Israel
       </option>
       <option className="item" data-value="it">
-        <i className="it flag" />Italy
+        Italy
       </option>
       <option className="item" data-value="jm">
-        <i className="jm flag" />Jamaica
+        Jamaica
       </option>
       <option className="item" data-value="jp">
-        <i className="jp flag" />Japan
+        Japan
       </option>
       <option className="item" data-value="jo">
-        <i className="jo flag" />Jordan
+        Jordan
       </option>
       <option className="item" data-value="kz">
-        <i className="kz flag" />Kazakhstan
+        Kazakhstan
       </option>
       <option className="item" data-value="ke">
-        <i className="ke flag" />Kenya
+        Kenya
       </option>
       <option className="item" data-value="ki">
-        <i className="ki flag" />Kiribati
+        Kiribati
       </option>
       <option className="item" data-value="kw">
-        <i className="kw flag" />Kuwait
+        Kuwait
       </option>
       <option className="item" data-value="kg">
-        <i className="kg flag" />Kyrgyzstan
+        Kyrgyzstan
       </option>
       <option className="item" data-value="la">
-        <i className="la flag" />Laos
+        Laos
       </option>
       <option className="item" data-value="lv">
-        <i className="lv flag" />Latvia
+        Latvia
       </option>
       <option className="item" data-value="lb">
-        <i className="lb flag" />Lebanon
+        Lebanon
       </option>
       <option className="item" data-value="ls">
-        <i className="ls flag" />Lesotho
+        Lesotho
       </option>
       <option className="item" data-value="lr">
-        <i className="lr flag" />Liberia
+        Liberia
       </option>
       <option className="item" data-value="ly">
-        <i className="ly flag" />Libya
+        Libya
       </option>
       <option className="item" data-value="li">
-        <i className="li flag" />Liechtenstein
+        Liechtenstein
       </option>
       <option className="item" data-value="lt">
-        <i className="lt flag" />Lithuania
+        Lithuania
       </option>
       <option className="item" data-value="lu">
-        <i className="lu flag" />Luxembourg
+        Luxembourg
       </option>
       <option className="item" data-value="mo">
-        <i className="mo flag" />Macau
+        Macau
       </option>
       <option className="item" data-value="mk">
-        <i className="mk flag" />Macedonia
+        Macedonia
       </option>
       <option className="item" data-value="mg">
-        <i className="mg flag" />Madagascar
+        Madagascar
       </option>
       <option className="item" data-value="mw">
-        <i className="mw flag" />Malawi
+        Malawi
       </option>
       <option className="item" data-value="my">
-        <i className="my flag" />Malaysia
+        Malaysia
       </option>
       <option className="item" data-value="mv">
-        <i className="mv flag" />Maloptiones
+        Maloptiones
       </option>
       <option className="item" data-value="ml">
-        <i className="ml flag" />Mali
+        Mali
       </option>
       <option className="item" data-value="mt">
-        <i className="mt flag" />Malta
+        Malta
       </option>
       <option className="item" data-value="mh">
-        <i className="mh flag" />Marshall Islands
+        Marshall Islands
       </option>
       <option className="item" data-value="mq">
-        <i className="mq flag" />Martinique
+        Martinique
       </option>
       <option className="item" data-value="mr">
-        <i className="mr flag" />Mauritania
+        Mauritania
       </option>
       <option className="item" data-value="mu">
-        <i className="mu flag" />Mauritius
+        Mauritius
       </option>
       <option className="item" data-value="yt">
-        <i className="yt flag" />Mayotte
+        Mayotte
       </option>
       <option className="item" data-value="mx">
-        <i className="mx flag" />Mexico
+        Mexico
       </option>
       <option className="item" data-value="fm">
-        <i className="fm flag" />Micronesia
+        Micronesia
       </option>
       <option className="item" data-value="md">
-        <i className="md flag" />Moldova
+        Moldova
       </option>
       <option className="item" data-value="mc">
-        <i className="mc flag" />Monaco
+        Monaco
       </option>
       <option className="item" data-value="mn">
-        <i className="mn flag" />Mongolia
+        Mongolia
       </option>
       <option className="item" data-value="me">
-        <i className="me flag" />Montenegro
+        Montenegro
       </option>
       <option className="item" data-value="ms">
-        <i className="ms flag" />Montserrat
+        Montserrat
       </option>
       <option className="item" data-value="ma">
-        <i className="ma flag" />Morocco
+        Morocco
       </option>
       <option className="item" data-value="mz">
-        <i className="mz flag" />Mozambique
+        Mozambique
       </option>
       <option className="item" data-value="na">
-        <i className="na flag" />Namibia
+        Namibia
       </option>
       <option className="item" data-value="nr">
-        <i className="nr flag" />Nauru
+        Nauru
       </option>
       <option className="item" data-value="np">
-        <i className="np flag" />Nepal
+        Nepal
       </option>
       <option className="item" data-value="an">
-        <i className="an flag" />Netherlands Antilles
+        Netherlands Antilles
       </option>
       <option className="item" data-value="nl">
-        <i className="nl flag" />Netherlands
+        Netherlands
       </option>
       <option className="item" data-value="nc">
-        <i className="nc flag" />New Caledonia
+        New Caledonia
       </option>
       <option className="item" data-value="pg">
-        <i className="pg flag" />New Guinea
+        New Guinea
       </option>
       <option className="item" data-value="nz">
-        <i className="nz flag" />New Zealand
+        New Zealand
       </option>
       <option className="item" data-value="ni">
-        <i className="ni flag" />Nicaragua
+        Nicaragua
       </option>
       <option className="item" data-value="ne">
-        <i className="ne flag" />Niger
+        Niger
       </option>
       <option className="item" data-value="ng">
-        <i className="ng flag" />Nigeria
+        Nigeria
       </option>
       <option className="item" data-value="nu">
-        <i className="nu flag" />Niue
+        Niue
       </option>
       <option className="item" data-value="nf">
-        <i className="nf flag" />Norfolk Island
+        Norfolk Island
       </option>
       <option className="item" data-value="kp">
-        <i className="kp flag" />North Korea
+        North Korea
       </option>
       <option className="item" data-value="mp">
-        <i className="mp flag" />Northern Mariana Islands
+        Northern Mariana Islands
       </option>
       <option className="item" data-value="no">
-        <i className="no flag" />Norway
+        Norway
       </option>
       <option className="item" data-value="om">
-        <i className="om flag" />Oman
+        Oman
       </option>
       <option className="item" data-value="pk">
-        <i className="pk flag" />Pakistan
+        Pakistan
       </option>
       <option className="item" data-value="pw">
-        <i className="pw flag" />Palau
+        Palau
       </option>
       <option className="item" data-value="ps">
-        <i className="ps flag" />Palestine
+        Palestine
       </option>
       <option className="item" data-value="pa">
-        <i className="pa flag" />Panama
+        Panama
       </option>
       <option className="item" data-value="py">
-        <i className="py flag" />Paraguay
+        Paraguay
       </option>
       <option className="item" data-value="pe">
-        <i className="pe flag" />Peru
+        Peru
       </option>
       <option className="item" data-value="ph">
-        <i className="ph flag" />Philippines
+        Philippines
       </option>
       <option className="item" data-value="pn">
-        <i className="pn flag" />Pitcairn Islands
+        Pitcairn Islands
       </option>
       <option className="item" data-value="pl">
-        <i className="pl flag" />Poland
+        Poland
       </option>
       <option className="item" data-value="pt">
-        <i className="pt flag" />Portugal
+        Portugal
       </option>
       <option className="item" data-value="pr">
-        <i className="pr flag" />Puerto Rico
+        Puerto Rico
       </option>
       <option className="item" data-value="qa">
-        <i className="qa flag" />Qatar
+        Qatar
       </option>
       <option className="item" data-value="re">
-        <i className="re flag" />Reunion
+        Reunion
       </option>
       <option className="item" data-value="ro">
-        <i className="ro flag" />Romania
+        Romania
       </option>
       <option className="item" data-value="ru">
-        <i className="ru flag" />Russia
+        Russia
       </option>
       <option className="item" data-value="rw">
-        <i className="rw flag" />Rwanda
+        Rwanda
       </option>
       <option className="item" data-value="sh">
-        <i className="sh flag" />Saint Helena
+        Saint Helena
       </option>
       <option className="item" data-value="kn">
-        <i className="kn flag" />Saint Kitts and Nevis
+        Saint Kitts and Nevis
       </option>
       <option className="item" data-value="lc">
-        <i className="lc flag" />Saint Lucia
+        Saint Lucia
       </option>
       <option className="item" data-value="pm">
-        <i className="pm flag" />Saint Pierre
+        Saint Pierre
       </option>
       <option className="item" data-value="vc">
-        <i className="vc flag" />Saint Vincent
+        Saint Vincent
       </option>
       <option className="item" data-value="ws">
-        <i className="ws flag" />Samoa
+        Samoa
       </option>
       <option className="item" data-value="sm">
-        <i className="sm flag" />San Marino
+        San Marino
       </option>
       <option className="item" data-value="gs">
-        <i className="gs flag" />Sandwich Islands
+        Sandwich Islands
       </option>
       <option className="item" data-value="st">
-        <i className="st flag" />Sao Tome
+        Sao Tome
       </option>
       <option className="item" data-value="sa">
-        <i className="sa flag" />Saudi Arabia
+        Saudi Arabia
       </option>
       <option className="item" data-value="sn">
-        <i className="sn flag" />Senegal
+        Senegal
       </option>
       <option className="item" data-value="cs">
-        <i className="cs flag" />Serbia
+        Serbia
       </option>
       <option className="item" data-value="rs">
-        <i className="rs flag" />Serbia
+        Serbia
       </option>
       <option className="item" data-value="sc">
-        <i className="sc flag" />Seychelles
+        Seychelles
       </option>
       <option className="item" data-value="sl">
-        <i className="sl flag" />Sierra Leone
+        Sierra Leone
       </option>
       <option className="item" data-value="sg">
-        <i className="sg flag" />Singapore
+        Singapore
       </option>
       <option className="item" data-value="sk">
-        <i className="sk flag" />Slovakia
+        Slovakia
       </option>
       <option className="item" data-value="si">
-        <i className="si flag" />Slovenia
+        Slovenia
       </option>
       <option className="item" data-value="sb">
-        <i className="sb flag" />Solomon Islands
+        Solomon Islands
       </option>
       <option className="item" data-value="so">
-        <i className="so flag" />Somalia
+        Somalia
       </option>
       <option className="item" data-value="za">
-        <i className="za flag" />South Africa
+        South Africa
       </option>
       <option className="item" data-value="kr">
-        <i className="kr flag" />South Korea
+        South Korea
       </option>
       <option className="item" data-value="es">
-        <i className="es flag" />Spain
+        Spain
       </option>
       <option className="item" data-value="lk">
-        <i className="lk flag" />Sri Lanka
+        Sri Lanka
       </option>
       <option className="item" data-value="sd">
-        <i className="sd flag" />Sudan
+        Sudan
       </option>
       <option className="item" data-value="sr">
-        <i className="sr flag" />Suriname
+        Suriname
       </option>
       <option className="item" data-value="sj">
-        <i className="sj flag" />Svalbard
+        Svalbard
       </option>
       <option className="item" data-value="sz">
-        <i className="sz flag" />Swaziland
+        Swaziland
       </option>
       <option className="item" data-value="se">
-        <i className="se flag" />Sweden
+        Sweden
       </option>
       <option className="item" data-value="ch">
-        <i className="ch flag" />Switzerland
+        Switzerland
       </option>
       <option className="item" data-value="sy">
-        <i className="sy flag" />Syria
+        Syria
       </option>
       <option className="item" data-value="tw">
-        <i className="tw flag" />Taiwan
+        Taiwan
       </option>
       <option className="item" data-value="tj">
-        <i className="tj flag" />Tajikistan
+        Tajikistan
       </option>
       <option className="item" data-value="tz">
-        <i className="tz flag" />Tanzania
+        Tanzania
       </option>
       <option className="item" data-value="th">
-        <i className="th flag" />Thailand
+        Thailand
       </option>
       <option className="item" data-value="tl">
-        <i className="tl flag" />Timorleste
+        Timorleste
       </option>
       <option className="item" data-value="tg">
-        <i className="tg flag" />Togo
+        Togo
       </option>
       <option className="item" data-value="tk">
-        <i className="tk flag" />Tokelau
+        Tokelau
       </option>
       <option className="item" data-value="to">
-        <i className="to flag" />Tonga
+        Tonga
       </option>
       <option className="item" data-value="tt">
-        <i className="tt flag" />Trinidad
+        Trinidad
       </option>
       <option className="item" data-value="tn">
-        <i className="tn flag" />Tunisia
+        Tunisia
       </option>
       <option className="item" data-value="tr">
-        <i className="tr flag" />Turkey
+        Turkey
       </option>
       <option className="item" data-value="tm">
-        <i className="tm flag" />Turkmenistan
+        Turkmenistan
       </option>
       <option className="item" data-value="tv">
-        <i className="tv flag" />Tuvalu
+        Tuvalu
       </option>
       <option className="item" data-value="ug">
-        <i className="ug flag" />Uganda
+        Uganda
       </option>
       <option className="item" data-value="ua">
-        <i className="ua flag" />Ukraine
+        Ukraine
       </option>
       <option className="item" data-value="ae">
-        <i className="ae flag" />United Arab Emirates
+        United Arab Emirates
       </option>
       <option className="item" data-value="us">
-        <i className="us flag" />United States
+        United States
       </option>
       <option className="item" data-value="uy">
-        <i className="uy flag" />Uruguay
+        Uruguay
       </option>
       <option className="item" data-value="um">
-        <i className="um flag" />Us Minor Islands
+        Us Minor Islands
       </option>
       <option className="item" data-value="vi">
-        <i className="vi flag" />Us Virgin Islands
+        Us Virgin Islands
       </option>
       <option className="item" data-value="uz">
-        <i className="uz flag" />Uzbekistan
+        Uzbekistan
       </option>
       <option className="item" data-value="vu">
-        <i className="vu flag" />Vanuatu
+        Vanuatu
       </option>
       <option className="item" data-value="va">
-        <i className="va flag" />Vatican City
+        Vatican City
       </option>
       <option className="item" data-value="ve">
-        <i className="ve flag" />Venezuela
+        Venezuela
       </option>
       <option className="item" data-value="vn">
-        <i className="vn flag" />Vietnam
+        Vietnam
       </option>
       <option className="item" data-value="wf">
-        <i className="wf flag" />Wallis and Futuna
+        Wallis and Futuna
       </option>
       <option className="item" data-value="eh">
-        <i className="eh flag" />Western Sahara
+        Western Sahara
       </option>
       <option className="item" data-value="ye">
-        <i className="ye flag" />Yemen
+        Yemen
       </option>
       <option className="item" data-value="zm">
-        <i className="zm flag" />Zambia
+        Zambia
       </option>
       <option className="item" data-value="zw">
-        <i className="zw flag" />Zimbabwe
+        zw flag" />Zimbabwe
       </option>
 
       {/*</div>*/}

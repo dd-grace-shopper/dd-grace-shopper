@@ -16,7 +16,9 @@ class CartCheckout extends Component {
 }
 
 const mapState = function(state, ownProps) {
-  history: ownProps.history;
+  return {
+    history: ownProps.history
+  };
 };
 
 export default connect(mapState)(CartCheckout);
