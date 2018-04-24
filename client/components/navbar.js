@@ -33,6 +33,12 @@ export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
             </span>
           </Link>
           <Link to="/account">My Account</Link>
+          <Link to="/view-cart">View Cart
+          <span>
+            <Icon name='add to cart' size='big' /> </span>
+            <span> {`(${numItems} Items)`}
+            </span>
+          </Link>
           <a href="#" onClick={handleClick}>
             Logout
           </a>

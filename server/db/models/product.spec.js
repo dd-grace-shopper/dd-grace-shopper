@@ -4,7 +4,7 @@ const {expect} = require('chai');
 const db = require('../index');
 const Product = db.model('product');
 
-describe('product model', () => {
+describe.only('product model', () => {
   beforeEach(() => {
     return db.sync({force: true})
   })
@@ -25,8 +25,13 @@ describe('product model', () => {
         })
     })
 
-    it('returns a string like "100.98" to represent price in USD', () => {
+    // doesn't make sense anymore because price data type changed to integer
+    xit('returns a string like "10098" to represent price in USD', () => {
       expect(product.price).to.equal('100.98');
     });
+
+    it('return the appropriate price range based on the price', () =>{
+      expect(product.priceRange).to.equal('$$$$')
+    })
   })
 }) // end describe('product model')
