@@ -14,6 +14,8 @@ import { fetchCart } from './store/cart';
 import { fetchProducts } from './store/allproducts';
 import HomePage from './components/HomePageContainer';
 import OrderConfirmationContainer from './components/OrderConfirmationContainer';
+import myOrdersContainer from './components/myOrdersContainer';
+import singleOrderContainer from './components/singleOrderContainer';
 
 /**
  * COMPONENT
@@ -41,11 +43,26 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
 
-            <Route exact path="/account" authorize={this.props.isLoggedIn} component={UserAccount} />
+            <Route
+              exact
+              path="/account"
+              authorize={this.props.isLoggedIn}
+              component={UserAccount}
+            />
             <Route
               path="/account/edit"
               authorize={this.props.isLoggedIn}
               render={() => <EditUserAccountContainer id={this.props.userId} />}
+            />
+            <Route
+              path="/account/my-orders"
+              authorize={this.props.isLoggedIn}
+              component={myOrdersContainer}
+            />
+            <Route
+              path="/account/order/:id"
+              authorize={this.props.isLoggedIn}
+              component={singleOrderContainer}
             />
           </Switch>
         )}

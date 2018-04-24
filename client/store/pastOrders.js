@@ -2,6 +2,7 @@ import axios from 'axios';
 import { resetCart } from './cart';
 export const POST_ORDER = 'POST_ORDER';
 export const GET_ORDER = 'GET_ORDER';
+export const GET_ALL_ORDERS = 'GET_ALL_ORDERS';
 
 export const postOrders = function(order) {
   return {
@@ -14,6 +15,13 @@ export const getOrder = function(order) {
   return {
     type: GET_ORDER,
     order
+  };
+};
+
+export const getAllOrders = function(orders) {
+  return {
+    type: GET_ALL_ORDERS,
+    orders
   };
 };
 
@@ -33,7 +41,15 @@ export const fetchOrder = id => dispatch => {
     .then(res => res.data)
     .then(orderFromDb => {
       dispatch(getOrder(orderFromDb));
-      //dispatch(resetCart());
+    });
+};
+
+export const fetchAllOrders = () => dispatch => {
+  return axios
+    .get(`/api/past-orders/`)
+    .then(res => res.data)
+    .then(orderFromDb => {
+      dispatch(getAllOrders(orderFromDb));
     });
 };
 
@@ -43,6 +59,8 @@ export default function(state = {}, action) {
       return action.order;
     case GET_ORDER:
       return action.order;
+    case GET_ALL_ORDERS:
+      return action.orders;
     default:
       return state;
   }
