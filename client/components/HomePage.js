@@ -27,8 +27,7 @@ export default class HomePage extends Component {
         <h2>Welcome to New York City's best online wine & spirits store</h2>
         <h3>Featured Products</h3>
       </div>
-      <br /><br />
-       <div className="ui segment three column grid">
+       <div className="ui padded segment three column grid">
           {products.length &&
             randomProductsToFeature.map(id => {
               const product = productsById[id];

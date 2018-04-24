@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import { resetCart} from  '../store/cart';
 import UserHome from './user-home';
-import { Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react';
 
-export const Navbar = ({ handleClick, isLoggedIn }) => (
+
+export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
   <div>
     <h1 className="ui top attached header">D & D Wine and Liquor</h1>
     <nav className="navbar">
@@ -32,7 +33,10 @@ export const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="/signup">Sign Up</Link>
           <Link to="/products">All Products</Link>
           <Link to="/view-cart">View Cart
-          <Icon name='shopping cart' size='big' />
+          <span>
+          <Icon name='add to cart' size='big' /> </span>
+          <span> {`(${numItems} Items)`}
+          </span>
           </Link>
         </div>
       )}
@@ -44,9 +48,14 @@ export const Navbar = ({ handleClick, isLoggedIn }) => (
  * CONTAINER
  */
 const mapState = state => {
-  return {
-    isLoggedIn: !!state.user.id
-  };
+  let numItems = 0;
+  Object.keys(state.cart).forEach(productId => {
+    const { quantity } = state.cart[productId];
+    numItems += quantity;});
+    return {
+      isLoggedIn: !!state.user.id,
+      numItems
+    };
 };
 
 const mapDispatch = dispatch => {

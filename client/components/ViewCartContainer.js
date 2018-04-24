@@ -59,6 +59,7 @@ const mapDispatch = function(dispatch) {
           distance = Math.floor(
             res.rows[0].elements[0].distance.value * 0.62 / 1000
           );
+          console.log("!!!",distance);
           dispatch(receiveDistanceFromGoogle(distance));
         }
       };
