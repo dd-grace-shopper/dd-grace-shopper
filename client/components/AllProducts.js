@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import SidebarLeft from './SidebarContainer';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 import DisplaySidebar from './DisplaySidebar';
-import Notifications, {notify} from 'react-notify-toast';
+
 
 export default class AllProducts extends Component {
 
@@ -91,7 +91,7 @@ export default class AllProducts extends Component {
          <Sidebar.Pusher>
           <Segment basic id={allProductsContainerId}>
             <div className="all-products-header">
-              <h1 className="component-title">All Products</h1> <Notifications />
+              <h1 className="component-title">All Products</h1>
               <DisplaySidebar />
             </div>
              <hr />
@@ -126,7 +126,6 @@ export default class AllProducts extends Component {
                       );
                     })}
                 </div>
-
              }
           </Segment>
         </Sidebar.Pusher>

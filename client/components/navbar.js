@@ -6,10 +6,13 @@ import { logout } from '../store';
 import { resetCart} from  '../store/cart';
 import UserHome from './user-home';
 import { Icon } from 'semantic-ui-react';
+import Notifications, {notify} from 'react-notify-toast';
 
 export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
   <div>
+  <div id = "fixedbar">
     <h1 className="ui top attached header">D & D Wine and Liquor</h1>
+    <Notifications />
     <nav className="navbar">
       {isLoggedIn ? (
         <div>
@@ -40,6 +43,11 @@ export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
         </div>
       )}
     </nav>
+  </div>
+  <div className="spacer">
+    &nbsp;
+  </div>
+
   </div>
 );
 

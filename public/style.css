@@ -225,3 +225,22 @@ button:hover {
 
 
 
+#singleimage.resize {
+  max-width:10%;
+  max-height:20%;
+}
+#fixedbar {
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100px;
+  background-color: #353433
+}
+.spacer
+{
+    width: 100%;
+    height: 120px;
+}

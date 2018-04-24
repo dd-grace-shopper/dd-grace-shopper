@@ -56,6 +56,7 @@ export const fetchCart = () => dispatch => {
   .get('/api/active-orders')
   .then(res => res.data)
   .then(cartFromDb => {
+
     const newCart = cartFromDb.reduce((newCartObj, item) => {
       const { productId, quantity } = item;
       newCartObj[productId] = { productId, quantity };
