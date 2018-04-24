@@ -225,10 +225,11 @@ button:hover {
 
 
 
-#singleimage.resize {
-  max-width:10%;
-  max-height:20%;
-}
+/* #singleimage.resize {
+  max-width:50%;
+  max-height:50%;
+} */
+
 #fixedbar {
   color: white;
   position: fixed;

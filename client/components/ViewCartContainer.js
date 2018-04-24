@@ -10,10 +10,8 @@ import {
 const mapState = function(state, ownProps) {
   let total = 0;
   let numItems = 0;
-  console.log("state.cart", state.cart);
   if (state.cart === null){return;}
   const productsInCart = Object.keys(state.cart).map(productId => {
-    console.log("@@@@@@!!!",productId);
     const { name, price, imageUrl } = state.products.productsById[productId];
     const { quantity } = state.cart[productId];
     total += quantity * price;
