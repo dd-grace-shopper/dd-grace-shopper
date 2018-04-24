@@ -10,6 +10,7 @@ import sidebarReducer from './sidebar';
 import filterReducer from './sidebarFilter';
 import pastOrders from './pastOrders';
 import itemsPurchased from './itemsPurchased';
+import formData from './formValidations';
 
 export const reducer = combineReducers({
   user,
@@ -19,7 +20,8 @@ export const reducer = combineReducers({
   sidebarReducer,
   filterReducer,
   pastOrders,
-  itemsPurchased
+  itemsPurchased,
+  formData
 });
 
 const middleware = composeWithDevTools(

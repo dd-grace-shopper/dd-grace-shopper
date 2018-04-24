@@ -3,6 +3,11 @@ import StatesDropdown from './StatesDropdown';
 import CountriesDropdown from './CountriesDropdown';
 import { createOrder } from '../../store/pastOrders';
 import { connect } from 'react-redux';
+import store from '../../store';
+import {
+  handleCheckoutFormInputChange,
+  resetForm
+} from '../../store/formValidations';
 
 import {
   CardElement,
@@ -58,6 +63,17 @@ class _CardForm extends React.Component {
       country: '',
       state: ''
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleStateChange = this.handleStateChange.bind(this);
+    this.handleCountryChange = this.handleCountryChange.bind(this);
+  }
+
+  componentWillUnmount() {
+    store.dispatch(resetForm());
+  }
+
+  handleChange(event, inputFieldAndValue) {
+    store.dispatch(handleCheckoutFormInputChange(inputFieldAndValue));
   }
 
   handleStateChange = ev => {
@@ -93,7 +109,9 @@ class _CardForm extends React.Component {
     });
   };
   render() {
-    const { total } = this.props;
+    const { total, formData } = this.props;
+    const { dirty, warnings } = formData;
+    const { firstNameWarning, lastNameWarning, addressWarning, cityWarning } = warnings;
     return (
       <form className="ui form" onSubmit={this.handleSubmit}>
         <h4 className="ui dividing header">Shipping Information</h4>
@@ -101,10 +119,24 @@ class _CardForm extends React.Component {
           <label>Name</label>
           <div className="two fields">
             <div className="field">
-              <input type="text" name="firstName" placeholder="First Name" />
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                onChange={event =>
+                  this.handleChange(event, { firstName: event.target.value })
+                }
+              />
             </div>
             <div className="field">
-              <input type="text" name="lastName" placeholder="Last Name" />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                onChange={event =>
+                  this.handleChange(event, { lastName: event.target.value })
+                }
+              />
             </div>
           </div>
         </div>
@@ -112,10 +144,24 @@ class _CardForm extends React.Component {
           <label>Billing Address</label>
           <div className="fields">
             <div className="twelve wide field">
-              <input type="text" name="address" placeholder="Street Address" />
+              <input
+                type="text"
+                name="address"
+                placeholder="Street Address"
+                onChange={event =>
+                  this.handleChange(event, { address: event.target.value })
+                }
+              />
             </div>
             <div className="four wide field">
-              <input type="text" name="city" placeholder="City" />
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                onChange={event =>
+                  this.handleChange(event, { city: event.target.value })
+                }
+              />
             </div>
           </div>
         </div>
@@ -133,7 +179,25 @@ class _CardForm extends React.Component {
             {...createOptions(this.props.fontSize)}
           />
         </label>
-        <button>Pay ${total}</button>
+        {
+          [firstNameWarning, lastNameWarning, addressWarning, cityWarning].map(warn => {
+            if (dirty && warn.on) {
+              return (
+                <p className="formValidationError" key={warn.message}>
+                  {warn.message}
+                </p>
+              );
+            }
+          })
+        }
+        <button
+          disabled={
+            firstNameWarning.on || lastNameWarning.on || addressWarning.on
+            || cityWarning.on || !dirty
+          }
+        >
+          Pay ${total}
+        </button>
       </form>
     );
   }
@@ -170,6 +234,7 @@ class Checkout extends React.Component {
             total={total}
             user={user}
             cart={cart}
+            formData={this.props.checkoutFormData}
           />
         </Elements>
       </div>
@@ -181,7 +246,8 @@ const mapState = function(state, ownProps) {
   return {
     user: state.user,
     cart: state.cart,
-    order: state.order || {}
+    order: state.order || {},
+    checkoutFormData: state.formData.checkoutFormData
   };
 };
 
