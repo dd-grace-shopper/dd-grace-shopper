@@ -15,7 +15,8 @@ export const fetchQuantityFromDb = id => dispatch => {
     .then(res => res.data)
     .then(orderFromDb => {
       dispatch(getQuanitity(orderFromDb));
-    });
+    })
+    .catch(err => console.log(err));
 };
 
 export default function itemsPurchased(state = {}, action) {
