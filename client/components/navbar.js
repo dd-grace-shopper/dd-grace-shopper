@@ -7,7 +7,6 @@ import { resetCart} from  '../store/cart';
 import UserHome from './user-home';
 import { Icon } from 'semantic-ui-react';
 
-
 export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
   <div>
     <h1 className="ui top attached header">D & D Wine and Liquor</h1>
@@ -29,11 +28,7 @@ export const Navbar = ({ handleClick, isLoggedIn, numItems }) => (
         <div>
           {/* The navbar will show these links before you log in */}
           <Link to="/home">Home</Link>
-          {
-            window.location.pathname !== '/home'
-            &&
-            <Link to="/login">Login</Link>
-          }
+          <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
           <Link to="/products">All Products</Link>
           <Link to="/view-cart">View Cart

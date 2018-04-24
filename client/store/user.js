@@ -52,7 +52,7 @@ export const logout = () => dispatch =>
     .post('/auth/logout')
     .then(_ => {
       dispatch(removeUser());
-      history.push('/login');
+      history.push('/home');
     })
     .catch(err => console.log(err));
 
@@ -72,7 +72,7 @@ export const deleteUserThunk = (id) => dispatch =>
     .delete(`/api/users/${id}`)
     .then(_ => {
       dispatch(deleteUser());
-      history.push('/login');
+      history.push('/home');
     })
     .catch(err => console.log(err));
 
