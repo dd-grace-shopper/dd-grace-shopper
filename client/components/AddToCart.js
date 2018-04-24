@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { postToCart } from '../store/cart';
+import Notifications, {notify} from 'react-notify-toast';
 
 export function AddToCart(props) {
 
@@ -20,6 +21,8 @@ const mapDispatch = function(dispatch, ownProps) {
     handleClick: function(evt) {
       evt.preventDefault();
       dispatch(postToCart(ownProps.productId));
+      let myColor = { background: '#0E1717', text: '#FFFFFF' };
+      notify.show('Successfully added to cart', 'custom', 900, myColor);
     }
   };
 };

@@ -16,7 +16,8 @@ const ViewCart = props => {
   }
 
   let shippingFee;
-  if (!finalDistance) {
+
+  if (finalDistance === undefined){
     shippingFee = 0;
   } else if (finalDistance < 50) {
     shippingFee = 5;

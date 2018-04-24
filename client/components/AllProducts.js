@@ -4,18 +4,13 @@ import { Link } from 'react-router-dom';
 import SidebarLeft from './SidebarContainer';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react'
 import DisplaySidebar from './DisplaySidebar';
+import Notifications, {notify} from 'react-notify-toast';
 
 export default class AllProducts extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  componentDidMount() {
-    this.props.getAllProducts ? this.props.getAllProducts() : null;
-  }
-
+/*eslint-disable*/
   render() {
-    const { products, productsById, filter } = this.props ? this.props :null;
+    const { products, productsById, filter } = this.props;
     const allProductsContainerId = this.props.sidebarVisible
       ? "all-products-container-with-sidebar"
       : "all-products-container-no-sidebar"
@@ -97,7 +92,7 @@ export default class AllProducts extends Component {
          <Sidebar.Pusher>
           <Segment basic id={allProductsContainerId}>
             <div className="all-products-header">
-              <h1 className="component-title">All Products</h1>
+              <h1 className="component-title">All Products</h1> <Notifications />
               <DisplaySidebar />
             </div>
              <hr />
@@ -110,13 +105,13 @@ export default class AllProducts extends Component {
                   <br /><br /><br /><br />
                 </div>
               :
-               <div className=" ui four column grid left aligned segment">
+               <div className="ui segment four column grid">
 
                   {filteredProducts.length &&
                     filteredProducts.map(id => {
                       const product = productsById[id];
                       return (
-                        <div ui fixed table key={id} className="product-detail">
+                        <div key={id} className="column ui segmen">
                           <Link to={`products/${id}`} className="product-name">
                             <h3 className ="ui black header">{product.name}</h3>
                           </Link>
@@ -125,6 +120,7 @@ export default class AllProducts extends Component {
                             <div className="product-info-right">
                               <h4 className = "ui blackheader">{`$${product.price}`}</h4>
                               <AddToCart productId={id} />
+
                             </div>
                           </div>
                         </div>
