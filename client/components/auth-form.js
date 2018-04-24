@@ -47,7 +47,6 @@ export const AuthForm = props => {
       </form>
       <div className="oauth-options">
         <a href="/auth/google">{displayName} with Google</a>
-        <a href="/auth/facebook">{displayName} with Facebook</a>
       </div>
     </div>
   );
