@@ -1,10 +1,21 @@
-const GET_QUANTITY = 'GET_QUANTITY';
+import axios from 'axios';
+
+export const GET_QUANTITY = 'GET_QUANTITY';
 
 export const getQuanitity = quantity => {
   return {
     type: GET_QUANTITY,
     quantity
   };
+};
+
+export const fetchQuantityFromDb = id => dispatch => {
+  return axios
+    .get(`/api/past-orders/${id}/quantity`)
+    .then(res => res.data)
+    .then(orderFromDb => {
+      dispatch(getQuanitity(orderFromDb));
+    });
 };
 
 export default function itemsPurchased(state = {}, action) {

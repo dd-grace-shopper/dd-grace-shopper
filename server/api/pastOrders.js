@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { PastOrder, Product } = require('../db/models');
+const ProductsByOrder = require('../db/models/productsByOrder');
 const { isAdminOrSelf, requireLoggedInUser } = require('./utils');
 module.exports = router;
 // Set your secret key: remember to change this to your live secret key in production
@@ -12,8 +13,8 @@ router.get('/', requireLoggedInUser, (req, res, next) => {
       userId: req.user.id
     }
   })
-  .then(orders => res.json(orders))
-  .catch(next);
+    .then(orders => res.json(orders))
+    .catch(next);
 });
 
 router.post('/', (req, res, next) => {
@@ -25,14 +26,29 @@ router.post('/', (req, res, next) => {
         description: 'Example charge',
         source: 'tok_visa' //use req.body if you want to charge the actual card
       });
-      order.setProducts(req.body.cart);
+      const createRows = [];
+      for (let prop in req.body.cart) {
+        createRows.push(req.body.cart[prop]);
+      }
+      createRows.forEach(val => (val.pastOrderId = order.id));
       res.json(order);
+      ProductsByOrder.bulkCreate(createRows);
     })
     .catch(next);
 });
 
-router.get('/:id', isAdminOrSelf, (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   PastOrder.findById(req.params.id, { include: [{ all: true }] }).then(order =>
     res.json(order)
   );
+});
+
+router.get('/:id/quantity', (req, res, next) => {
+  ProductsByOrder.findAll({
+    where: {
+      pastOrderId: req.params.id
+    }
+  }).then(quantity => {
+    res.json(quantity);
+  });
 });
