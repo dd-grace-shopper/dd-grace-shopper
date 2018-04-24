@@ -16,7 +16,6 @@ export default class AllProducts extends Component {
       : "all-products-container-no-sidebar"
 
     // Getting only unique filtered products by category, size, and price range
-    console.log('PRODUCTS', products)
     const productCategories = products.length && products.map(id => {
       return productsById[id].category.category
     })
