@@ -93,11 +93,6 @@ export class AuthForm extends Component {
           <a href="/auth/google">{displayName} with Google</a>
           {/*<a href="/auth/facebook">{displayName} with Facebook</a>*/}
         </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <div className="oauth-options">
-        <a href="/auth/google">{displayName} with Google</a>
-
       </div>
     );
   }
