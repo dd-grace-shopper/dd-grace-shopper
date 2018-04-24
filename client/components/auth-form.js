@@ -1,56 +1,107 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { auth } from '../store';
+import store, { auth } from '../store';
+import {
+  handleAuthFormInputChange,
+  resetForm
+} from '../store/formValidations';
 
 /**
  * COMPONENT
  */
-export const AuthForm = props => {
-  const { name, displayName, handleSubmit, error } = props;
+export class AuthForm extends Component {
+  componentWillUnmount() {
+    store.dispatch(resetForm());
+  }
 
-  return (
-    <div className="auth-form">
-      <form onSubmit={handleSubmit} name={name}>
-        {name === 'signup' && (
+  render() {
+    const { name, displayName, handleChange, handleSubmit, error, formData } = this.props;
+    const { dirty, warnings } = formData;
+    const { firstNameWarning, lastNameWarning, passwordWarning, emailWarning } = warnings;
+
+    return (
+      <div className="auth-form">
+        <form onSubmit={handleSubmit} name={name}>
+          {name === 'signup' && (
+            <div>
+              <div>
+                <label htmlFor="firstname">
+                  <small>First Name</small>
+                </label>
+                <input
+                  name="firstname"
+                  type="text"
+                  onChange={event => handleChange({ firstName: event.target.value })}
+                />
+              </div>
+              <div>
+                <label htmlFor="lastname">
+                  <small>Last Name</small>
+                </label>
+                <input
+                  name="lastname"
+                  type="text"
+                  onChange={event => handleChange({ lastName: event.target.value })}
+                />
+              </div>
+            </div>
+          )}
           <div>
-            <div>
-              <label htmlFor="firstname">
-                <small>First Name</small>
-              </label>
-              <input name="firstname" type="text" />
-            </div>
-            <div>
-              <label htmlFor="lastname">
-                <small>Last Name</small>
-              </label>
-              <input name="lastname" type="text" />
-            </div>
+            <label htmlFor="email">
+              <small>Email</small>
+            </label>
+            <input
+              name="email"
+              type="text"
+              onChange={event => handleChange({ email: event.target.value })}
+            />
           </div>
-        )}
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button className="ui button" type="submit">{displayName}</button>
+          <div>
+            <label htmlFor="password">
+              <small>Password</small>
+            </label>
+            <input
+              name="password"
+              type="password"
+              onChange={event => handleChange({ password: event.target.value })}
+            />
+          </div>
+          <div>
+            <button
+              className="ui button"
+              type="submit"
+              disabled={emailWarning.on || firstNameWarning.on || lastNameWarning.on || passwordWarning.on || !dirty}
+            >
+              {displayName}
+            </button>
+          </div>
+          {
+            [emailWarning, firstNameWarning, lastNameWarning, passwordWarning].map(warn => {
+              if (dirty && warn.on) {
+                return (
+                  <p className="formValidationError" key={warn.message}>
+                    {warn.message}
+                  </p>
+                );
+              }
+            })
+          }
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+        <div className="oauth-options">
+          <a href="/auth/google">{displayName} with Google</a>
+          {/*<a href="/auth/facebook">{displayName} with Facebook</a>*/}
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
       <div className="oauth-options">
         <a href="/auth/google">{displayName} with Google</a>
+
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 /**
  * CONTAINER
@@ -63,14 +114,17 @@ const mapLogin = state => {
   return {
     name: 'login',
     displayName: 'Login',
+    formData: state.formData.authFormData,
     error: state.user.error
   };
 };
 
 const mapSignup = state => {
+
   return {
     name: 'signup',
     displayName: 'Sign Up',
+    formData: state.formData.authFormData,
     error: state.user.error
   };
 };
@@ -99,6 +153,9 @@ const mapDispatch = dispatch => {
         };
       }
       dispatch(auth(userObj, formName));
+    },
+    handleChange(inputFieldAndValue) {
+      dispatch(handleAuthFormInputChange(inputFieldAndValue));
     }
   };
 };

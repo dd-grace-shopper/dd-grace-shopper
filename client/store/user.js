@@ -37,6 +37,8 @@ export const auth = (obj, method) => dispatch => {
     .then(
       res => {
         dispatch(getUser(res.data));
+        console.log('USER DATA:', res.data);
+        //dispatch(updateGuestCartToUserCart(res.))
         history.push('/home');
       },
       authError => {

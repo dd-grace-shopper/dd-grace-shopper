@@ -12,6 +12,7 @@ import EditUserAccountContainer from './components/EditUserAccountContainer';
 import Checkout from './components/CheckoutForm/index';
 import { fetchCart } from './store/cart';
 import { fetchProducts } from './store/allproducts';
+import { initForm } from './store/formValidations';
 import HomePage from './components/HomePageContainer';
 import OrderConfirmationContainer from './components/OrderConfirmationContainer';
 import myOrdersContainer from './components/myOrdersContainer';
@@ -92,6 +93,7 @@ const mapDispatch = dispatch => {
       dispatch(me());
       dispatch(fetchProducts());
       dispatch(fetchCart());
+      dispatch(initForm());
     }
   };
 };
