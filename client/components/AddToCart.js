@@ -22,7 +22,7 @@ const mapDispatch = function(dispatch, ownProps) {
       evt.preventDefault();
       dispatch(postToCart(ownProps.productId));
       let myColor = { background: '#0E1717', text: '#FFFFFF' };
-      notify.show('Successfully added to cart', 'custom', 900, myColor);
+      notify.show('Successfully added to cart', 'custom', 1200, myColor);
     }
   };
 };

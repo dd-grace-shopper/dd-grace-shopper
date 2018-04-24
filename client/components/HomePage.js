@@ -36,8 +36,8 @@ export default class HomePage extends Component {
                   <div className="ui segment">
                     <Link to={`products/${id}`}>
                       <h4 className = "ui black header">{product.name}</h4>
-                    </Link>
                     <img className="product-img" src={product.imageUrl} />
+                    </Link>
                   </div>
                 </div>
                 );
