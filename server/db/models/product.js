@@ -22,16 +22,16 @@ const Product = db.define('product', {
   priceRange: {
     type: Sequelize.VIRTUAL,
     get() {
-      if (this.getDataValue('price') < 20) {
+      if (this.getDataValue('price') < 2000) {
         return '$';
       } else if (
-        this.getDataValue('price') >= 20 &&
-        this.getDataValue('price') < 50
+        this.getDataValue('price') >= 2000 &&
+        this.getDataValue('price') < 5000
       ) {
         return '$$';
       } else if (
-        this.getDataValue('price') >= 50 &&
-        this.getDataValue('price') < 100
+        this.getDataValue('price') >= 5000 &&
+        this.getDataValue('price') < 10000
       ) {
         return '$$$';
       } else {
